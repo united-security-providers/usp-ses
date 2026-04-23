@@ -95,26 +95,34 @@ HSP_VERSION=$(echo $HSP_ENTRY | cut -d "-" -f 5)
 echo "SLS Version: $SLS_VERSION"
 echo "HSP Version: $HSP_VERSION"
 
-mkdir sls-docs
-cd sls-docs
+# ======================================
+# SES appliance documentation
+# ======================================
+mkdir ses-docs
+cd ses-docs
+downloadFromNexus $SES_VERSION com.usp.ses ses-appliance-doc tar.bz2
+bunzip2 *.*
+tar xf *.*
+rm -f *.tar
+downloadFromNexus $SES_VERSION com.usp.ses ses-appliance-whatsnew jar
+cd ..
 
 # ======================================
 # SLS documentation
 # ======================================
-
+mkdir sls-docs
+cd sls-docs
 # Download SLS release notes
 downloadFromNexus $SLS_VERSION com.usp.sls.framework sls-release-notes jar
 # Download generated docs bundle (PDFs and HTML)
 downloadFromNexus $SLS_VERSION com.usp.sls.framework sls-generated-docs zip docs
-# Download "What's New" doc
-downloadFromNexus $SLS_VERSION com.usp.sls.framework sls-docs jar whatsnew
 rm *.zip
 rm *.jar
+cd ..
 
 # ======================================
 # HSP documentation
 # ======================================
-cd ..
 mkdir hsp-docs
 cd hsp-docs
 downloadFromNexus $HSP_VERSION com.usp.hsp hsp-docs tar.bz2
@@ -123,18 +131,6 @@ tar xf *.*
 rm -f *.tar
 
 exit -1
-
-DOCS_BASE_URL="https://nexus-bob.u-s-p.local/repository/releases"
-
-SLS_DOCS_BASE_URL="${DOCS_BASE_URL}/com/usp/sls/framework/sls-docs/${SLS_VERSION}/"
-curl -k $SLS_DOCS_BASE_URL/sls-docs-${SLS_VERSION}-bundle.zip -o sls-docs-bundle.zip
-curl -k $SLS_DOCS_BASE_URL/sls-docs-${SLS_VERSION}-adminguide.pdf -o sls-adminguide.pdf
-curl -k $SLS_DOCS_BASE_URL/sls-docs-${SLS_VERSION}-scriptingguide.pdf -o sls-scriptingguide.pdf
-curl -k $SLS_DOCS_BASE_URL/sls-docs-${SLS_VERSION}-taglibguide.pdf -o sls-taglibguide.pdf
-curl -k $SLS_DOCS_BASE_URL/sls-docs-${SLS_VERSION}-whatsnew.jar -o sls-whatsnew.jar
-
-curl -k "${DOCS_BASE_URL}/com/usp/hsp/hsp-docs/${HSP_VERSION}/hsp-docs-${HSP_VERSION}.tar.bz2" -o hsp-docs.tar.bz2
-
 
 # =====================================================================
 # Begin site build
