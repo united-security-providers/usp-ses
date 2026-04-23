@@ -1,6 +1,6 @@
 # SES HTML Documentation
 
-## Secure Entry Server Appliance
+## Secure Entry Server&reg; Appliance
 
 - [SES Appliance Guide]
 - [SES Migration Guide]

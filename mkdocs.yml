@@ -47,8 +47,7 @@ markdown_extensions:
   - pymdownx.superfences
 nav:
   - Welcome: 'index.md'
-  - What's New: 'files/whats_new.html'
-  - Release Notes: 'files/releasenotes.md'
+  - What's New: 'files/whats_new.md'
   - SES Documentation:
     - HTML: 'html-documentation.md'
     - PDF: 'pdf-documentation.md'

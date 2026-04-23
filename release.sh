@@ -107,6 +107,10 @@ rm -f *.tar
 downloadFromNexus $SES_VERSION com.usp.ses ses-release-notes jar
 mv ses-$SES_VERSION.md releasenotes.md
 downloadFromNexus $SES_VERSION com.usp.ses ses-appliance-whatsnew jar
+curl -k -L https://github.com/suntong/html2md/releases/download/v1.6.0/html2md_1.6.0_linux_amd64.tar.gz -o html2md.tar.gz
+tar xzf html2md.tar.gz
+HTML2MD=$(find . -type f -name html2md)
+$HTML2MD -i whats_new.html > whats_new.md
 cd ..
 
 # ======================================
