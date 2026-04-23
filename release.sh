@@ -130,8 +130,6 @@ bunzip2 *.*
 tar xf *.*
 rm -f *.tar
 
-exit -1
-
 # =====================================================================
 # Begin site build
 # =====================================================================
@@ -141,17 +139,18 @@ cd $DIR
 
 # Copy base markdown files from sources
 cp -R src/docs ./docs
-cp build/sls-docs/releasenotes.md ./docs/
 
-#########prepareChangelog build/waap-$CORE_Authenticate_VERSION-changelog.md ./docs/waap-CHANGELOG.md
-
-mkdir -p ./docs/files/$SLS_VERSION
-cp -r ./build/sls-docs/* ./docs/files/$SLS_VERSION/
+mkdir -p ./docs/files
+cp -r ./build/sls-docs/* ./docs/files/
+cp -r ./build/hsp-docs/* ./docs/files/
+cp -r ./build/ses-docs/* ./docs/files/
 
 # Replace version placeholders in all markdown files
 for file in ./docs/*; do
     if [ -f "$file" ]; then
+        sed -i -e 's/%HSP_VERSION%/'$HSP_VERSION'/g' $file
         sed -i -e 's/%SLS_VERSION%/'$SLS_VERSION'/g' $file
+        sed -i -e 's/%SES_VERSION%/'$SES_VERSION'/g' $file
     fi
 done
 
