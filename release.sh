@@ -104,6 +104,8 @@ downloadFromNexus $SES_VERSION com.usp.ses ses-appliance-doc tar.bz2
 bunzip2 *.*
 tar xf *.*
 rm -f *.tar
+downloadFromNexus $SES_VERSION com.usp.ses ses-release-notes jar
+mv ses-$SES_VERSION.md releasenotes.md
 downloadFromNexus $SES_VERSION com.usp.ses ses-appliance-whatsnew jar
 cd ..
 
@@ -112,12 +114,9 @@ cd ..
 # ======================================
 mkdir sls-docs
 cd sls-docs
-# Download SLS release notes
-downloadFromNexus $SLS_VERSION com.usp.sls.framework sls-release-notes jar
 # Download generated docs bundle (PDFs and HTML)
 downloadFromNexus $SLS_VERSION com.usp.sls.framework sls-generated-docs zip docs
-rm *.zip
-rm *.jar
+rm -f *.zip
 cd ..
 
 # ======================================
