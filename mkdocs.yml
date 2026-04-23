@@ -1,0 +1,52 @@
+site_name: 'USP Secure Entry Server documentation'
+docs_dir: './docs'                        # Where to find the English markdown files
+site_dir: './generated'                      # Where to put the English HTML files
+site_url: 'https://docs.united-security-providers.ch/usp-ses'
+copyright: '&copy; 2026 United Security Providers AG. All Rights Reserved.'
+
+theme:
+  name: material
+  custom_dir: './overrides/'                  # This is where the customization of the theme lives
+  logo: assets/images/USP-Logo-zentriert-ohne-Claim-white.png                # The logo is shared by all languages
+  favicon: favicon.ico              # The favicon is shared by all languages
+  language: en                                    # The build's language
+  static_templates:
+    - 404.html   # 404 page
+extra_css:
+  - assets/stylesheets/extra.css
+
+extra:
+  social:
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/company/united-security-providers/
+      name: United Security Providers on Linkedin
+    - icon: fontawesome/brands/youtube
+      link: https://www.youtube.com/@United-security-providersCh
+      name: United Security Providers on Youtube
+  version:
+    provider: mike
+    default: latest
+  homepage: https://docs.united-security-providers.ch/usp-core-authenticate
+
+plugins:
+  - search:
+      lang: en                                      # Set language for search
+  - swagger-ui-tag:
+      supportedSubmitMethods: []
+      validatorUrl: none
+
+markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - attr_list
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+nav:
+  - Welcome: 'index.md'
+  - SES Documentation:
+    - HTML: 'html-documentation.md'
+    - PDF: 'pdf-documentation.md'
