@@ -1,0 +1,117 @@
+<h1 id="uspsecureentryserverreg5.18.0.1">USP Secure Entry Server &reg; 5.18.0.1</h1>
+
+<p>SES 5.18.0.1 consists of the following components:</p>
+
+<ul>
+<li>SES Web GUI <strong>5.18.0.1</strong></li>
+<li>HTTP Secure Proxy (HSP) <strong>4.27.0.5</strong></li>
+<li>Secure Login Service (SLS) <strong>5.20.0.5</strong></li>
+<li>Identity Manager (IDM) <strong>2.3.0.1</strong></li>
+<li>Shared Appliance Base (SAB) <strong>1.17.6</strong></li>
+</ul>
+
+<h2 id="platformcompatibility">Platform Compatibility</h2>
+
+<p>This release is compatible with the following hardware platforms:</p>
+
+<ul>
+<li>Dell PowerEdge R660</li>
+<li>Dell PowerEdge R650</li>
+<li>Dell PowerEdge R640</li>
+</ul>
+
+<h2 id="appliancebase">Appliance Base</h2>
+
+<h3 id="changes">Changes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#292257</td>
+	<td>The &#8220;factory reset&#8221; and &#8220;restore last version&#8221; options were removed from the GRUB menu.</td>
+</tr>
+<tr>
+	<td>#292341</td>
+	<td>Updated Tomcat to 9.0.116 to address various vulnerabilities.</td>
+</tr>
+<tr>
+	<td>#292308</td>
+	<td>Removed free MaxMind GeoIP database due to licensing change.</td>
+</tr>
+<tr>
+	<td>#292141</td>
+	<td>CheckMK: Fix column separator in plugin http_monitor.py and update agent to 2.4.0p22+ (CVE&#8211;2025&#8211;6499).</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="seswebgui">SES Web GUI</h2>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#110394</td>
+	<td>SES User Management LDAP AD sync failed if sAMAccountName started with a number.</td>
+</tr>
+<tr>
+	<td>#292216</td>
+	<td>SLS CSP upgrade issues.</td>
+</tr>
+<tr>
+	<td>#292138</td>
+	<td>Config zip download broken since SES 5.17.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="httpsecureproxyhsp">HTTP Secure Proxy (HSP)</h2>
+
+<h3 id="changes">Changes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#292432</td>
+	<td>Updated openssl to v3.0.20</td>
+</tr>
+</tbody>
+</table>
+

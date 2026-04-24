@@ -1,0 +1,183 @@
+<h1 id="uspsecureentryserverreg5.9.0.1">USP Secure Entry Server &reg; 5.9.0.1</h1>
+
+<p>SES 5.9.0.1 consists of the following components:</p>
+
+<ul>
+<li>SES Web GUI <strong>5.9.0.1</strong></li>
+<li>HTTP Secure Proxy (HSP) <strong>4.20.0.1</strong></li>
+<li>Secure Login Service (SLS) <strong>5.12.0.3</strong></li>
+<li>Identity Manager (IDM) <strong>1.5.0.1</strong></li>
+<li>Shared Appliance Base (SAB) <strong>1.16.5</strong></li>
+</ul>
+
+<h2 id="platformcompatibility">Platform Compatibility</h2>
+
+<p>This release is compatible with the following hardware platforms:</p>
+
+<ul>
+<li>Dell PowerEdge R640</li>
+<li>Dell PowerEdge R630</li>
+</ul>
+
+<h2 id="seswebgui">SES Web GUI</h2>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#72296</td>
+	<td>IPv6 HA: WAF HA active/passive sync reports &#8220;Field &#8216;evt_client_ip&#8217;[&#8230;] not a valid IP address&#8221;</td>
+</tr>
+<tr>
+	<td>#72418</td>
+	<td>LDAPS connection fails with IP address (Impl: SES GUI for SLS)</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="httpsecureproxyhsp">HTTP Secure Proxy (HSP)</h2>
+
+<h3 id="changes">Changes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#72528</td>
+	<td>Updated httpd to version 2.4.43</td>
+</tr>
+<tr>
+	<td>#73003</td>
+	<td>Updated openssl to version 1.0.2.u</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#71863</td>
+	<td>The default maximum number of allowed open files (ulimit -n) per HSP process has been increased to 8192 in the httpdctl control script.</td>
+</tr>
+<tr>
+	<td>#71875</td>
+	<td>Fixed a bug that lead to trigger Bearer token authentication on OPTIONS Requests with Bearer authorization header.</td>
+</tr>
+<tr>
+	<td>#72907</td>
+	<td>The default regular expression of CSG_StaXmlResPsRegex has been changed in order to align to internal changes on PCRE settings.</td>
+</tr>
+<tr>
+	<td>#72627</td>
+	<td>Fixed a bug that lead to not filter SLS&#8217;s internal &#8220;user info&#8221; cookies if split up into multiple, indexed cookies (UspSlsInternalUserInfo–1, UspSlsInternalUserInfo–2, &#8230;).</td>
+</tr>
+<tr>
+	<td>#73722</td>
+	<td>Fixed a bug that caused the Content-Length header to be removed from responses to HEAD requests.</td>
+</tr>
+<tr>
+	<td>#71980</td>
+	<td>Fixed a bug in relation to HGW_Host that caused TLS sessions resumption (to backend servers) not to work under certain circumstances.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="identitymanageridm">Identity Manager (IDM)</h2>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#73084</td>
+	<td>Removed option to use authorized user context for jexl item transformer</td>
+</tr>
+<tr>
+	<td>#71870</td>
+	<td>Two SEDEX email sent with different content for the same SEDEX message</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="secureloginservicesls">Secure Login Service (SLS)</h2>
+
+<h3 id="httpwsadapter">HTTP/WS Adapter</h3>
+
+<ul>
+<li>The connection pooling in the HTTP/WS adapter did not work if SSL/TLS with
+ mutual authentication was used. This has been fixed, so that there will be
+ much fewer connections created by the adapters in such scenarios.</li>
+<li>Selecting a private key alias for a specific HTTP / WS action sometimes didn&#8217;t
+ work correctly, if backend monitoring was enabled. This issue was also
+ indirectly connected to the pooling and SSL initialization problem.</li>
+<li>If dynamic debug/trace logging is enabled on a session, the HTTP adapter
+ will now log more low-level I/O data.</li>
+</ul>
+
+<h3 id="securityenhancements">Security Enhancements</h3>
+
+<ul>
+<li>The HTTP and WS Adapters used to accept self-signed certificates if a dedicated
+ truststore was defined via the system property <code>javax.net.ssl.trustStore</code>.
+ This has been fixed.
+ To ease migration of productive installations, it is possible to restore the
+ previous behavior by setting a new SLS configuration property
+ <code>http.dedicated.ssl.trustStore.allowSelfSigned=true</code> resp.
+ <code>ws.dedicated.ssl.trustStore.allowSelfSigned=true</code>. If it is set and a
+ dedicated truststore is defined, the SLS logs a warning at startup.
+ Note that even though the new property may come in handy in test environments,
+ it is generally recommended to simply add self-signed certificates to the
+ dedicated truststore instead of using the new configuration property.
+ Note also that the issue did not affect installations that do not define a
+ dedicated truststore and thus use the truststore of the JVM.</li>
+</ul>

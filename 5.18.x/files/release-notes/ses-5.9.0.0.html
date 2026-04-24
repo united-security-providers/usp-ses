@@ -1,0 +1,409 @@
+<h1 id="uspsecureentryserverreg5.9.0.0">USP Secure Entry Server &reg; 5.9.0.0</h1>
+
+<p>SES 5.9.0.0 consists of the following components:</p>
+
+<ul>
+<li>SES Web GUI <strong>5.9.0.0</strong></li>
+<li>HTTP Secure Proxy (HSP) <strong>4.20.0.0</strong></li>
+<li>Secure Login Service (SLS) <strong>5.12.0.1</strong></li>
+<li>Identity Manager (IDM) <strong>1.5.0.0</strong></li>
+<li>Shared Appliance Base (SAB) <strong>1.16.5</strong></li>
+</ul>
+
+<h2 id="platformcompatibility">Platform Compatibility</h2>
+
+<p>This release is compatible with the following hardware platforms:</p>
+
+<ul>
+<li>Dell PowerEdge R640</li>
+<li>Dell PowerEdge R630</li>
+</ul>
+
+<h2 id="seswebgui">SES Web GUI</h2>
+
+<h3 id="features">Features</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#68903</td>
+	<td>Added option to synchronize configuration for Standalone ACCESS instances.</td>
+</tr>
+<tr>
+	<td>#53755</td>
+	<td>Added the functionality to configure IPv6 addresses for internal facing services</td>
+</tr>
+<tr>
+	<td>#58586</td>
+	<td>Introducing new WAF maintenance page profiles allowing different maintenance pages and scheduling</td>
+</tr>
+<tr>
+	<td>#64613</td>
+	<td>Added new security header &#8220;Referrer-Policy&#8221;</td>
+</tr>
+<tr>
+	<td>#54636</td>
+	<td>Added TLS key alias selection for various ACCESS configuration</td>
+</tr>
+<tr>
+	<td>#46528</td>
+	<td>Added individual control buttons for the services</td>
+</tr>
+<tr>
+	<td>#62171</td>
+	<td>Added new monitor for WAF Sizing and the connection pool</td>
+</tr>
+<tr>
+	<td>#63930</td>
+	<td>Added new measurement for request and response size for each request</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="changes">Changes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#59092</td>
+	<td>Upgraded various base system package including puppet</td>
+</tr>
+<tr>
+	<td>#52010</td>
+	<td>Changed various SLS config defaults</td>
+</tr>
+<tr>
+	<td>#47245</td>
+	<td>Removed FUSE support</td>
+</tr>
+<tr>
+	<td>#66918</td>
+	<td>HTTP/2 module is loaded dynamically and only when actually used</td>
+</tr>
+<tr>
+	<td>#69081</td>
+	<td>Deprecated SuisseID</td>
+</tr>
+<tr>
+	<td>#69817</td>
+	<td>Removed NTLMv1 Support</td>
+</tr>
+<tr>
+	<td>#39787</td>
+	<td>Removed old maintenance page option</td>
+</tr>
+<tr>
+	<td>#49944</td>
+	<td>Security headers are enabled per default for new hosts</td>
+</tr>
+<tr>
+	<td>#51710</td>
+	<td>For WebSocket locations only one translation is allowed</td>
+</tr>
+<tr>
+	<td>#49942</td>
+	<td>Additional response headers are allowed by default: Referrer-Policy, Feature-Policy, Expect-CT</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#43948</td>
+	<td>Fixed wrong total memory on dashboard</td>
+</tr>
+<tr>
+	<td>#46475</td>
+	<td>Added missing SLS custom properties in &#8220;Configuration Files&#8221; view</td>
+</tr>
+<tr>
+	<td>#47588</td>
+	<td>Ensures now that Host header is set on WebSocket upgrade requests to the backend</td>
+</tr>
+<tr>
+	<td>#55815</td>
+	<td>Fixed issue with to many entries per line in /etc/hosts file</td>
+</tr>
+<tr>
+	<td>#57382</td>
+	<td>Fixed initial role assignment for LDAP GUI authentication</td>
+</tr>
+<tr>
+	<td>#63177</td>
+	<td>Ensure session locking is only enabled when feature enabled on locations</td>
+</tr>
+<tr>
+	<td>#65598</td>
+	<td>Fixed DataProtector encryption of German umlauts</td>
+</tr>
+<tr>
+	<td>#68018</td>
+	<td>Fixed AnonymizationService widget on traffic dashboard</td>
+</tr>
+<tr>
+	<td>#68073</td>
+	<td>Improved load time for long configuration revision list</td>
+</tr>
+<tr>
+	<td>#70808</td>
+	<td>Fixed log rotation of system logs</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="httpsecureproxyhsp">HTTP Secure Proxy (HSP)</h2>
+
+<h3 id="changes">Changes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#63931</td>
+	<td>Added mod_logio module</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#64240</td>
+	<td>Fixed segmentation fault of mod_analze under high load</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="identitymanageridm">Identity Manager (IDM)</h2>
+
+<h3 id="features">Features</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#66987</td>
+	<td>Introduced warm/standby redundancy setup</td>
+</tr>
+<tr>
+	<td>#42682</td>
+	<td>New multi-language options for user management webapp (E, D, F, I)</td>
+</tr>
+<tr>
+	<td>#60829</td>
+	<td>Added email notification for SEDEX import results</td>
+</tr>
+<tr>
+	<td>#62192</td>
+	<td>Added automated housekeeping job, deleting not modified, suspended users after a certain number of days</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="changes">Changes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#65592</td>
+	<td>Updated Syncope to 2.0.14</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#71232</td>
+	<td>Improved UI handling after bulk group delete</td>
+</tr>
+<tr>
+	<td>#65944</td>
+	<td>Fixed issue which prevented task from execution after appliance update</td>
+</tr>
+<tr>
+	<td>#62651</td>
+	<td>Fixed issue where selected filters were not applied after a page refresh</td>
+</tr>
+<tr>
+	<td>#62650</td>
+	<td>Fixed issue, ensuring staying on the same view after a page reload</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="secureloginservicesls">Secure Login Service (SLS)</h2>
+
+<h3 id="securehandshakeshs">Secure Handshake (SHS)</h3>
+
+<ul>
+<li>Now supports Secure Handshake (SHS) with TLS 1.3, provided the HSP supports it
+ (HSP 4.21.0.0 or later).
+ Supported TLS SignatureSchemes with TLS 1.3 are:
+ rsa_pss_rsae_sha256 (0x0804), rsa_pss_pss_sha256 (0x0809),
+ rsa_pss_rsae_sha384 (0x0805), rsa_pss_pss_sha384 (0x080a),
+ rsa_pss_rsae_sha512 (0x0806), rsa_pss_pss_sha512 (0x080b).</li>
+<li>SHS with TLS 1.2 now also supports the above TLS SignatureSchemes and
+ continues to support legacy RSA PKCS#1 and DSA signatures with a number
+ of hash functions.</li>
+<li>SHS wit TLS 1.0 and 1.1 continue to support legacy RSA PKCS#1 and DSA
+ signatures with fixed hash type (concatenated MD5 and SHA1 hashes).</li>
+<li>SHS with SSLv3 is no longer supported (SSLv3 is generally not supported
+ any more by HSP 4.21.0.0 and later).</li>
+<li>Extended documentation of SHS in the &#8220;SLS Administration Guide&#8221; in the
+ chapter about &#8220;PKI Adapter&#8221;.</li>
+</ul>
+
+<h3 id="ntlmadapter">NTLM Adapter</h3>
+
+<ul>
+<li>Support for NTLMv1 has been dropped. This protocol, originally created in 1987,
+ is by now severely broken in terms of security.</li>
+<li>The error handling has been adapted to mark an AD backend as unavailable when
+ a session key negotiation fails, in order to enforce a failover in such a
+ situation.</li>
+</ul>
+
+<h3 id="httpwsadapters">HTTP/WS Adapters</h3>
+
+<ul>
+<li>HTTP/WS adapter initialization optimized: Most initializations are now only
+ done once per SLS startup instead of once per login session. This is helps
+ most if there are lots of different callouts, like e.g. if there are a lot
+ of different WS adapter SOAP backend call methods.</li>
+<li>Internal optimizations in the HTTP and WS adapters that can help improve
+ performance (detection of stale and idle connections in a dedicated thread,
+ less temporary objects created on the heap per callout).</li>
+</ul>
+
+<h3 id="groovyjexlimprovements">Groovy / JEXL Improvements</h3>
+
+<ul>
+<li>Added a new script function <code>saml.createOpenSamlObject(String className)</code>
+ which can usually just be given the simple name of the desired class like
+ &#8220;Assertion&#8221;. In the exceptional case where you may need to construct a
+ SAML object that is not in the &#8220;core&#8221; package, you can indicate a fully
+ qualified class name with package in the form &#8220;x.y.z.SomeOpenSamlObject&#8221;.
+ The existing function <code>saml.createOpenSamlObject(Class clazz)</code> has been
+ deprecated and it is recommended to switch to the new function, whenever
+ possible with simple class names without package.
+ The goal is to make configurations more forward compatible with eventual
+ upgrades of OpenSAML.</li>
+<li>Added two new scripts functions <code>saml.toMultiLineString(samlObject)</code>
+ and <code>saml.toSingleLineString(samlObject)</code> that return XML string
+ representations of SAML objects like e.g. a SAML Assertion.</li>
+<li>Fixed a bug in the JEXL function <code>function.getSlsErrorId()</code> which caused the
+ function to not return the error ID if it was used in a JSP while the self-
+ redirect after POST was enabled.</li>
+</ul>
+
+<h3 id="variousimprovementsandfixes">Various Improvements and Fixes</h3>
+
+<ul>
+<li>Fix: Added the missing JEXL/Groovy prefix <code>saml</code> to internal properties.</li>
+<li>The script functions <code>jwt.validateSignatureNotExpired()</code> no longer fail if
+ the given signed JWT lacks the optional &#8220;kid&#8221; header parameter.</li>
+<li>Fixed an issue in the backend monitoring for LDAP backends; could use wrong
+ credentials if used an alias that contains hyphens (<code>-</code>).</li>
+</ul>

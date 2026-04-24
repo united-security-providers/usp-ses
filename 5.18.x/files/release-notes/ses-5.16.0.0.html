@@ -1,0 +1,237 @@
+<h1 id="uspsecureentryserverreg5.16.0.0">USP Secure Entry Server &reg; 5.16.0.0</h1>
+
+<p>SES 5.16.0.0 consists of the following components:</p>
+
+<ul>
+<li>SES Web GUI <strong>5.16.0.0</strong></li>
+<li>HTTP Secure Proxy (HSP) <strong>4.26.0.1</strong></li>
+<li>Secure Login Service (SLS) <strong>5.19.0.0</strong></li>
+<li>Identity Manager (IDM) <strong>2.3.0.0</strong></li>
+<li>Shared Appliance Base (SAB) <strong>1.17.2</strong></li>
+</ul>
+
+<h2 id="platformcompatibility">Platform Compatibility</h2>
+
+<p>This release is compatible with the following hardware platforms:</p>
+
+<ul>
+<li>Dell PowerEdge R650</li>
+<li>Dell PowerEdge R640</li>
+<li>Dell PowerEdge R630</li>
+</ul>
+
+<h2 id="appliancebase">Appliance Base</h2>
+
+<h3 id="changes">Changes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#223250</td>
+	<td>Updated Gentoo portage tree</td>
+</tr>
+<tr>
+	<td>#268236</td>
+	<td>glibc version was updated to address vulnerability cve&#8211;2023&#8211;6246</td>
+</tr>
+<tr>
+	<td>#218087</td>
+	<td>SSH access to the appliance has been hardened by removing several older algorithms.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="seswebgui">SES Web GUI</h2>
+
+<h3 id="features">Features</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#125281</td>
+	<td>Security rule exceptions using regular expressions will now automatically escape various characters.</td>
+</tr>
+<tr>
+	<td>#256284</td>
+	<td>GUI screens where SLS script expressions can be entered validate for balanced quotes and brackets.</td>
+</tr>
+<tr>
+	<td>#221138</td>
+	<td>It&#8217;s now possible to set a location to be session-free in the &#8220;Access Area&#8221; settings.</td>
+</tr>
+<tr>
+	<td>#230472</td>
+	<td>The Target Manager overview now shows an additional column for the host header.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#216171</td>
+	<td>In the SLS &#8220;ChangePwd.jsp&#8221;, the &#8220;maxLength=30&#8221; attribute has been removed.</td>
+</tr>
+<tr>
+	<td>#233833</td>
+	<td>The GUI now automatically creates ModSecurity exclusions for the SCDID cookie to avoid accidental blocking.</td>
+</tr>
+<tr>
+	<td>#272763</td>
+	<td>The DataProtector tool now correctly encrypts and decrypts strings containing quotation marks.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="httpsecureproxyhsp">HTTP Secure Proxy (HSP)</h2>
+
+<h3 id="features">Features</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#209435</td>
+	<td>The HSP now supports OpenSSL 3</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="changes">Changes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#287810</td>
+	<td>Updated nghttp2 to version v1.61.0.</td>
+</tr>
+<tr>
+	<td>#287761</td>
+	<td>Updated apr to version 1.7.4.</td>
+</tr>
+<tr>
+	<td>#287570</td>
+	<td>Updated httpd to version 2.4.59.</td>
+</tr>
+<tr>
+	<td>#209435</td>
+	<td>Updated openssl to version 3.0.13.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#255740</td>
+	<td>Fixed an issue related to location-specific timeouts that allowed re-authentication after final timeout.</td>
+</tr>
+<tr>
+	<td>#104744</td>
+	<td>Fixed Websocket Member location resulting in HTTP 500 when combined with Bearer Token Support</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="secureloginservicesls">Secure Login Service (SLS)</h2>
+
+<h3 id="breakingchange">Breaking Change</h3>
+
+<ul>
+<li>Support for SHS (&#8220;Secure HandShake&#8221;) has been removed completely, as this feature is not supported properly with TLS 1.3
+and most current web browsers. Please check the SES 5.16 migration guide for information about how to update or replace
+existing login models that made use of this feature.</li>
+</ul>
+
+<h3 id="variousimprovementsandfixes">Various Improvements and Fixes</h3>
+
+<ul>
+<li>If <code>http.ssl.accepted.cns</code> is set to a list of CNs in the HTTP Adapter
+ (or <code>http.ssl.accepted.cns</code> in the WS Adapter), previous behavior was to only
+ check if the certificate CN is part of this list. Now the check is also OK
+ if any of the SANs (Subject Alternate Names) is in the list of accepted CNs.
+ (This reflects the fact that if <code>http.ssl.enforce.host=true</code> the hostname
+ is allowed if it matches the cert CN or any of the cert SANs.)</li>
+<li>Supporting non-http(s) URL schemes for <code>do.redirect</code> and <code>do.logout</code> in the case
+ where the <code>url.absolute.allow</code> model parameter is set to <code>true</code>,
+ e.g. URL <code>myscheme99://somehost.net/...</code></li>
+<li>Fixed rare concurrency issue in <code>crypto.base32encode</code> and <code>crypto.base32decode</code>
+ script functions.</li>
+<li>Fixed rare issue with setting a cookie in the response manually using the <code>response.setHeader()</code> function
+ disabling the &#8216;SLSPrefs&#8217; cookie.</li>
+</ul>

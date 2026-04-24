@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Appliance</title><link rel="stylesheet" type="text/css" href="docbook-xsl.css" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /></head><body><div xml:lang="en" class="book" lang="en"><div class="titlepage"><div><div><h1 class="title"><a id="id1337"></a>Appliance</h1></div><div><h2 class="subtitle">Migration Guide</h2></div><div><p class="copyright">Copyright © 2026 United Security Providers AG</p></div><div><div class="legalnotice"><a id="id1339"></a><p>
+    This document is protected by copyright under the applicable laws and
+    international treaties. No part of this document may be reproduced in any
+    form and distributed to third parties by any means without prior written
+    authorization of United Security Providers AG.
+  </p><p>
+    DOCUMENTATION IS PROVIDED "AS IS" AND ALL EXPRESSED OR
+    IMPLIED REPRESENTATIONS AND WARRANTIES, INCLUDING BUT
+    NOT LIMITED TO ANY IMPLIED WARRANTY OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT,
+    ARE DISCLAIMED TO THE EXTENT PERMISSIBLE UNDER THE
+    APPLICABLE LAWS.
+  </p></div></div></div><hr /></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="chapter"><a href="#_introduction">1. Introduction</a></span></dt><dd><dl><dt><span class="section"><a href="#_purpose_of_document">1.1. Purpose of Document</a></span></dt><dt><span class="section"><a href="#_target_audience">1.2. Target Audience</a></span></dt><dt><span class="section"><a href="#_ses_glossary">1.3. SES Glossary</a></span></dt><dt><span class="section"><a href="#_important_general_note">1.4. Important General Note</a></span></dt></dl></dd><dt><span class="chapter"><a href="#_ses_appliance_5_18">2. SES Appliance 5.18</a></span></dt><dd><dl><dt><span class="section"><a href="#_summary">2.1. Summary</a></span></dt><dt><span class="section"><a href="#_removal_of_free_maxmind_geoip_database">2.2. Removal of free MaxMind GeoIP database</a></span></dt><dt><span class="section"><a href="#_removal_of_factory_reset">2.3. Removal of factory reset</a></span></dt></dl></dd><dt><span class="chapter"><a href="#_ses_appliance_5_17">3. SES Appliance 5.17</a></span></dt><dd><dl><dt><span class="section"><a href="#_summary_2">3.1. Summary</a></span></dt><dt><span class="section"><a href="#_sls_tomcat_update">3.2. SLS Tomcat Update</a></span></dt><dt><span class="section"><a href="#_sls_content_security_policy_csp_introduction">3.3. SLS Content Security Policy (CSP) Introduction</a></span></dt><dt><span class="section"><a href="#_updating_web_application_firewall_hsp">3.4. Updating Web Application Firewall (HSP)</a></span></dt></dl></dd><dt><span class="chapter"><a href="#_ses_appliance_5_16">4. SES Appliance 5.16</a></span></dt><dd><dl><dt><span class="section"><a href="#_summary_3">4.1. Summary</a></span></dt><dt><span class="section"><a href="#_sls_tomcat_update_2">4.2. SLS Tomcat Update</a></span></dt><dt><span class="section"><a href="#_sls_elcard_adapter_support_removal">4.3. SLS ELCARD adapter support removal</a></span></dt><dt><span class="section"><a href="#_secure_handshake_shs_feature_removal_migration">4.4. Secure HandShake (SHS) Feature Removal / Migration</a></span></dt><dt><span class="section"><a href="#_accept_encoding_migration">4.5. Accept-Encoding Migration</a></span></dt></dl></dd><dt><span class="chapter"><a href="#_ses_appliance_5_15">5. SES Appliance 5.15</a></span></dt><dd><dl><dt><span class="section"><a href="#_summary_4">5.1. Summary</a></span></dt><dt><span class="section"><a href="#_ldap_ad_user_synchronization_with_roles_from_ldap_ad">5.2. LDAP/AD User Synchronization with Roles from LDAP/AD</a></span></dt><dt><span class="section"><a href="#_trace_header_filter_disabled_by_default">5.3. Trace header filter disabled by default</a></span></dt><dt><span class="section"><a href="#_updating_web_application_firewall_hsp_2">5.4. Updating Web Application Firewall (HSP)</a></span></dt></dl></dd><dt><span class="chapter"><a href="#upgrade-procedure">6. Recommended Upgrade Procedure</a></span></dt><dd><dl><dt><span class="section"><a href="#_upgrade_fallback">6.1. Upgrade Fallback</a></span></dt></dl></dd></dl></div><div class="list-of-tables"><p><strong>List of Tables</strong></p><dl><dt>1.1. <a href="#id1340">Glossary</a></dt></dl></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_introduction"></a>Chapter 1. Introduction</h1></div></div></div><p><span class="emphasis"><em>The USP Secure Entry Server<sup>®</sup> appliance is a web application firewall acting
+as a reverse proxy with authentication capability.</em></span></p><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_purpose_of_document"></a>1.1. Purpose of Document</h2></div></div></div><p>This guide provides instructions for migrating a previous version of the USP
+Secure Entry Server<sup>®</sup> appliance to the most recent one.</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_target_audience"></a>1.2. Target Audience</h2></div></div></div><p>The document is intended for system administrators of the United Security
+Providers Secure Entry Server<sup>®</sup> appliance.</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_ses_glossary"></a>1.3. SES Glossary</h2></div></div></div><div class="table"><a id="id1340"></a><p class="title"><strong>Table 1.1. Glossary</strong></p><div class="table-contents"><table class="table" summary="Glossary" cellpadding="4px" style="border-collapse: collapse;border-top: 3px solid #527bbd; border-bottom: 3px solid #527bbd; border-left: 3px solid #527bbd; border-right: 3px solid #527bbd; "><colgroup><col class="col_1" /><col class="col_2" /></colgroup><thead><tr><th style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top">Term </th><th style="border-bottom: 1px solid #527bbd; " align="left" valign="top">Definition</th></tr></thead><tbody><tr><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p><span class="emphasis"><em>SES</em></span></p></td><td style="border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>USP Secure Entry Server<sup>®</sup>, the entire software suite, including the Web Application Firewall, the Authentication Service and the Administration Web GUI.</p></td></tr><tr><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p><span class="emphasis"><em>WAF</em></span></p></td><td style="border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>Web Application Firewall, the entire web application firewall part of the SES. It acts as reverse proxy and consists of the three components "HTTP Listener" (HTL), "HTTPS Listener" (HTS) and "SRManager" (SRM). The composition of these components is technically called HSP.</p></td></tr><tr><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p><span class="emphasis"><em>HSP</em></span></p></td><td style="border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>HTTP Secure Proxy, the technical name of the WAF.</p></td></tr><tr><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p><span class="emphasis"><em>HTL</em></span></p></td><td style="border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>WAF HTTP Listener, the HTTP listener component of the web application firewall.</p></td></tr><tr><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p><span class="emphasis"><em>HTS</em></span></p></td><td style="border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>WAF HTTPS Listener, the HTTPS listener component of the web application firewall.</p></td></tr><tr><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p><span class="emphasis"><em>SRM</em></span></p></td><td style="border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>WAF Request Manager, the session management component of the web application firewall.</p></td></tr><tr><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p><span class="emphasis"><em>SLS</em></span></p></td><td style="border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>Secure Login Service, the technical name of the Authentication Service component that is responsible for authenticating and authorizing end-users.</p></td></tr><tr><td style="border-right: 1px solid #527bbd; " align="left" valign="top"><p><span class="emphasis"><em>Target server</em></span></p></td><td style="" align="left" valign="top"><p>An application backend server which is the actual target of an incoming HTTP request.</p></td></tr></tbody></table></div></div><br class="table-break" /></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_important_general_note"></a>1.4. Important General Note</h2></div></div></div><p>The SES migration mechanism supports only the automated migration of three versions back. So when updating from an
+older version (e.g. 5.8 to 5.12) then it is necessary to upgrade to the next intermediary release first, possibly also
+more, depending on how much older the currently used release is. For example, in order to update a 5.8 SES to 5.12,
+an intermediary update to 5.9 (at least) would be required!</p><p><span class="emphasis"><em>Skipping the intermediary updates as described above will result in a failed update procedure!</em></span></p><p>Also, it is absolutely necessary to read all the migration guides of all intermediary releases, and check if there are
+any manual steps / adjustments that need to be done, based on the features and configuration currently in use.</p><p></p></div></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_ses_appliance_5_18"></a>Chapter 2. SES Appliance 5.18</h1></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_summary"></a>2.1. Summary</h2></div></div></div><p>This migration guide provides a set of guidelines to migrate the USP Secure
+Entry Server<sup>®</sup> from versions prior to 5.17 to the latest version 5.18.</p><p>In most cases, no actions are required and all changes are done automatically.
+However, some minor manual changes might be required by the update. Consult
+the migration guide carefully prior the update and apply any steps required
+before or after the update.</p><p>When upgrading existing installations, please follow the recommended upgrade
+procedure outlined in <a class="xref" href="#upgrade-procedure" title="Chapter 6. Recommended Upgrade Procedure">Chapter 6, <em>Recommended Upgrade Procedure</em></a>.</p><p>If you are updating from a Secure Entry Server<sup>®</sup> Appliance older than
+version 5.17, please consult also the migration guides for all intermediate
+versions, as this migration guide only outlines the changes between the new and
+the previous USP Secure Entry Server<sup>®</sup> version.</p><p>It’s no longer possible to upgrade directly to SES 5.18, if the version of the upgrade system is older than SES 5.15.
+Also is it not possible to import a configuration export or backup created with a version older than SES 5.15!</p><p></p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_removal_of_free_maxmind_geoip_database"></a>2.2. Removal of free MaxMind GeoIP database</h2></div></div></div><p>Due to changes in the licensing terms of the MaxMind GeoIP databases, it is no longer possible for USP to include a free GeoIP country database in the USP SES Appliance. It is now mandatory for our SES customers to register themselves at MaxMind and create an account, and then use that account to retrieve credentials for downloading the free GeoIP databases. These credentials must be configured in the SES GUI.</p><p>In cases where, as described above, a setup is migrated from the previously included free USP MaxMind license to a new free license of the SES customer, the checkbox "Provide commercial license" <span class="emphasis"><em>must remain unchecked</em></span>, but the credentials for the free license must still be configured. If the credentials are not configured, the MaxMind GeoIP DB update will not work anymore.</p><p>In other words, previously it was only necessary to configure an account and license key if a commercial license was used, but now the credentials must always be configured. The checkbox now only defines if the free (aka "GeoLite") or the commercial (aka "GeoIP") databases will be downloaded.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_what_to_do"></a>2.2.1. What to do</h3></div></div></div><p>These instructions are to be executed after the SES update has been installed:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+If the installed SES already used a commercial license, nothing should change, and no configuration changes should be required.
+</li><li class="listitem"><p class="simpara">
+If the free DB was used, it is necessary to
+</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem">
+configure new credentials by registering an account on the MaxMind website and retrieving them there
+</li><li class="listitem">
+select the desired type of free database (city or country)
+</li><li class="listitem">
+once saved, run the update manually using the "Run update…" button to verify that the configuration is valid
+</li></ul></div></li></ul></div><p><span class="strong"><strong>NOTE</strong></span>: <span class="emphasis"><em>If the GeoIP feature was already enabled before the SES update, but the included free database was never updated (either manually by uploading a new one, or automatically online) so that the SES still contains and used the originally included free database, the database will NOT be available anymore after the SES update! In this case, it is necessary to upload a new free database (can be downloaded from the MaxMind website). If, however, the GeoIP DB has been updated before, it will remain unchanged and still be available after the SES update (but it won’t be automatically updated any further until valid credentials are configured).</em></span></p><p></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_removal_of_factory_reset"></a>2.3. Removal of factory reset</h2></div></div></div><p>The options to perform a "factory reset" or a rollback to the previous appliance version have been removed from the GRUB boot menu. The reason for this is that these options began to cause issues with updates from older systems due to diskspace problems, caused by the multiple system images needing to be stored on the system, and the fact that the update images have grown larger and larger with newer releases. Additionally, performing a rollback after a system had already been updated usually caused problems anyway due to the configuration already having been migrated to the new release.</p><p>The second reason is that in this day and age, with the option of creating and restoring snapshots very easily and quickly with virtual machine platforms, the built-in restore and rollback have become very much obsolete.</p></div></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_ses_appliance_5_17"></a>Chapter 3. SES Appliance 5.17</h1></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_summary_2"></a>3.1. Summary</h2></div></div></div><p>This migration guide provides a set of guidelines to migrate the USP Secure
+Entry Server<sup>®</sup> from versions prior to 5.16 to the latest version 5.17.</p><p>In most cases, no actions are required and all changes are done automatically.
+However, some minor manual changes might be required by the update. Consult
+the migration guide carefully prior the update and apply any steps required
+before or after the update.</p><p>When upgrading existing installations, please follow the recommended upgrade
+procedure outlined in <a class="xref" href="#upgrade-procedure" title="Chapter 6. Recommended Upgrade Procedure">Chapter 6, <em>Recommended Upgrade Procedure</em></a>.</p><p>If you are updating from a Secure Entry Server<sup>®</sup> Appliance older than
+version 5.16, please consult also the migration guides for all intermediate
+versions, as this migration guide only outlines the changes between the new and
+the previous USP Secure Entry Server<sup>®</sup> version.</p><p>It’s no longer possible to upgrade directly to SES 5.17, if the version of the upgrade system is older than SES 5.14.
+Also is it not possible to import a configuration export or backup created with a version older than SES 5.14!</p><p></p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_sls_tomcat_update"></a>3.2. SLS Tomcat Update</h2></div></div></div><p>The Tomcat version used by the SES GUI, Identity and SLS has been upgraded to 9.0.109. For the GUI and IDM, this will
+be active automatically once the system is rebooted after the update has been installed. For the SLS, however, a restart
+may be necessary, since the init script for the SLS is deployed by the GUI, and the new script using Tomcat 9 will not
+be active until a restart.</p><div class="note" style="margin-left: 0; margin-right: 10%;"><h3 class="title">Note</h3><p>A simple activation in the GUI may not suffice, since it will not restart the SLS if there are not pending SLS
+configuration changes. Therefore it is recommended to also explicitely restart the SLS manually after the activation.</p></div><p></p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_sls_content_security_policy_csp_introduction"></a>3.3. SLS Content Security Policy (CSP) Introduction</h2></div></div></div><p>The SLS is introducing support for CSP / Content Security Policy in this new release.
+In order to increase security levels in general, such a policy is now pre-configured
+in the SLS by default.</p><p>This new Content Security Policy will break existing SLS JSPs if they contain embedded
+scripts or styles! Since there is no automatic migration functionality for JSPs, this
+HAS TO BE addressed manually!</p><p>These are the options for preventing the SLS from not working anymore after the update
+(before activating the configuration again):</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+Recommended: Update the JSPs beforehand by externalizing all embedded scripts and styles.
+  This can be done before the update (see instructions below).
+</li><li class="listitem">
+Alternatively, either remove the CPS by clearing the new input field for it in the
+  "General Settings" of the SLS, or adapt it by adding the "unsafe-inline" expression, e.g.:
+</li></ul></div><pre class="screen">... script-src: 'self' 'unsafe-inline' ...</pre><p>However, both options reduce the security level provided by CSP, so a migration of the JSPs
+is the best way to go.</p><p></p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_migration_upgrade_considerations"></a>3.3.1. Migration / Upgrade considerations</h3></div></div></div><p><a id="migration_upgrade_considerations"></a>Please note: <span class="strong"><strong>If you enable a content security policy in an existing SLS installation, embedded scripts, event handlers
+and styles will not work anymore!</strong></span> You will have to update the JSPs as described here to make them work
+properly with an active CSP.</p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_jsp_migration"></a>JSP Migration</h4></div></div></div><p>In existing JSPs, you will usually see an embedded JavaScript which is included server-side by
+the JSP with the instruction</p><pre class="screen">&lt;%@ include file="/WEB-INF/include/js/sls.js"%&gt;</pre><p>In all JSPs, replace this line with this one:</p><pre class="screen">&lt;sls:javaScript localFile="include/js/sls-content-only.js" /&gt;</pre><p>This new JSP tag "<code class="literal">sls:javaScript</code>" will generate the HTML "<code class="literal">&lt;script&gt;</code>" tags, but with the "<code class="literal">nonce</code>" attribute
+required for CSP to work properly.</p><p>Additionally, in WebAuthn-related JSPs, you have to replace these includes as well:</p><pre class="screen">&lt;%@ include file="/staticfiles/includes/base64.js" %&gt;
+&lt;%@ include file="/staticfiles/includes/webauthn.js" %&gt;</pre><p>Replace them with</p><pre class="screen">&lt;sls:javaScript localFile="include/js/base64.js"&gt;&lt;/sls:javaScript&gt;
+&lt;sls:javaScript&gt;
+    &lt;%@ include file="/WEB-INF/include/js/webauthn.js" %&gt;
+&lt;/sls:javaScript&gt;</pre><p>Finally, if the page contains any includes for styles ("<code class="literal">.css</code>") files, replace them with external "<code class="literal">href</code>" references as
+well (see <a class="link" href="#csp_styles_migration">"Styles"</a>).</p><div class="note" style="margin-left: 0; margin-right: 10%;"><h3 class="title">Note</h3><p>The "<code class="literal">webauthn.js</code>" file MUST be included with a server-side include statement because the JavaScript code contains
+other SLS JSP tags; they have to be processed by the JSP compiler, and that will not be possible if the JavaScript
+is included in any other way.</p></div><div class="note" style="margin-left: 0; margin-right: 10%;"><h3 class="title">Note</h3><p>Include statements for actual include files (with the suffix "<code class="literal">.inc</code>") are not relevant for this issue and can be
+safely left as they are.</p></div><p></p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_javascripts"></a>JavaScripts</h4></div></div></div><p>If you have customized the JSPs and added any custom embedded JavaScript code, you will have to externalize it
+or enable it again using the "unsafe-inline" expression - but that kind of renders the whole thing pointless. There are
+two options for migrating existing embedded scripts:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+SLS "<code class="literal">javaScript</code>" JSP tag: Replace existing "<code class="literal">&lt;script&gt;</code>" HTML tags with embedded code by using the new JSP "<code class="literal">javaScript</code>"
+tag instead. As described in the paragraph further above, the "<code class="literal">&lt;sls:javaScript&gt;</code>" tag will generate a "<code class="literal">&lt;script&gt;</code>" tag
+with a "<code class="literal">nonce</code>" attribute.
+</li><li class="listitem">
+Externalize: Put the JavaScript code into a separate file in an external source, e.g. the "<code class="literal">/staticfiles</code>" folder, and
+reference it from there using the "<code class="literal">&lt;script url=</code>" tag, with a URI pointing to the location of the file content.
+</li></ul></div><p>Example for embedding a local file (path is relative to the SLS "WEB-INF" directory):</p><pre class="programlisting">&lt;sls:javaScript localFile="include/sls.js" /&gt;</pre><p>Example for embedding custom JavaScript code directly:</p><pre class="programlisting">&lt;sls:javaScript&gt;
+   console.log('hello world');
+&lt;/sls:javaScript&gt;</pre><p>This way, the SLS JSP tag will generate the HTML "<code class="literal">&lt;script&gt;</code>" tag with the required "<code class="literal">nonce</code>" attribute.</p><p></p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_styles"></a>Styles</h4></div></div></div><p><a id="csp_styles_migration"></a>If you have customized the JSPs and added any custom embedded styles, you will have to externalize them
+or allow is again using the "<code class="literal">unsafe-inline</code>" expression (not recommended). However, there are two options for
+migrating existing embedded scripts:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+SLS "<code class="literal">style</code>" JSP tag: Replace existing "<code class="literal">&lt;style&gt;</code>" HTML tags with embedded styles by using the new JSP "<code class="literal">&lt;sls:style&gt;</code>"
+tag instead. As described in the paragraph further above, the "<code class="literal">&lt;sls:style&gt;</code>" tag will generate a "<code class="literal">&lt;style&gt;</code>" HTML tag
+with a "<code class="literal">nonce</code>" attribute. See the "JSP Tag <span class="emphasis"><em>sls:style</em></span>" chapter in the "SLS Administration Guide".
+</li><li class="listitem">
+Replace inline "<code class="literal">style=</code>" attributes with "<code class="literal">class=</code>" attributes (see further below).
+</li><li class="listitem">
+Externalize: Put the styles into a separate file in an external source, e.g. the "<code class="literal">/staticfiles</code>" folder, and
+reference it from there using the "<code class="literal">&lt;link rel=<span class="emphasis"><em>stylesheet</em></span> href=<span class="emphasis"><em>…</em></span></code>" tag, with a URI pointing to the location of the
+file content, e.g.
+</li></ul></div><pre class="programlisting">&lt;link rel="stylesheet" href="staticfiles/includes/acme-custom-style.css"&gt;</pre><p>The important thing is that the styles must be loaded separated through a "href" URL, or that they use nonces.</p><p><span class="strong"><strong>NOTE:</strong></span> <span class="emphasis"><em>Inline "style=" attributes do not work with CSP, as it is not possible to add a "nonce" attribute to another
+tag attribute (HTML tags can have attributes, but a tag attribute can not in itself have an attribute)!
+So all inline "style" attributes must be removed, as they will be blocked with an active CSP!</em></span></p><p>Example for an inline "<code class="literal">style</code>" attribute that must be removed:</p><pre class="programlisting">&lt;span style="color: red; border: none;"&gt;Hello World&lt;/span&gt;</pre><p><span class="emphasis"><em>Use the "class" attribute instead, with CSS class(es) defined in the properly included stylesheet file(s), e.g.:</em></span></p><pre class="programlisting">&lt;span class="helloWorldStyle"&gt;Hello World&lt;/span&gt;</pre><p>with a corresponding CSS class defined in an included stylesheet:</p><pre class="programlisting">.helloWorldStyle {
+    color: red;
+    border: none;
+}</pre><p></p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_custom_event_handlers"></a>Custom Event Handlers</h4></div></div></div><p>A bit more complicated are any custom event handlers in HTML tags. Generally speaking, the migration of a simple
+"onClick" eventhandler for a "buttom" element consists of removing the handler from the tag, and instead adding a
+separate "&lt;script&gt;" tag with some JavaScript code which registers the intended action for the "click" event. The
+"&lt;script&gt;" tag must be created using the SLS "javaScript" JSP tag in order to get a proper "nonce" attribute.</p><p>Let’s look at this example HTML tag:</p><pre class="programlisting">&lt;button type="submit" id="button-number-one" onclick="doThings('hello world');"&gt;DO IT&lt;/button&gt;</pre><p>This needs to be replaced with a construct like this:</p><pre class="programlisting">&lt;button type="submit" id="button-number-one"&gt;DO IT&lt;/button&gt;
+&lt;script nonce="aosifwuhasdfjh"&gt;document.
+addEventListener('DOMContentLoaded',
+    function () { document.getElementById('button-number-one')
+        .addEventListener('click', function callMethod()
+            { doThings('hello world');
+    });
+});
+&lt;/script&gt;</pre><p>So, if you need to do this for custom HTLM tags not created with SLS JSP tags, you can use the scripting function
+"<code class="literal">function.getRequestNonce()</code>" as shown in this example:</p><pre class="programlisting">&lt;script nonce='&lt;sls:getScript expression="#{function.getRequestNonce()}"/&gt;'&gt;
+   console.log('hello world');
+&lt;/script&gt;</pre></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_updating_web_application_firewall_hsp"></a>3.4. Updating Web Application Firewall (HSP)</h2></div></div></div><p>No migration steps are necessary for the WAF component.</p><p></p></div></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_ses_appliance_5_16"></a>Chapter 4. SES Appliance 5.16</h1></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_summary_3"></a>4.1. Summary</h2></div></div></div><p>This migration guide provides a set of guidelines to migrate the USP Secure
+Entry Server<sup>®</sup> from versions prior to 5.15 to the latest version 5.16.</p><p>In most cases, no actions are required and all changes are done automatically.
+However, some minor manual changes might be required by the update. Consult
+the migration guide carefully prior the update and apply any steps required
+before or after the update.</p><p>When upgrading existing installations, please follow the recommended upgrade
+procedure outlined in <a class="xref" href="#upgrade-procedure" title="Chapter 6. Recommended Upgrade Procedure">Chapter 6, <em>Recommended Upgrade Procedure</em></a>.</p><p>If you are updating from a Secure Entry Server<sup>®</sup> Appliance older than
+version 5.15, please consult also the migration guides for all intermediate
+versions, as this migration guide only outlines the changes between the new and
+the previous USP Secure Entry Server<sup>®</sup> version.</p><p>It’s no longer possible to upgrade directly to SES 5.16, if the version of the upgrade system is older than SES 5.13.
+Also is it not possible to import a configuration export or backup created with a version older than SES 5.13!</p><p></p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_sls_tomcat_update_2"></a>4.2. SLS Tomcat Update</h2></div></div></div><p>The Tomcat version used by the SES GUI, Identity and SLS has been upgraded to 9.0.109. For the GUI and IDM, this will
+be active automatically once the system is rebooted after the update has been installed. For the SLS, however, a restart
+may be necessary, since the init script for the SLS is deployed by the GUI, and the new script using Tomcat 9 will not
+be active until a restart.</p><div class="note" style="margin-left: 0; margin-right: 10%;"><h3 class="title">Note</h3><p>A simple activation in the GUI may not suffice, since it will not restart the SLS if there are not pending SLS
+configuration changes. Therefore it is recommended to explicitely restart the SLS manually after the activation.</p></div><p></p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_sls_elcard_adapter_support_removal"></a>4.3. SLS ELCARD adapter support removal</h2></div></div></div><p>The ELCARD authentication system by ELCA has been end-of-life for several years now.
+Because of that, support for it has been dropped from the SLS and the SES appliance.</p><p>As it was a completely proprietary authentication solution, there is no real, specific
+migration path. The general recommendation is to replace it with a similar standard
+authentication solution, such as OpenID Connect (OIDC) or SAML.</p><div class="note" style="margin-left: 0; margin-right: 10%;"><h3 class="title">Note</h3><p>The ELCARD-related JSPs can now be removed from existing appliances (but it
+is not neccessary). That would be "ElcardWait.jsp" and "ElcardCompleted.jsp".</p></div><p></p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_secure_handshake_shs_feature_removal_migration"></a>4.4. Secure HandShake (SHS) Feature Removal / Migration</h2></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_introduction_2"></a>4.4.1. Introduction</h3></div></div></div><p>Because newer TLS Versions (1.3) do not support re-negotiation at all anymore, the HSP-proprietary "Secure Handshake"
+(SHS) feature has been removed now, as it is based on triggering such a re-negotation on an existing TLS connection.
+This means that existing SLS/HSP setups that use SHS need to be adapted accordingly.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_terminology"></a>4.4.2. Terminology</h3></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+"PKI Login Model": Refers to the default PKI login model, as it is created from the template in the SES appliance GUI.
+This model contains only the states required to perform a secure handshake (SHS) and then verification of the client
+certificate, and mapping of the user credential, with the PKI adapter.
+</li><li class="listitem">
+"Mixed Login Model": Refers to a custom (sometimes very complex) login model that contains states for various types of
+login procedures, usually with conditional branching between them. For example, the model might decide to perform a PKI
+login if the client IP is from a certain IP range, or an SMS (HTTP adapter) login otherwise. Since every such model is
+by definition unique and tailored to a specific customer situation and requirements, this article can’t be any more
+specific about the details of such cases.
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_are_you_affected"></a>4.4.3. Are You Affected?</h3></div></div></div><p>If you use any SLS login models with the state <span class="strong"><strong>"get.cert.cred"</strong></span>, then it means you are using the SHS functionality. In
+that case, you will need to migrate your setup according to this description.</p><p></p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_general_changes"></a>4.4.4. General Changes</h3></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_credential_provider"></a>Credential Provider</h4></div></div></div><p>Without secure handshake, the certificate sent by the client will not be received in the SLS through the proprietary SHS
+headers sent from the SRM. Instead, after the HTTPS listener has performed a mutual authentication with the client (more
+about that further below), it will send the client certificate in a regular HTTP header to the SLS. On the SES appliance,
+this header is NOT being processed by the SLS by default, so in order for this to work at all, the following custom
+settings must be configured for the SLS:</p><pre class="programlisting">cred.provider.pki=certificate
+cred.provider.pki.cred.1.type=certificate
+cred.provider.pki.cred.1.source=header
+cred.provider.pki.cred.1.name=sslcertificate</pre><p><code class="literal">"sslcertificate"</code> is the name of the HTTP header in which the HSP will forward the certificate to the SLS. With this
+credential provider configuration, the SLS will process it, and a <code class="literal">"do.cert.auth"</code> model state can verify the certificate
+with the PKI adapter.</p><p>The http header <code class="literal">"sslcertificate"</code> does not have to be whitelisted in the HSP location configuration if the alias <code class="literal">normal</code>
+is configured.</p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_pki_login_model"></a>PKI Login Model</h4></div></div></div><p>For most scenarios and options discussed further below (except the SHS-only login case), a new separate PKI login model
+will be required in the SLS:</p><pre class="programlisting">model.pkilogin.uri=/pkiauth
+model.pkilogin.failedState=get.usererror
+model.pkilogin.state.2000.name=do.cert.auth
+model.pkilogin.state.3000.name=do.mapping
+model.pkilogin.state.5000.name=do.success
+model.pkilogin.state.9000.name=get.usererror</pre><p></p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_migration_scenarios"></a>4.4.5. Migration Scenarios</h3></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_existing_pki_login_model"></a>Existing PKI login model</h4></div></div></div><p>If you have an SLS with a pure (SHS-based) PKI login model as shown below…</p><pre class="programlisting">model.pkilogin.uri=/auth
+model.pkilogin.failedState=get.usererror
+model.pkilogin.state.1000.name=get.cert.cred
+model.pkilogin.state.3000.name=do.cert.auth
+model.pkilogin.state.7000.name=do.mapping
+model.pkilogin.state.8000.name=do.success
+model.pkilogin.state.9000.name=get.usererror</pre><div class="orderedlist"><ol class="orderedlist" type="i"><li class="listitem">
+the migration is very simple and straightforward:
+</li></ol></div><p>The state <code class="literal">"get.cert.cred"</code> is the one which actually triggers the secure handshake. This state must be removed, and
+mutual authentication must be configured in the HSP (HTTPS listener) directly. So the required steps are:</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+Remove model state "get.cert.cred" - see new login model below
+</li><li class="listitem">
+Add credential provider as shown above (SLS custom settings)
+</li><li class="listitem">
+Add CA certificate installed in the PKI adapter (to verify the client certificates) also in the HTTPS listener (HTS)
+</li><li class="listitem">
+Enable mutual authentication in the HTS on the virtual host
+</li></ol></div><p>The updated login model:</p><pre class="programlisting">model.pkilogin.uri=/auth
+model.pkilogin.failedState=get.usererror
+model.pkilogin.state.3000.name=do.cert.auth
+model.pkilogin.state.7000.name=do.mapping
+model.pkilogin.state.8000.name=do.success
+model.pkilogin.state.9000.name=get.usererror</pre><div class="note" style="margin-left: 0; margin-right: 10%;"><h3 class="title">Note</h3><p><span class="emphasis"><em>Whenever the CA certificate used to verify the client certificates changes, it must be updated both in the SLS PKI
+adapter and in the HSP HTTPS listener configuration.</em></span></p></div><p></p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_existing_mixed_login_model"></a>Existing mixed login model</h4></div></div></div><p>In a more complex scenario where you have an SLS setup with a model which only runs through the SHS / PKI login part
+based on certain conditions, it gets more complicated. You have two major options, but one is preferrable over the other
+in most cases:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+Option 1: Make mutual authentication "optional" on the virtual host and create a new separate login location, then
+trigger the handshake on this new location (more about this below). For this, the PKI login model will be required on
+this new location. Then in the old mixed login model, when a condition is fullfilled to switch to PKI login, instead of
+using the PKI model states perform a redirect to this other login model (using the "cmd" parameter).
+</li><li class="listitem">
+Option 2: Create a new virtual host for the PKI login. On this virtual host, configure mandatory mutual authentication
+in the HTS and use a PKI-login model as described in the "SHS-only login" chapter. Then in the old mixed login model,
+when a condition is fullfilled to switch to PKI login, instead of using the PKI model states perform a redirect to this
+new virtual host.
+</li></ul></div><p>Option 2 is most likely preferrable, because for Option 1, in order to trigger mutual authentication only for certain
+locations, using Apache mod_authz "Require*" expressions in the HTTPS listener will be required, making this a more
+complicated solution.</p><p>Also, another drawback of option 1: If the virtual host is set to <code class="literal">optional</code> client authentication, some locations may
+still enforce client authentication with an expression, but when the user first accesses any location on the virtual
+host, they must provide client authentication, as otherwise only locations without enforcement will be accessible
+(<span class="emphasis"><em>no renegotiation possible</em></span>).</p><p></p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_option_1_location_based_tls_handshake"></a>Option 1: location-based TLS handshake</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+On the virtual host, set mutual authentication to "optional".
+</li><li class="listitem">
+Create a new location for the SLS, <code class="literal">"/login/sls/pkiauth"</code> in the HSP. Make it a login location by adding at least the
+following custom commands in the SRM:
+</li></ul></div><pre class="screen">AC_LoginPage                 /login/sls/pkiauth
+AC_StartPage                 /login/sls/pkiauth
+AC_StartQueryString          ^.*$
+HGW_RequestHeaders           +%SRM_ls_std</pre><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p class="simpara">
+On this location, "/login/sls/pkiauth", also add the necessary Apache "Require*" statements statements as HTS custom
+commands in order to trigger the mutual authentication once the client is redirected to the SLS PKI login model.
+</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem">
+see also IP Blocking and Granting in combination with IP-Restriction and Client Authentication (Requirement expression)
+</li></ul></div></li><li class="listitem">
+Add a new SLS PKI login model "pkilogin" (see above)
+</li><li class="listitem">
+Register the URI "/pkiauth" in the SES GUI under "Configuration" / "Authentication Service" / "URI Mapping"
+</li><li class="listitem">
+Then in the old, existing virtual host, adapt the mixed login model. Replace the PKI login states with a redirect to
+the new certificate login. Note that the redirect still also uses the "cmd" parameter, because this is the only way to
+force the SLS into this login model in case it already has a session and is currently in another model:
+</li></ul></div><pre class="programlisting">... old mixed login model start ...
+
+# Check if PKI login must be skipped (to continue with alternative login)
+model.login.state.3000.name=do.generic-skipPkiLogin
+model.login.state.3000.nextState.1=do.generic-continue
+
+# Otherwise, redirect to new vhost with mandatory mutual authentication
+model.login.state.4000.name=do.redirect-startPkiLogin
+model.login.state.4000.param.url=/login/sls/pkiauth?cmd=pkiauth
+
+model.login.state.5000.name=do.generic-continue
+
+... continue with alternative login ...</pre><p></p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_option_2_vhost_based_tls_handshake"></a>Option 2: vhost-based TLS handshake</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+First create a new separate virtual host for the certificate-based login. On this virtual host, enable mutual authentication as required.
+</li><li class="listitem">
+Add a new SLS PKI login model "pkilogin" (see above)
+</li><li class="listitem">
+Then in the old, existing virtual host, adapt the mixed login model. Replace the PKI login states with a redirect to the new certificate login (must include the host name):
+</li></ul></div><pre class="programlisting">... old mixed login model start ...
+
+# Check if PKI login must be skipped (to continue with alternative login)
+model.login.state.3000.name=do.generic-skipPkiLogin
+model.login.state.3000.nextState.1=do.generic-continue
+
+# Otherwise, redirect to new vhost with mandatory mutual authentication
+model.login.state.4000.name=do.redirect-startPkiLogin
+model.login.state.4000.param.url.absolute.allow=true
+model.login.state.4000.param.url=https://my.new-vhost.com/login/sls/auth?cmd=pkilogin
+
+model.login.state.5000.name=do.generic-continue
+
+... continue with alternative login ...</pre></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_option_2_saml_oidc_considerations"></a>Option 2: SAML / OIDC Considerations</h4></div></div></div><p>In case of a separate new virtual host, it would also be possible to use federation mechanisms to delegate the login
+from the first login model on vhost "A" to the PKI login model on the new vhost "B". This would require a setup of a
+SAML IdP or OIDC OP on the new virtual host "B", and than registering the SLS of the old virtual host "A" as a Service
+Provider (SAML) or Relying Party (OIDC) - and then use the regular mechanisms of these protocols to delegete the login.</p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_additional_information"></a>Additional Information</h4></div></div></div><p>In case any conditional expressions must be used in the SLS - possibly in the PKI login model trigger - the following
+variables or expressions might be useful:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<code class="literal">#{hasNonEmptyVar('header.sslcertificate')}</code> - Will check if there is a header "sslcertificate", which means the HTTPS
+listener has performed mutual authentication
+</li><li class="listitem">
+<code class="literal">#{function.getCurrentRequest()}</code> - Returns a reference to a Java "HttpServletRequest" object, which provides all
+kinds of getter methods that allow to obtain information about the current incoming request, such as its URI, headers etc.
+</li></ul></div><p></p></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_accept_encoding_migration"></a>4.5. Accept-Encoding Migration</h2></div></div></div><p>The list of acceptable encodings has been extended from</p><pre class="screen">gzip x-gzip compress deflate x-deflate identity sdch br</pre><p>to</p><pre class="screen">aes128gcm br compress deflate exi gzip identity pack200-gzip peerdist sdch x-compress x-deflate x-gzip zstd</pre><p>Accordingly, the default list of denied encodings per location has been automatically migrated from</p><pre class="screen">gzip compress deflate x-gzip x-deflate</pre><p>to</p><pre class="screen">aes128gcm br compress deflate exi gzip pack200-gzip peerdist sdch x-compress x-deflate x-gzip zstd</pre><p>i.e. to all acceptable encodings except <code class="literal">identity</code>, because compressions make some features of the WAF ineffective.</p><p>If you have made different settings on locations to deny accepted encodings than the exact default above, migrate those settings manually — if necessary (per location setting under the tab "Filter" at "Denied request header entries").</p></div></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_ses_appliance_5_15"></a>Chapter 5. SES Appliance 5.15</h1></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_summary_4"></a>5.1. Summary</h2></div></div></div><p>This migration guide provides a set of guidelines to migrate the USP Secure
+Entry Server<sup>®</sup> from versions prior to 5.14 to the latest version 5.15.</p><p>In most cases, no actions are required and all changes are done automatically.
+However, some minor manual changes might be required by the update. Consult
+the migration guide carefully prior the update and apply any steps required
+before or after the update.</p><p>When upgrading existing installations, please follow the recommended upgrade
+procedure outlined in <a class="xref" href="#upgrade-procedure" title="Chapter 6. Recommended Upgrade Procedure">Chapter 6, <em>Recommended Upgrade Procedure</em></a>.</p><p>If you are updating from a Secure Entry Server<sup>®</sup> Appliance older than
+version 5.14, please consult also the migration guides for all intermediate
+versions, as this migration guide only outlines the changes between the new and
+the previous USP Secure Entry Server<sup>®</sup> version.</p><p>It’s no longer possible to upgrade directly to SES 5.15, if the version of the upgrade system is older than SES 5.12.
+Also is it not possible to import a configuration export or backup created with a version older than SES 5.12!</p><p></p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_ldap_ad_user_synchronization_with_roles_from_ldap_ad"></a>5.2. LDAP/AD User Synchronization with Roles from LDAP/AD</h2></div></div></div><p>The option to import and synchronize users from LDAP/AD to local GUI users has been improved: GUI roles (Administrator, Configurator, Deployer, Viewer) are now assigned based on AD groups, namely via <code class="literal">memberOf</code> attributes in LDAP/AD.</p><p>For that purpose you can now define role mappings in the GUI. After the upgrade, those mappings will initially be empty. This means that if you had already set up LDAP user synchronization (possibly also with a cron job), nothing will happen, no sync, no users modified or deleted, until you define at least one role mapping.</p><p><span class="strong"><strong>IMPORTANT</strong></span>: Please make sure that at least one local Administrator GUI user exists and you know its password before defining role mappings, so in case of any issues you can use it to recover.</p><p>Then set up role mappings as desired.</p><p>If you trigger the synchronization manually, you will, as usual, be shown the users that would be deleted and could cancel if the result was not as desired, but if you set up a cron job and it happened to run, it can - in the worst case - remove all users imported from LDAP, leaving you only with local users, hence the above precaution.</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_trace_header_filter_disabled_by_default"></a>5.3. Trace header filter disabled by default</h2></div></div></div><p>Starting from this release the function “trace header filter” can only be enabled if the “traffic analyzer” is active.
+It is recommended to disable the “trace header filter” and “traffic analyzer” on productive system.</p><p></p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_updating_web_application_firewall_hsp_2"></a>5.4. Updating Web Application Firewall (HSP)</h2></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_ha_active_passive_upgrade_problem"></a>5.4.1. HA Active/Passive Upgrade Problem</h3></div></div></div><p>When a SES HA active/passive setup is updated, a transfer of the active sessions is
+NOT possible because the internal data structure of sessions in the session store
+of the HSP has changed.</p><p>If a takeover of an updated passive SES is attempted, the HSP will crash due to the
+incompatible session data!</p><p>Therefore, when updating from SES 5.14 or older to 5.15, it is MANDATORY to do it in
+a maintenance window, and restart both systems after the upgrade.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="v424-SE_L1Cds-renamed"></a>5.4.2. SE_L1Cds directives renamed</h3></div></div></div><p>Some SRM directives starting with <span class="emphasis"><em>SE_L1Cds</em></span> have been renamed (using the new the prefix <span class="emphasis"><em>SE_SessionStore</em></span>)
+as due to the integration of the new <span class="emphasis"><em>mod_geode_session_store</em></span> module they have influence on both - the L1
+CD session store and the Geode session store.</p><p>The following table shows all renamed directives:</p><div class="informaltable"><table class="informaltable" cellpadding="4px" style="border-collapse: collapse;border-top: 3px solid #527bbd; border-bottom: 3px solid #527bbd; border-left: 3px solid #527bbd; border-right: 3px solid #527bbd; "><colgroup><col class="col_1" /><col class="col_2" /></colgroup><thead><tr><th style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>Old name</p></th><th style="border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>New name</p></th></tr></thead><tbody><tr><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>SE_L1Cds_FinalTimeOut</p></td><td style="border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>SE_SessionStore_FinalTimeOut</p></td></tr><tr><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>SE_L1Cds_InactiveTimeOut</p></td><td style="border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>SE_SessionStore_InactiveTimeOut</p></td></tr><tr><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>SE_L1Cds_AnonymousInactiveTimeOut</p></td><td style="border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>SE_SessionStore_AnonymousInactiveTimeOut</p></td></tr><tr><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>SE_L1Cds_TimeOutRequestCounter</p></td><td style="border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>SE_SessionStore_TimeOutRequestCounter</p></td></tr><tr><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>SE_L1Cds_TimeOutRequestCounterTmo</p></td><td style="border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>SE_SessionStore_TimeOutRequestCounterTmo</p></td></tr><tr><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>SE_L1Cds_HostLock</p></td><td style="border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>SE_SessionStore_HostLock</p></td></tr><tr><td style="border-right: 1px solid #527bbd; " align="left" valign="top"><p>SE_L1Cds_CClen</p></td><td style="" align="left" valign="top"><p>SE_SessionStore_CClen</p></td></tr></tbody></table></div><p>Customers are adviced to review SRM configurations and to migrate existing settings.
+However, for backwards compatibility the old names will still work until the
+final removal of the directives is announced.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_emphasis_trace_header_filter_emphasis_is_a_sub_feature_of_the_emphasis_traffic_analyzer_emphasis"></a>5.4.3. <span class="emphasis"><em>Trace header filter</em></span> is a sub-feature of the <span class="emphasis"><em>Traffic analyzer</em></span></h3></div></div></div><p>The <span class="emphasis"><em>Trace header filter</em></span> feature of virtual host’s Logging was moved to be a sub-feature of the <span class="emphasis"><em>Traffic analyzer</em></span>.
+Hence, in all existing configurations, if <span class="emphasis"><em>Traffic analyzer</em></span> is not enabled, <span class="emphasis"><em>Trace header filter</em></span> will also be disabled.</p><p>NB The <span class="emphasis"><em>Traffic analyzer</em></span> feature must not be enabled on a productive server since it captures user data and may generate high data volume which is written to the systems hard disk.</p><p></p><p></p></div></div></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="upgrade-procedure"></a>Chapter 6. Recommended Upgrade Procedure</h1></div></div></div><p>We strongly recommend following the steps listed below to update the USP Secure Entry Server<sup>®</sup> Appliance to the new release.</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+Ensure that no open changes exists and the latest configuration is activated.
+</li><li class="listitem"><p class="simpara">
+<span class="strong"><strong>Backup</strong></span> your configuration: before continuing with the update procedure,
+</p><div class="orderedlist"><ol class="orderedlist" type="a"><li class="listitem">
+Create a system backup
+</li><li class="listitem">
+Export the current configuration
+<span class="strong"><strong>Note:</strong></span> Backup and Recovery is described in detail in the <span class="strong"><strong>SES Appliance Guide</strong></span>.
+</li></ol></div></li><li class="listitem">
+Take a snapshot of your current system if running the USP Secure Entry Server<sup>®</sup> as a virtual machine.
+</li><li class="listitem">
+Check all the <span class="strong"><strong>prerequisites</strong></span> in this migration guide are met.
+</li><li class="listitem">
+Perform the <span class="strong"><strong>software update</strong></span> as described in the SES Appliance Guide. For HA clusters in active/passive mode start with the HA node that is currently in passive mode.
+</li><li class="listitem">
+<span class="strong"><strong>Review</strong></span> the configuration. Settings that are configured in the GUI are updated (but not committed) automatically as needed, except Custom commands.
+</li><li class="listitem">
+After the update, <span class="strong"><strong>check</strong></span> that the <span class="strong"><strong>date and time</strong></span> are set correctly. We recommend to always use an NTP server for time synchronization.
+</li><li class="listitem">
+<span class="strong"><strong>Commit</strong></span> and <span class="strong"><strong>activate</strong></span> all the changes that were made due to the update. This should bring all the services back online.
+</li><li class="listitem">
+For HA clusters in active/passive mode, next perform a <span class="strong"><strong>takeover</strong></span> and update the other HA node.
+</li></ol></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_upgrade_fallback"></a>6.1. Upgrade Fallback</h2></div></div></div><p>If you decide to go back to the previous installed release, reboot the
+appliance and wait until the GNU GRUB menu appears during start up on the
+console. Select the second entry from the menu called <span class="strong"><strong>Restore old image</strong></span>.
+This will restore the old image (User accounts will be reset too).
+Login with the default admin account and restore the system backup created before.</p><p>In case your running the USP Secure Entry Server<sup>®</sup> as a virtual machine, just restore the snapshot taken before the update.</p></div></div></div></body></html>

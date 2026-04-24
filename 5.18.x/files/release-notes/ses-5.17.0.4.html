@@ -1,0 +1,92 @@
+<h1 id="uspsecureentryserverreg5.17.0.4">USP Secure Entry Server &reg; 5.17.0.4</h1>
+
+<p>SES 5.17.0.4 consists of the following components:</p>
+
+<ul>
+<li>SES Web GUI <strong>5.17.0.4</strong></li>
+<li>HTTP Secure Proxy (HSP) <strong>4.27.0.2</strong></li>
+<li>Secure Login Service (SLS) <strong>5.20.0.3</strong></li>
+<li>Identity Manager (IDM) <strong>2.3.0.1</strong></li>
+<li>Shared Appliance Base (SAB) <strong>1.17.6</strong></li>
+</ul>
+
+<h2 id="platformcompatibility">Platform Compatibility</h2>
+
+<p>This release is compatible with the following hardware platforms:</p>
+
+<ul>
+<li>Dell PowerEdge R660</li>
+<li>Dell PowerEdge R650</li>
+<li>Dell PowerEdge R640</li>
+<li>Dell PowerEdge R630</li>
+</ul>
+
+<h2 id="sharedappliancebase">Shared Appliance Base</h2>
+
+<h3 id="changes">Changes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#291569</td>
+	<td>Tomcat for GUI, IDM and SLS updated to 9.0.109 to address various CVEs.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="seswebgui">SES Web GUI</h2>
+
+<h3 id="changes">Changes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>290586</td>
+	<td>Input field &#8220;Allowed request headers&#8221; has been made larger.</td>
+</tr>
+<tr>
+	<td>291189</td>
+	<td>The HTTP protocol preference option is removed if only one protocol is enabled.</td>
+</tr>
+<tr>
+	<td>291216</td>
+	<td>An issue with the &#8220;- none -&#8221; certificate selection for ACME-enabled vhosts was fixed.</td>
+</tr>
+<tr>
+	<td>291472</td>
+	<td>UI certificate for IDM no longer created until IDM is enabled.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="secureloginservicesls">Secure Login Service (SLS)</h2>
+
+<h3 id="variousimprovementsandfixes">Various Improvements and Fixes</h3>
+
+<ul>
+<li>Fixed potential XSS vulnerability with &#8220;language&#8221; parameter.</li>
+</ul>

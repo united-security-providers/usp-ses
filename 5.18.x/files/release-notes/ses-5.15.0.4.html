@@ -1,0 +1,97 @@
+<h1 id="uspsecureentryserverreg5.15.0.4">USP Secure Entry Server &reg; 5.15.0.4</h1>
+
+<p>SES 5.15.0.4 consists of the following components:</p>
+
+<ul>
+<li>SES Web GUI <strong>5.15.0.2</strong></li>
+<li>HTTP Secure Proxy (HSP) <strong>4.25.0.6</strong></li>
+<li>Secure Login Service (SLS) <strong>5.18.0.0</strong></li>
+<li>Identity Manager (IDM) <strong>2.3.0.0</strong></li>
+<li>Shared Appliance Base (SAB) <strong>1.17.0</strong></li>
+</ul>
+
+<h2 id="platformcompatibility">Platform Compatibility</h2>
+
+<p>This release is compatible with the following hardware platforms:</p>
+
+<ul>
+<li>Dell PowerEdge R650</li>
+<li>Dell PowerEdge R640</li>
+<li>Dell PowerEdge R630</li>
+</ul>
+
+<h2 id="httpsecureproxyhsp">HTTP Secure Proxy (HSP)</h2>
+
+<h3 id="features">Features</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#246374</td>
+	<td>Added possibility to send raw bodies on AAI POST requests.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="changes">Changes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#234967</td>
+	<td>Updated mod_unblufilter to version 5.0.14.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#246008</td>
+	<td>Patched yet another issue in mod_parp that lead to wrong boundaries on multipart/form-data request content.</td>
+</tr>
+<tr>
+	<td>#249359</td>
+	<td>A race condition related to HGW_SslStaticSession has been fixed, which could occur if many SSL sessions to backend servers had to be created simultaneously under high load.</td>
+</tr>
+</tbody>
+</table>
+

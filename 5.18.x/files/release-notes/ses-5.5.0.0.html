@@ -1,0 +1,545 @@
+<h1 id="uspsecureentryserversupregsup5.5.0.0">USP Secure Entry Server<sup>&reg;</sup> 5.5.0.0</h1>
+
+<p>SES 5.5.0.0 consists of the following components:</p>
+
+<ul>
+<li>SES Web GUI <strong>5.5.0.0</strong></li>
+<li>HTTP Secure Proxy (HSP) <strong>4.16.0.0</strong></li>
+<li>Secure Login Service (SLS) <strong>5.7.0.0</strong></li>
+<li>Identity Manager (IDM) <strong>1.0.0.0</strong></li>
+<li>FUSE ICAP Server <strong>1.3.4</strong></li>
+<li>Shared Appliance Base (SAB) <strong>1.15.4</strong></li>
+</ul>
+
+<h2 id="seswebgui">SES Web GUI</h2>
+
+<h3 id="features">Features</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#44286</td>
+	<td>Activation of arbitrary configuration version (GUI)</td>
+</tr>
+<tr>
+	<td>#43224</td>
+	<td>Implement SES REST API Operation &#8220;Activate Configuration&#8221;</td>
+</tr>
+<tr>
+	<td>#43223</td>
+	<td>Implement SES REST API Operation &#8220;Write Configuration&#8221;</td>
+</tr>
+<tr>
+	<td>#43222</td>
+	<td>Implement SES REST API Operation &#8220;List Configurations&#8221;</td>
+</tr>
+<tr>
+	<td>#42421</td>
+	<td>Custom Cron Remote Backup Schedule</td>
+</tr>
+<tr>
+	<td>#5872</td>
+	<td>Change network settings for vhost</td>
+</tr>
+<tr>
+	<td>#42819</td>
+	<td>Introducing of SES Identiy - Identiy Manager configuration</td>
+</tr>
+<tr>
+	<td>#42635</td>
+	<td>Identity Manager: Mulit-tenant configuration</td>
+</tr>
+<tr>
+	<td>#42466</td>
+	<td>Identity Manager: Generic user and group attribute editor</td>
+</tr>
+<tr>
+	<td>#42681</td>
+	<td>Identity Manager: provisioning engine connection and mapping configuration for MS Active Directory connector</td>
+</tr>
+<tr>
+	<td>#44484</td>
+	<td>Extended Service Status widget showing the Identity Manager state</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="changes">Changes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#26039</td>
+	<td>Removed OIOSAML SP screens, configuration templates etc.</td>
+</tr>
+<tr>
+	<td>#41976</td>
+	<td>Converted WAF target servers to backend groups</td>
+</tr>
+<tr>
+	<td>#42757</td>
+	<td>Removed legacy outdated location templates for Outlook Web Access and Crealogix</td>
+</tr>
+<tr>
+	<td>#42192</td>
+	<td>Location export/import now uses JSON-based file format</td>
+</tr>
+<tr>
+	<td>#43686</td>
+	<td>Removed legacy WAF event monitoring (SNMP), use ELK stack/syslog with USP Events instead</td>
+</tr>
+<tr>
+	<td>#42180</td>
+	<td>Converted WAF server alias settings from legacy directives to new configuration model</td>
+</tr>
+<tr>
+	<td>#42012</td>
+	<td>Converted WAF Front-end SSL/TLS settings from legacy directives to new configuration model</td>
+</tr>
+<tr>
+	<td>#42144</td>
+	<td>Migrated WAF error page settings from legacy directives to new configuration model</td>
+</tr>
+<tr>
+	<td>#44940</td>
+	<td>New activation step running after components were restarted</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#44092</td>
+	<td>JEXL in some SLS property values breaks update</td>
+</tr>
+<tr>
+	<td>#43440</td>
+	<td>Cannot use success response field in HTTP Adapter</td>
+</tr>
+<tr>
+	<td>#42587</td>
+	<td>Vaadin left navigation area shows &#8230; below the icons</td>
+</tr>
+<tr>
+	<td>#43440</td>
+	<td>Fixed support for qoute regex strings in success response field</td>
+</tr>
+<tr>
+	<td>#39806</td>
+	<td>Fixed an issue with the name of an uploaded WSDL file in the SOAP adapter when using Internet Explorer</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="httpsecureproxyhsp">HTTP Secure Proxy (HSP)</h2>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#9474</td>
+	<td>Fixes an issue that caused to safe the SSL session ID on a session free location.</td>
+</tr>
+<tr>
+	<td>#22673</td>
+	<td>Fixes an issue that caused SE_ExtCookie_NoCookieCheck not to disable the cookie check properly.</td>
+</tr>
+<tr>
+	<td>#41115</td>
+	<td>Addresses an issue where Content-Type manipulation enabled bypassing of CSRF protection. Without explicit definition now all requests with Content-Type header values other than application/x-www-form-urlencoded, multipart/form-data, and multipart/mixed are blocked. Exceptions can be defined with the new directive RF_CSRF_UnverifiedRequestTypes.</td>
+</tr>
+<tr>
+	<td>#42238</td>
+	<td>Fixes an issue where custom return codes of ACI_AddRule where changed to 500.</td>
+</tr>
+<tr>
+	<td>#42308</td>
+	<td>Corrects handling of non-persistent cookies in conjuction with internal login redirections (AC_InternalLoginRedirect) and original request replays (HGW_Aai_ReplayOnLogin).</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="features">Features</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#22648</td>
+	<td>Introduces RFC 6265 compliance for internal non-persistent cookies.</td>
+</tr>
+<tr>
+	<td>#40905</td>
+	<td>Introduces Domain Matching for internal cookies according with RFC 6265; if the hostname of the selected backend does not domain-match the value of the domain-attribute, the corresponding cookie is filtered. The behaviour can be changed by the new directive SE_IntCookie_DomainMatchingPolicy. In addition, persistent cookies now are always enforced to be set to &#8220;host-only&#8221;. Exceptions can be defined with the new directive SE_IntCookie_PersistentCookiesMapping.</td>
+</tr>
+<tr>
+	<td>#42706</td>
+	<td>Introduces automatic rewriting of Location headers and the path attribute of Set-Cookie headers when setting HGW_TranslatePath (or HGW_TranslatePathMatch).</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="secureloginservicesls">Secure Login Service (SLS)</h2>
+
+<h3 id="http-ldap-adapter">HTTP- / LDAP-Adapter</h3>
+
+<ul>
+<li>For both the HTTP and the LDAP adapter it is now possible to select the backend
+ used in a <code>&quot;do.auth*&quot;</code>-state by setting an additional <code>&quot;.property&quot;</code>-value for the
+ state, just as with the <code>&quot;do.ldap&quot;</code> and <code>&quot;do.http&quot;</code> states. This allows to
+ configure multiple backends (or groups of backends) under different aliases, each
+ with its own failover- or load-balancing settings, and then select the appropriate
+ one for authentication at runtime. See &#8220;SLS Administration Guide&#8221;, chapter &#8220;Model&#8221;
+ (documentation about state &#8220;do.auth&#8221;) for details.</li>
+<li>When a custom LDAP operation backend URL property value with multiple URLs
+ (for failover), it was not properly evaluated and a runtime exception occurred.
+ This has been fixed. However, it is still not recommended to define the
+ backend URLs with scripts, since this approach does not work well with the
+ SLS backend monitoring and various failover and load-balancing mechanisms.</li>
+<li>The HTTP adapter now also supports the methods PUT, PATCH and DELETE in
+ addition to GET and POST, in order to properly support invocation
+ of REST interfaces.</li>
+</ul>
+
+<h3 id="rsasecuridadapter">RSA SecurID Adapter</h3>
+
+<ul>
+<li>In cases where the RSA SecurID adapter received either a NEW_PIN_REQUIRED or
+ NEXT_TOKENCODE_REQUIRED response, the SLS handled this like a failed login
+ attempt and performed a login slowdown, if that feature was enabled. This has
+ been changed so that these responses will not trigger a slowdown anymore.</li>
+</ul>
+
+<h3 id="saml">SAML</h3>
+
+<ul>
+<li>New global property <code>saml.securityConfiguration.signatureReferenceDigestMethod</code>
+ that allows to define the Reference Digest Algorithm in XML signatures.
+ The default value im SAML XML signatures has also changed from the nowadays
+ cryptographically weak value <code>http://www.w3.org/2000/09/xmldsig#sha1</code> to
+ <code>http://www.w3.org/2001/04/xmlenc#sha256</code>. See the SLS Administration Guide
+ in the new chapter &#8220;SAML Global Settings&#8221; for more details.</li>
+<li>Fixed null pointer exception if SAML key store alias does not correspond
+ to a key pair in the key store when signing a SAML message for sending.</li>
+</ul>
+
+<h3 id="variousimprovementsandfixes">Various Improvements and Fixes</h3>
+
+<ul>
+<li>When a resource bundle in a custom bundle directory was tenant-specific,
+ but not for a specific locale, it was ignored in the resolution process.</li>
+<li>Added fallback to configured default language in the
+ resource bundle resolution mechanism. So if a key only
+ exists in language-specific resource bundles, but not
+ any default (non-language) bundles, the SLS will attempt
+ to specifically resolve it with the bundle of the
+ configured default language, if it was not found for
+ whatever language the session currently has.</li>
+<li>Added support for adding the model name to prefixes of state-specific message
+ resource keys. This allows to adapt the message with the same key differently,
+ for the same state, in each model. The model name must be prefixed to the
+ state name using an underscore separator, e.g. <code>&quot;[login_get.cred]some.key=...&quot;</code>.
+ See chapter &#8220;State-Specific Error Messages&#8221; in the &#8220;SLS Administration Guide&#8221;
+ for details.</li>
+</ul>
+
+<h2 id="identitymanager">Identity Manager</h2>
+
+<h3 id="features">Features</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#42724</td>
+	<td>Integrate Syncope into Appliance</td>
+</tr>
+<tr>
+	<td>#42731</td>
+	<td>Integrate Syncope into SES Mgmt GUI</td>
+</tr>
+<tr>
+	<td>#42732</td>
+	<td>Tenants Overview Page</td>
+</tr>
+<tr>
+	<td>#42851</td>
+	<td>Add/Edit Tenant Actions</td>
+</tr>
+<tr>
+	<td>#42871</td>
+	<td>Directory Objects View</td>
+</tr>
+<tr>
+	<td>#42872</td>
+	<td>Add/Edit User/Group Objects</td>
+</tr>
+<tr>
+	<td>#42873</td>
+	<td>Change attribute order</td>
+</tr>
+<tr>
+	<td>#42878</td>
+	<td>Manage Users</td>
+</tr>
+<tr>
+	<td>#42879</td>
+	<td>Manage Groups</td>
+</tr>
+<tr>
+	<td>#42880</td>
+	<td>Prepare User Mgmt Webapp groundwork</td>
+</tr>
+<tr>
+	<td>#42881</td>
+	<td>Authentication Username/Password</td>
+</tr>
+<tr>
+	<td>#42894</td>
+	<td>Connectors View Page</td>
+</tr>
+<tr>
+	<td>#42895</td>
+	<td>Edit Connector Settings</td>
+</tr>
+<tr>
+	<td>#42897</td>
+	<td>Manage Trusted Certificates</td>
+</tr>
+<tr>
+	<td>#42968</td>
+	<td>Edit Connector Mapping</td>
+</tr>
+<tr>
+	<td>#43641</td>
+	<td>Activate/Restore Directory Objects</td>
+</tr>
+<tr>
+	<td>#43833</td>
+	<td>Directory Manager General Settings</td>
+</tr>
+<tr>
+	<td>#43875</td>
+	<td>Tenant Activation Logic</td>
+</tr>
+<tr>
+	<td>#43879</td>
+	<td>New Navigation Menu Behavior</td>
+</tr>
+<tr>
+	<td>#44484</td>
+	<td>Extend Service Status Widget on Dashboard with Identity Manager Status</td>
+</tr>
+<tr>
+	<td>#44486</td>
+	<td>Show default/must attribute in directory object view</td>
+</tr>
+<tr>
+	<td>#44700</td>
+	<td>Activate Trusted Certificates (Puppet part)</td>
+</tr>
+<tr>
+	<td>#44752</td>
+	<td>Extend syncope to integrate with SLS by JWT token</td>
+</tr>
+<tr>
+	<td>#42645</td>
+	<td>User &amp; Group Management incl. group membership assignment</td>
+</tr>
+<tr>
+	<td>#42882</td>
+	<td>Provisioning: Automatically push users to MS Active Directory</td>
+</tr>
+<tr>
+	<td>#45176</td>
+	<td>Admin role can be assigned to users</td>
+</tr>
+<tr>
+	<td>#42876</td>
+	<td>Authentication for the user management with JSON Web Token (JWT)</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="changes">Changes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#44140</td>
+	<td>Upgrade to Syncope 2.0.7</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="sharedappliancebasesab">Shared Appliance Base (SAB)</h2>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#43677</td>
+	<td>SNMP walk and virtual host statistics broken (SES 5.4)</td>
+</tr>
+<tr>
+	<td>#44379</td>
+	<td>Write better error message for duplicate host exists</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="appliance">Appliance</h2>
+
+<h3 id="changes">Changes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#44502</td>
+	<td>Upgrade Appliance Linux Kernel to 4.4</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#43882</td>
+	<td>Fixed issue which prevented webservice access logs from being forwarded to Elasticsearch</td>
+</tr>
+<tr>
+	<td>#40140</td>
+	<td>Ensure logfiles in /var/log/usp/mppw/ are rotated</td>
+</tr>
+<tr>
+	<td>#45781</td>
+	<td>Fixed issue with large number of virtual hosts exhausting semaphore limit; new kernel provides much larger default limits</td>
+</tr>
+</tbody>
+</table>
+

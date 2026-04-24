@@ -1,0 +1,56 @@
+<h1 id="uspsecureentryserverreg5.8.0.6">USP Secure Entry Server &reg; 5.8.0.6</h1>
+
+<p>SES 5.8.0.6 consists of the following components:</p>
+
+<ul>
+<li>SES Web GUI <strong>5.8.0.6</strong></li>
+<li>HTTP Secure Proxy (HSP) <strong>4.18.0.3</strong></li>
+<li>Secure Login Service (SLS) <strong>5.10.0.2</strong></li>
+<li>Identity Manager (IDM) <strong>1.4.0.5</strong></li>
+<li>FUSE ICAP Server <strong>1.3.4</strong></li>
+<li>Shared Appliance Base (SAB) <strong>1.16.2</strong></li>
+</ul>
+
+<h2 id="platformcompatibility">Platform Compatibility</h2>
+
+<p>This release is compatible with the following hardware platforms:</p>
+
+<ul>
+<li>Dell PowerEdge R640</li>
+<li>Dell PowerEdge R630</li>
+</ul>
+
+<h2 id="secureloginservicerelease5.10.0.2">Secure Login Service Release 5.10.0.2</h2>
+
+<h3 id="httpadapterfixes">HTTP Adapter Fixes</h3>
+
+<ul>
+<li>The global proxy settings were not recognized correctly and no proxy was used
+ if none was configured for the specific HTTP call. This has been fixed so that
+ the global default proxy settings are used correctly again.</li>
+<li>The connection check which uses the URL configured by the property
+ <code>&quot;connectionCheckUrl&quot;</code> did not properly use corresponding proxy settings if
+ a proxy had been configured for the HTTP call.</li>
+</ul>
+
+<h3 id="variousimprovementsandfixes">Various Improvements And Fixes</h3>
+
+<ul>
+<li>Some custom-set cookies were sometimes set two or more times in the response
+ by the SLS.</li>
+<li>Fixed an internal server error that could happen if a regular <code>&quot;show.jsp&quot;</code> was
+ used to display a JSP in which then certain headers were set manually that
+ would usually be set by the <code>&quot;do.success&quot;</code> state.</li>
+<li>Fixed an issue in <code>response.setHttpStatusCode()</code> where setting the status
+ had no effect if done in a JSP.</li>
+<li>Vastly extended the session lock timeouts, and also fixed handling of session
+ stickyness during failover if there is no session anymore, to avoid a
+ situation with a possible infinite loop behavior.</li>
+<li>Added more detailed and narrow performance measurement to the HTTP/WS
+ adapter call-out.</li>
+<li>Fixed a bug in deserialization of SAML SSO attributes defined with
+ <code>idp.sso.attr.&lt;no&gt;.*</code>: empty values lead to failing to serialize all
+ SSO attributes and passing them empty at a second SSO login at the SAML IdP.</li>
+<li>Fixed a race condition in loading of message resources that could occur in
+ some rare situations, most likely during SLS startup.</li>
+</ul>

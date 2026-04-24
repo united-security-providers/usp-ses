@@ -1,0 +1,142 @@
+<h1 id="uspsecureentryserverreg5.16.0.1">USP Secure Entry Server &reg; 5.16.0.1</h1>
+
+<p>SES 5.16.0.1 consists of the following components:</p>
+
+<ul>
+<li>SES Web GUI <strong>5.16.0.1</strong></li>
+<li>HTTP Secure Proxy (HSP) <strong>4.26.0.2</strong></li>
+<li>Secure Login Service (SLS) <strong>5.19.0.1</strong></li>
+<li>Identity Manager (IDM) <strong>2.3.0.1</strong></li>
+<li>Shared Appliance Base (SAB) <strong>1.17.2</strong></li>
+</ul>
+
+<h2 id="platformcompatibility">Platform Compatibility</h2>
+
+<p>This release is compatible with the following hardware platforms:</p>
+
+<ul>
+<li>Dell PowerEdge R650</li>
+<li>Dell PowerEdge R640</li>
+<li>Dell PowerEdge R630</li>
+</ul>
+
+<h2 id="seswebgui">SES Web GUI</h2>
+
+<h3 id="features">Features</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#285739</td>
+	<td>Updated all SLS JSPs to the new USP Corporate Identity design (only affects new installations).</td>
+</tr>
+<tr>
+	<td>#289475</td>
+	<td>Removed support for the obsolete, proprietary ELCARD adapter authentication system.</td>
+</tr>
+<tr>
+	<td>#289328</td>
+	<td>Updated list of acceptable encodings and migrate default deny list.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#289314</td>
+	<td>Traffic Analyzer and raw search string over SES Admin GUI result in 500 server error.</td>
+</tr>
+<tr>
+	<td>#289355</td>
+	<td>Fixed username input validation to support uppercase characters in usernames.</td>
+</tr>
+<tr>
+	<td>#289355</td>
+	<td>Fixed username input validation to support uppercase characters in usernames.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="httpsecureproxyhsp">HTTP Secure Proxy (HSP)</h2>
+
+<h3 id="changes">Changes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#289331</td>
+	<td>Improved error handling on fatal errors (like memory allocation failures). (4.26.0.2)</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#289334</td>
+	<td>Fixed an issue that lead to a segmentation fault upon session transfer. (4.26.0.2)</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="secureloginservicesls">Secure Login Service (SLS)</h2>
+
+<h3 id="breakingchange">Breaking Change</h3>
+
+<ul>
+<li>Removed support for the obsolete, proprietary ELCARD adapter authentication system. As of today, any installation using
+ it should switch to either OpenID Connect or SAML.</li>
+</ul>

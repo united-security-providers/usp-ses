@@ -1,0 +1,32 @@
+<h1 id="uspsecureentryserverreg5.16.0.7">USP Secure Entry Server &reg; 5.16.0.7</h1>
+
+<p>SES 5.16.0.7 consists of the following components:</p>
+
+<ul>
+<li>SES Web GUI <strong>5.16.0.6</strong></li>
+<li>HTTP Secure Proxy (HSP) <strong>4.26.0.5</strong></li>
+<li>Secure Login Service (SLS) <strong>5.19.0.4</strong></li>
+<li>Identity Manager (IDM) Core <strong>2.3.0.1</strong></li>
+<li>Identity Manager (IDM) Web GUI <strong>2.3.0.1</strong></li>
+<li>Shared Appliance Base (SAB) <strong>1.17.5</strong></li>
+</ul>
+
+<h2 id="platformcompatibility">Platform Compatibility</h2>
+
+<p>This release is compatible with the following hardware platforms:</p>
+
+<ul>
+<li>Dell PowerEdge R650</li>
+<li>Dell PowerEdge R640</li>
+<li>Dell PowerEdge R630</li>
+</ul>
+
+<h2 id="secureloginservicesls">Secure Login Service (SLS)</h2>
+
+<h3 id="variousimprovementsandfixes">Various Improvements and Fixes</h3>
+
+<ul>
+<li>The OIDC OP no longer redirects to the <code>redirect_uri</code> in case of an unknown
+ or missing <code>client_id</code> in the authentication request, in order to prevent
+ attacks that would redirect via the trusted OP domain to an &#8220;evil&#8221; domain.</li>
+</ul>

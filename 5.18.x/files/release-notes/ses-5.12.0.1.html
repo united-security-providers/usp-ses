@@ -1,0 +1,31 @@
+<h1 id="uspsecureentryserverreg5.12.0.1">USP Secure Entry Server &reg; 5.12.0.1</h1>
+
+<p>SES 5.12.0.0 consists of the following components:</p>
+
+<ul>
+<li>SES Web GUI <strong>5.12.0.0_p1</strong></li>
+<li>HTTP Secure Proxy (HSP) <strong>4.23.0.0</strong></li>
+<li>Secure Login Service (SLS) <strong>5.15.0.6</strong></li>
+<li>Identity Manager (IDM) <strong>2.1.0.1</strong></li>
+<li>Shared Appliance Base (SAB) <strong>1.16.12</strong></li>
+</ul>
+
+<h2 id="platformcompatibility">Platform Compatibility</h2>
+
+<p>This release is compatible with the following hardware platforms:</p>
+
+<ul>
+<li>Dell PowerEdge R640</li>
+<li>Dell PowerEdge R630</li>
+</ul>
+
+<h2 id="secureloginservicesls">Secure Login Service (SLS)</h2>
+
+<h3 id="ldapadapter">LDAP Adapter</h3>
+
+<ul>
+<li>Fixed a bug in the attribute update functionality, where the names of
+ configured attributes were not evaluated with JEXL/Groovy anymore, only
+ as fixed value. The bug was introduced in 5.15.0.5 through the WebAuthn
+ LDAP storage extension.</li>
+</ul>

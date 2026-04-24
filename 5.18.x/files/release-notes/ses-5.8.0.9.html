@@ -1,0 +1,113 @@
+<h1 id="uspsecureentryserverreg5.8.0.9">USP Secure Entry Server &reg; 5.8.0.9</h1>
+
+<p>SES 5.8.0.9 consists of the following components:</p>
+
+<ul>
+<li>SES Web GUI <strong>5.8.0.9</strong></li>
+<li>HTTP Secure Proxy (HSP) <strong>4.18.0.5</strong></li>
+<li>Secure Login Service (SLS) <strong>5.10.0.2</strong></li>
+<li>Identity Manager (IDM) <strong>1.4.0.8</strong></li>
+<li>FUSE ICAP Server <strong>1.3.4</strong></li>
+<li>Shared Appliance Base (SAB) <strong>1.16.2</strong></li>
+</ul>
+
+<h2 id="platformcompatibility">Platform Compatibility</h2>
+
+<p>This release is compatible with the following hardware platforms:</p>
+
+<ul>
+<li>Dell PowerEdge R640</li>
+<li>Dell PowerEdge R630</li>
+</ul>
+
+<h2 id="seswebgui">SES Web GUI</h2>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#66446</td>
+	<td>Fixed a bug which did not open the required firewall ports for WAF vhost with same hostname and IP but different ports.</td>
+</tr>
+<tr>
+	<td>#66484</td>
+	<td>Fixed bug, preventing to save WAF SOAP Filter configuration when having XSD and WSDL with same targetNamespace.</td>
+</tr>
+<tr>
+	<td>#66812</td>
+	<td>Fixed log download section for IDM allowing to view and download all recent and rotated logs.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="httpsecureproxyhsp">HTTP Secure Proxy (HSP)</h2>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#66972</td>
+	<td>Fixed a bug in mod_http2 that prevented mod_reqtimeout from terminating fresh connections on which no data was sent.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="identitymanageridm">Identity Manager (IDM)</h2>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#66529</td>
+	<td>Fixed a bug in the group owner assignemnt ensuring that all assignable groups and user are available.</td>
+</tr>
+<tr>
+	<td>#66813</td>
+	<td>Fixed a bug ensuring all logs are rotated and cleaned up.</td>
+</tr>
+<tr>
+	<td>#66815</td>
+	<td>Fixed a bug in the user management role filtering showing the wrong users in the different OUs.</td>
+</tr>
+</tbody>
+</table>
+

@@ -1,0 +1,87 @@
+<h1 id="newmainupdatesandenhancements">New Main Updates and Enhancements</h1>
+
+<h2 id="checkmkmonitoringsupport">Checkmk monitoring support</h2>
+
+<p>Checkmk is a versatile, scalable and powerful monitoring solution. The SES Appliance now includes a built‑in Checkmk SSH agent, enabling seamless integration with Checkmk monitoring environments. Configuring the SES appliance to make it available for Checkmk is as simple as setting an SSH public key for the Checkmk agent user. The new functionality is available under &#8220;System / Monitoring&#8221;.</p>
+
+<h2 id="owaspcrsupdate">OWASP CRS Update</h2>
+
+<p>The OWASP CRS ruleset has been upgraded to 3.3.8 to address recent issues and vulnerabilities.</p>
+
+<h1 id="newfeatures">New Features</h1>
+
+<h3 id="sesappliancebasecheckmksupport">SES Appliance Base Checkmk Support</h3>
+
+<p>Support for monitoring with Checkmk agents has been added. (5.18.0.0)</p>
+
+<h2 id="sesgui">SES GUI</h2>
+
+<h3 id="sesguicheckmkconfigsupport">SES GUI Checkmk Config Support</h3>
+
+<p>The CheckMK agent SSH public key can now be configured in the monitoring section. (5.18.0.0)</p>
+
+<h1 id="changes">Changes</h1>
+
+<h3 id="sesappliancebasefactoryresetremoved">SES Appliance Base Factory reset removed</h3>
+
+<p>The &#8220;factory reset&#8221; and &#8220;restore last version&#8221; options were removed from the GRUB menu. (5.18.0.1)</p>
+
+<h3 id="sesappliancebaseupdatedtomcat">SES Appliance Base Updated Tomcat</h3>
+
+<p>Updated Tomcat to 9.0.116 for SES GUI, SLS and IDM to address various vulnerabilities. (5.18.0.1)</p>
+
+<h3 id="sesappliancebaseremovedfreemaxmindgeoipupdatelicense">SES Appliance Base Removed free MaxMind GeoIP update license</h3>
+
+<p>Removed free MaxMind GeoIP database updates due to licensing change. (5.18.0.1)</p>
+
+<h3 id="sesappliancebasecolumnseparatorincheckmkconfigfixes">SES Appliance Base Column separator in CheckMK config fixes</h3>
+
+<p>CheckMK: Fix column separator in plugin http_monitor.py and update agent to 2.4.0p22+ (CVE&#8211;2025&#8211;6499) (5.18.0.1)</p>
+
+<h3 id="sesguiusermanagementldapadsyncfailedfixed">SES GUI User Management LDAP AD sync failed fixed</h3>
+
+<p>SES User Management LDAP AD sync failed if sAMAccountName started with a number. (5.18.0.1)</p>
+
+<h3 id="sesaccesscspupgradeissues.">SES ACCESS CSP upgrade issues.</h3>
+
+<p>When updating from 5.16 to 5.18, a partially incorrect CSP would be configured by default for SLS. (5.18.0.1)</p>
+
+<h3 id="seswafupdates">SES WAF Updates</h3>
+
+<p>Updated openssl to v3.0.20. (5.18.0.1)</p>
+
+<h3 id="sesguiowaspcrs3.3.8">SES GUI OWASP CRS 3.3.8</h3>
+
+<p>Support for OWASP CRS 3.3.8 has been added. (5.18.0.0)</p>
+
+<h3 id="sesguislscspvalidation">SES GUI SLS CSP Validation</h3>
+
+<p>The GUI now performs some basic validation of the SLS content security policy. (5.18.0.0)</p>
+
+<h3 id="sesguiacmescreenimprovement">SES GUI ACME screen improvement</h3>
+
+<p>The drop-down list of private keys in the ACME screen is now sorted alphabetically. (5.18.0.0)</p>
+
+<h3 id="seswafupdates">SES WAF Updates</h3>
+
+<p>Updated httpd to v2.4.66, openssl to v3.0.19 and 3rd party libraries. (5.18.0.0)</p>
+
+<h1 id="fixes">Fixes</h1>
+
+<h3 id="sesappliancebased">SES Appliance Based</h3>
+
+<p>Fixed permission problem with CheckMK agent script after an appliance reboot. (5.18.0.2)</p>
+
+<h3 id="sesaccessdocumentationfixes">SES ACCESS documentation fixes</h3>
+
+<p>A build issue with the SLS scripting guide documentation has been fixed which resulted in some scripting
+prefixes like &#8220;oidc_rp&#8221; not having been included previously. (5.18.0.0)</p>
+
+<h3 id="sesaccesssession-cleanupissue">SES ACCESS Session-Clean up issue</h3>
+
+<p>Fixed minor issue with exception being logged during session clean-up under certain circumstances involving the hard
+final timeout and concurrent request processing. (5.18.0.0)</p>
+
+<h3 id="sesaccesscspqrcodeissuefixed">SES ACCESS CSP QR Code issue fixed</h3>
+
+<p>Fixed issue with Google Authenticator QR code not being rendered due to default Content Security Policy. (5.18.0.0)</p>

@@ -1,0 +1,31 @@
+<h1 id="uspsecureentryserverreg5.10.0.7">USP Secure Entry Server &reg; 5.10.0.7</h1>
+
+<p>SES 5.10.0.7 consists of the following components:</p>
+
+<ul>
+<li>SES Web GUI <strong>5.10.0.6</strong></li>
+<li>HTTP Secure Proxy (HSP) <strong>4.21.0.5</strong></li>
+<li>Secure Login Service (SLS) <strong>5.13.0.4</strong></li>
+<li>Identity Manager (IDM) <strong>1.6.0.2</strong></li>
+<li>Shared Appliance Base (SAB) <strong>1.16.8</strong></li>
+</ul>
+
+<h2 id="platformcompatibility">Platform Compatibility</h2>
+
+<p>This release is compatible with the following hardware platforms:</p>
+
+<ul>
+<li>Dell PowerEdge R640</li>
+<li>Dell PowerEdge R630</li>
+</ul>
+
+<h2 id="secureloginservicesls">Secure Login Service (SLS)</h2>
+
+<h3 id="variousimprovementsandfixes">Various Improvements and Fixes</h3>
+
+<ul>
+<li>Fixed a bug in the slowdown mechanism which could lead to a model state being
+ skipped by using POST requests during the slowdown waiting time. This bug was
+ introduced by another fix (of a potential infinite loop during slowdown) which
+ was done in SLS 5.13.0.0 (SES 5.10.0.0).</li>
+</ul>

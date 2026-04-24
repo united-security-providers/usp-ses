@@ -1,0 +1,319 @@
+<h1 id="uspsecureentryserverreg5.14.0.0">USP Secure Entry Server &reg; 5.14.0.0</h1>
+
+<p>SES 5.14.0.0 consists of the following components:</p>
+
+<ul>
+<li>SES Web GUI <strong>5.14.0.0_p1</strong></li>
+<li>HTTP Secure Proxy (HSP) <strong>4.24.0.2</strong></li>
+<li>Secure Login Service (SLS) <strong>5.17.0.0</strong></li>
+<li>Identity Manager (IDM) <strong>2.3.0.0</strong></li>
+<li>Shared Appliance Base (SAB) <strong>1.17.0</strong></li>
+</ul>
+
+<h2 id="platformcompatibility">Platform Compatibility</h2>
+
+<p>This release is compatible with the following hardware platforms:</p>
+
+<ul>
+<li>Dell PowerEdge R650</li>
+<li>Dell PowerEdge R640</li>
+<li>Dell PowerEdge R630</li>
+</ul>
+
+<h2 id="seswebgui">SES Web GUI</h2>
+
+<h3 id="features">Features</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#122817</td>
+	<td>Support for multiline freetext on SES GUI</td>
+</tr>
+<tr>
+	<td>#123582</td>
+	<td>Audit USP events added for GUI and SSH login (success and failure) and configuration changes</td>
+</tr>
+<tr>
+	<td>#124135</td>
+	<td>TLS 1.3 mutual authentication configuration improved, mixed operation with TLS 1.2 now possible</td>
+</tr>
+<tr>
+	<td>#130019</td>
+	<td>Mod Security update to owasp core ruleset 3.3.4</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="changes">Changes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#117938</td>
+	<td>Gentoo Portage World Update</td>
+</tr>
+<tr>
+	<td>#110722</td>
+	<td>Disable TLS1.0/1.1 and weak cipher support on SES Admin GUI</td>
+</tr>
+<tr>
+	<td>#115604</td>
+	<td>Graphite Integration &amp; Automation removed (replaced by Elasticsearch)</td>
+</tr>
+<tr>
+	<td>#130602</td>
+	<td>load shared object of mod_analyze</td>
+</tr>
+<tr>
+	<td>#133217</td>
+	<td>Improved queueing of syslog / logstash logs</td>
+</tr>
+<tr>
+	<td>#133903</td>
+	<td>updated Apache Commons Text 1.7 =&gt; 1.10 (CVE&#8211;2022&#8211;42889)</td>
+</tr>
+<tr>
+	<td>#147618</td>
+	<td>Adjust MD renew window normal</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#96680</td>
+	<td>Certifacte Exipration checks for non active modules/components</td>
+</tr>
+<tr>
+	<td>#109403</td>
+	<td>SecRuleEngine off on Location /login/sls</td>
+</tr>
+<tr>
+	<td>#114545</td>
+	<td>SES WAF GUI Custom hostname to IP mapping check circumventend when synchronizing</td>
+</tr>
+<tr>
+	<td>#115846</td>
+	<td>Advanced Log Management Keep indexes ingored</td>
+</tr>
+<tr>
+	<td>#130909</td>
+	<td>WAF Security Profile with Advanced Learning and ModSecurity ID 920440</td>
+</tr>
+<tr>
+	<td>#137107</td>
+	<td>SLS Adapter Custom Properties Encoding Issue (=&gt; develop, 5.14.x, 5.14.0.0)</td>
+</tr>
+<tr>
+	<td>#137740</td>
+	<td>Incomplete WAF syslog in CEF format</td>
+</tr>
+<tr>
+	<td>/ #114870</td>
+	<td>sample Logstash plugin issues</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="httpsecureproxyhsp">HTTP Secure Proxy (HSP)</h2>
+
+<h3 id="changes">Changes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#156088</td>
+	<td>Added improvement in order to allow WebSocket and HTTP connections on the root location simultaneously.</td>
+</tr>
+<tr>
+	<td>#121808</td>
+	<td>Improved header validator length rule in hsp_hv_rfc_compliance.conf.</td>
+</tr>
+<tr>
+	<td>#113739</td>
+	<td>Improve configuration possibilities of locally handled status codes.</td>
+</tr>
+<tr>
+	<td>#114752</td>
+	<td>Updated zlib to version 1.2.12.</td>
+</tr>
+<tr>
+	<td>#129694</td>
+	<td>Updated mod_security to version 2.9.6</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="identitymanageridm">Identity Manager (IDM)</h2>
+
+<h3 id="features">Features</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#133240</td>
+	<td>Set default state of users created by self-service API (active/suspended), per tenant</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="secureloginservicesls">Secure Login Service (SLS)</h2>
+
+<h3 id="java11tomcat9">Java 11 / Tomcat 9</h3>
+
+<ul>
+<li>Added official support for Java 11 and Tomcat 9.
+ Note that thus far the SLS is still compiled with Java 8 to Java 8 bytecode
+ and that Java 8 and Tomcat 8 + 8.5 are still fully supported.
+ The SLS is now additionally tested and used with Java 11 / Tomcat 9
+ and thus these newer versions are now also officially supported.</li>
+</ul>
+
+<h3 id="oidcoprpadapters">OIDC OP+RP Adapters</h3>
+
+<ul>
+<li>OP+RP: Support for <em>Proof Key for Code Exchange</em> (PKCE, &#8220;Pixy&#8221;), with new settings
+ <code>oidc.rp.client.&lt;no&gt;.pixy.use</code>, <code>oidc.op.rp.&lt;no&gt;.pixy.require</code> and
+ <code>oidc.op.rp.&lt;no&gt;.pixy.allowPlain</code>, see &#8220;SLS Administration Guide&#8221; for details.</li>
+<li>OP+RP: Support for Public Clients that send no resp. require no <code>client_secret</code>
+ in the token request (typically used in combination with PKCE/&#8220;Pixy&#8221;),
+ with two new settings <code>oidc.rp.client.&lt;no&gt;.publicClient</code> and <code>oidc.op.rp.&lt;no&gt;.publicClient</code>,
+ see &#8220;SLS Administration Guide&#8221; for details.</li>
+<li>OP: New script functions <code>oidc_op.createConfigAsMap()</code> and/or <code>oidc_op.getConfig()</code>
+ allow to create, optionally change, and display OIDC OP metadata information for an
+ OIDC discovery endpoint. See &#8220;SLS Administration Guide&#8221;, chapter &#8220;OIDC OP Adapter&#8221;,
+ and also &#8220;JEXL Guide&#8221;, prefix <code>oidc_op</code>, for details. There is also a new JSP included,
+ <code>OpConfig.jsp</code>.</li>
+<li>OP: New script functions <code>oidc_op.createJwksAsMap()</code> and/or <code>oidc_op.getJwks()</code>
+ allow to create, optionally change, and display OIDC OP metadata information for an
+ OIDC JWKS endpoint. See &#8220;SLS Administration Guide&#8221;, chapter &#8220;OIDC OP Adapter&#8221; and
+ also &#8220;JEXL Guide&#8221;, prefix <code>oidc_op</code>, for details. There is also a new JSP included, <code>OpJwks.jsp</code>.</li>
+</ul>
+
+<h3 id="samlidpspadapters">SAML IdP+SP Adapters</h3>
+
+<ul>
+<li>IdP+SP: Support for two new settings, <code>idp.keystore.future.keypair.alias</code> in the IdP
+ and <code>sp.keystore.future.keypair.alias</code> in the SP, that allow to change
+ key pairs / certificates much more independently on IdPs and SPs, in particular,
+ changes are now possible <strong>without</strong> having to reconfigure and restart both
+ an SP and an IdP at the same time.
+ See sections &#8220;Replacing the IdP key pair and certificate&#8221; in the chapter about
+ the IdP Adapter and &#8220;Replacing the SP key pair and certificate&#8221; in the chapter
+ about the SP Adapter in the SLS Administration Guide for how to use the new settings.</li>
+<li>IdP: Fixed a bug with handling an empty relayState parameter at login
+ (failed to deserialize serialized SSO info which would affect further SP logins and SLO).</li>
+<li>IdP+SP: Allowing trusted SP resp. IdP Metadata with an EntityDescriptor that is marked as
+ expired in XML (<code>validUntil</code>), as this caused issues in production. For example, already
+ restarting the SLS could lead to an SLS that failed to initialize the corresponding SAML
+ adapter. Note that since the SLS generally trusts credentials given in metadata (e.g.
+ also the certificate within independently of certificate expiry), this is a more
+ consistent approach (not excluding future consistent refinements).</li>
+</ul>
+
+<h3 id="sesidentityidmadapter">SES Identity (IDM) Adapter</h3>
+
+<ul>
+<li>Fixed a bug in 2 Syncope REST API calls that would fail when used in a password-less (sfa)
+ login flow, due to the missing user credentials.</li>
+</ul>
+
+<h3 id="bootstrapupdate">Bootstrap update</h3>
+
+<p>The &#8220;Bootstrap&#8221; CSS library used by the JSPs was updated to Bootstrap 5. As a consequence,
+JQuery is no longer included in new SLS deployments. Also, there have been a few breaking
+changes in Bootstrap 4 and 5, so customized JSPs might need to be slightly adapted if they
+are to be upgraded to the new Bootstrap version. Check the chapter &#8220;JSP&#8221; in the &#8220;SLS Administration Guide&#8221;
+for more information.</p>
+
+<h3 id="variousimprovementsandfixes">Various Improvements and Fixes</h3>
+
+<ul>
+<li>A bug was fixed in the handling of runtime exceptions generated with one of the JEXL
+ functions <code>function.failWith....()</code>. This bug led to the handling of a request
+ resulting in an HTTP 500 error instead of the model being switched to the default
+ failed state.</li>
+<li>Handling of URI fragment identifiers in a redirect URL has been implemented by adding the
+ function <code>session.setUriFragmentIdentifier()</code>. It allows to specify a URI fragment identifier
+ string which will be added to the final redirect URL.</li>
+<li>New configuration property <code>groovy.script.loginfo</code>.
+ If set to true, logs at level INFO for each Groovy expression the resulting class name
+ (<code>Script&lt;MD5-hash-of-script-expression&gt;</code>) and script text at first compilation, as well
+ as for each Groovy file the filename at first compiliation.</li>
+<li>New tool &#8220;SlsFindGroovy&#8221; in the SLS delivery (see tools/findgroovy) that allows to
+ heuristically search a given directory with SLS configuration files for a Groovy
+ expression with a given MD5 hash. The new tool is normally not needed to operate an
+ SLS, but there were occurrences of JVM crashes (i.e. bugs in the JVM, not the SLS!)
+ which logged the generated <code>Script&lt;MD5&gt;</code> class name of a Groovy script expression
+ and in this case the new tool can be helpful. The search is somewhat heuristic, but
+ should typically find all Groovy expressions in files with indicated extensions.</li>
+<li>The performance log can now log times with higher resolution, with 3 or 6 decimal digits
+ (e.g. instead of <code>12</code> now <code>12.456</code> or <code>12.456789</code>) or with zero decimal digits as previously.
+ The default is now 3 digits and can be changed by setting the new property
+ <code>log.performance.resolution=[millisecs|microsecs|nanosecs]</code>. Note that how precise these
+ times are depends on hardware and OS, but they usually help to analyze performance.</li>
+</ul>

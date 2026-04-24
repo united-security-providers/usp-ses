@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>HSP</title><link rel="stylesheet" type="text/css" href="docbook-xsl.css" /><link rel="stylesheet" type="text/css" href="docbook-xsl-wam.css" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /></head><body><div xml:lang="en" class="book" lang="en"><div class="titlepage"><div><div><h1 class="title"><a id="id1337"></a>HSP</h1></div><div><h2 class="subtitle">Migration Guide</h2></div><div><div class="legalnotice"><a id="id1338"></a><p>
+    This document is protected by copyright under the applicable laws and
+    international treaties. No part of this document may be reproduced in any
+    form and distributed to third parties by any means without prior written
+    authorization of United Security Providers AG.
+  </p><p>
+    DOCUMENTATION IS PROVIDED "AS IS" AND ALL EXPRESSED OR
+    IMPLIED REPRESENTATIONS AND WARRANTIES, INCLUDING BUT
+    NOT LIMITED TO ANY IMPLIED WARRANTY OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT,
+    ARE DISCLAIMED TO THE EXTENT PERMISSIBLE UNDER THE
+    APPLICABLE LAWS.
+  </p></div></div></div><hr /></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="chapter"><a href="#_introduction">1. Introduction</a></span></dt><dd><dl><dt><span class="section"><a href="#_purpose_of_document">1.1. Purpose of Document</a></span></dt><dt><span class="section"><a href="#_target_audience">1.2. Target Audience</a></span></dt></dl></dd><dt><span class="chapter"><a href="#_hsp_4_27">2. HSP 4.27</a></span></dt><dd><dl><dt><span class="section"><a href="#_summary">2.1. Summary</a></span></dt><dt><span class="section"><a href="#v427-header-entry-deny-change">2.2. Change in Header Entry Blacklist Handling for Value Entries</a></span></dt></dl></dd><dt><span class="chapter"><a href="#_hsp_4_26">3. HSP 4.26</a></span></dt><dd><dl><dt><span class="section"><a href="#_summary_2">3.1. Summary</a></span></dt><dt><span class="section"><a href="#v426-SHS-removal">3.2. Removal of Secure Handshake (SHS)</a></span></dt></dl></dd><dt><span class="chapter"><a href="#_hsp_4_25">4. HSP 4.25</a></span></dt><dd><dl><dt><span class="section"><a href="#_summary_3">4.1. Summary</a></span></dt><dt><span class="section"><a href="#v425-HA-active-passive">4.2. Constraint on updates of HA Active/Passive setups</a></span></dt><dt><span class="section"><a href="#v425-SE_L1Cds-renamed">4.3. SE_L1Cds directives renamed</a></span></dt></dl></dd><dt><span class="chapter"><a href="#_hsp_4_24">5. HSP 4.24</a></span></dt><dd><dl><dt><span class="section"><a href="#_summary_4">5.1. Summary</a></span></dt><dt><span class="section"><a href="#v424-mod_security-version">5.2. Version number of mod_security removed</a></span></dt><dt><span class="section"><a href="#v424-removed-RF_Icap">5.3. RF_Icap* directives removed</a></span></dt><dt><span class="section"><a href="#v424-mod_analyze-shared-object">5.4. mod_analyze as shared module</a></span></dt></dl></dd><dt><span class="chapter"><a href="#_hsp_4_23">6. HSP 4.23</a></span></dt><dd><dl><dt><span class="section"><a href="#_summary_5">6.1. Summary</a></span></dt></dl></dd><dt><span class="chapter"><a href="#_hsp_4_22">7. HSP 4.22</a></span></dt><dd><dl><dt><span class="section"><a href="#_summary_6">7.1. Summary</a></span></dt><dt><span class="section"><a href="#v422-analyze-dbg-trace-maxsize">7.2. DBG_TraceMaxSize removed</a></span></dt><dt><span class="section"><a href="#v422-RF_SF_WSDLSchemaFile-RF_SF_TrustedNamespace">7.3. RF_SF_WSDLSchemaFile and RF_SF_TrustedNamespace removed</a></span></dt><dt><span class="section"><a href="#v422-SOAP-log-mode">7.4. SOAP filtering "log" mode</a></span></dt></dl></dd><dt><span class="chapter"><a href="#_hsp_4_21">8. HSP 4.21</a></span></dt><dd><dl><dt><span class="section"><a href="#_summary_7">8.1. Summary</a></span></dt><dt><span class="section"><a href="#v421-tls-1.3">8.2. TLSv1.3 support</a></span></dt><dt><span class="section"><a href="#v421-reneg-issue">8.3. Renegotiation issue with TLS 1.1/1.2</a></span></dt><dt><span class="section"><a href="#v421-ssl-3">8.4. SSLv3 no more supported</a></span></dt></dl></dd><dt><span class="chapter"><a href="#_hsp_4_20">9. HSP 4.20</a></span></dt><dd><dl><dt><span class="section"><a href="#_summary_8">9.1. Summary</a></span></dt><dt><span class="section"><a href="#v420-changed-default-flag-for-regex">9.2. New default flag for regular expressions core component of httpd</a></span></dt></dl></dd><dt><span class="chapter"><a href="#_hsp_4_19">10. HSP 4.19</a></span></dt><dd><dl><dt><span class="section"><a href="#_summary_9">10.1. Summary</a></span></dt><dt><span class="section"><a href="#v419-h2-mod-shared">10.2. Dynamically loading of <span class="emphasis"><em>mod_http2</em></span></a></span></dt><dt><span class="section"><a href="#v419-changed-default-flag-for-regex">10.3. New default flag for regular expressions core component of httpd</a></span></dt></dl></dd><dt><span class="chapter"><a href="#_hsp_4_18">11. HSP 4.18</a></span></dt><dd><dl><dt><span class="section"><a href="#_summary_10">11.1. Summary</a></span></dt><dt><span class="section"><a href="#v418-update-hdr-validator-defs">11.2. Update of header definitions for <span class="emphasis"><em>mod_header_validator</em></span></a></span></dt><dt><span class="section"><a href="#v418-changed-default-flag-for-regex">11.3. New default flag for regular expressions core component of httpd</a></span></dt></dl></dd><dt><span class="chapter"><a href="#_hsp_4_17">12. HSP 4.17</a></span></dt><dd><dl><dt><span class="section"><a href="#_summary_11">12.1. Summary</a></span></dt><dt><span class="section"><a href="#v417-removal-hsp-tcp-script">12.2. Removal of <span class="emphasis"><em>hsp_tcp</em></span> script</a></span></dt><dt><span class="section"><a href="#v417-port-collision">12.3. Information about port collision on loopback device</a></span></dt><dt><span class="section"><a href="#v417-load-balancing">12.4. New load balancing module</a></span></dt><dt><span class="section"><a href="#v417-accepted-ciphers">12.5. Removal of <code class="literal">AC_AcceptedCiphers</code></a></span></dt></dl></dd><dt><span class="chapter"><a href="#_hsp_4_16">13. HSP 4.16</a></span></dt><dd><dl><dt><span class="section"><a href="#_summary_12">13.1. Summary</a></span></dt><dt><span class="section"><a href="#v416-binary-compatibility">13.2. HSP binary compatibility / requirement changes</a></span></dt><dt><span class="section"><a href="#v416-internal-cookies">13.3. Processing of internal cookies</a></span></dt><dt><span class="section"><a href="#v416-hspcredentialdomain">13.4. Removing of AC_HspCredentialDomain</a></span></dt><dt><span class="section"><a href="#v416-path-translation">13.5. Changes in translation and substitution functionalities</a></span></dt></dl></dd><dt><span class="chapter"><a href="#_hsp_4_15">14. HSP 4.15</a></span></dt><dd><dl><dt><span class="section"><a href="#_summary_13">14.1. Summary</a></span></dt><dt><span class="section"><a href="#v415-updating-ses">14.2. Updating to USP Secure Entry Server 4.15</a></span></dt><dt><span class="section"><a href="#v415-hsp-sslallowreneg">14.3. HSP_SSLAllowLegacyRenegotiation</a></span></dt><dt><span class="section"><a href="#v415-weblinks">14.4. Web Links</a></span></dt></dl></dd><dt><span class="chapter"><a href="#_hsp_4_14">15. HSP 4.14</a></span></dt><dd><dl><dt><span class="section"><a href="#_summary_14">15.1. Summary</a></span></dt><dt><span class="section"><a href="#v414-updating-ses">15.2. Updating to USP Secure Entry Server 4.14</a></span></dt></dl></dd><dt><span class="chapter"><a href="#_hsp_4_12">16. HSP 4.12</a></span></dt><dd><dl><dt><span class="section"><a href="#_summary_15">16.1. Summary</a></span></dt><dt><span class="section"><a href="#v412-updating-ses">16.2. Updating to USP Secure Entry Server 4.12</a></span></dt><dt><span class="section"><a href="#v412-weblinks">16.3. Web Links</a></span></dt></dl></dd><dt><span class="chapter"><a href="#_hsp_4_11">17. HSP 4.11</a></span></dt><dd><dl><dt><span class="section"><a href="#_summary_16">17.1. Summary</a></span></dt><dt><span class="section"><a href="#v411-updating-ses">17.2. Updating to USP Secure Entry Server 4.11</a></span></dt></dl></dd></dl></div><div class="list-of-tables"><p><strong>List of Tables</strong></p><dl><dt>16.1. <a href="#id1339">Changes in directives</a></dt><dt>16.2. <a href="#id1340">New directives in Apache Server 2.4 and 3rd-party modules</a></dt><dt>16.3. <a href="#id1341">New modules introduced with USP Secure Entry Server<sup>®</sup> Software Suite, Linux Version</a></dt><dt>16.4. <a href="#id1342">Removed directives from USP Secure Entry Server<sup>®</sup> Software Suite, Linux Version</a></dt></dl></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_introduction"></a>Chapter 1. Introduction</h1></div></div></div><p><span class="emphasis"><em>The USP Secure Entry Server<sup>®</sup> is a web application firewall acting
+as a reverse proxy with authentication capability.</em></span></p><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_purpose_of_document"></a>1.1. Purpose of Document</h2></div></div></div><p>This guide provides instructions for migrating a previous version of the USP
+Secure Entry Server<sup>®</sup> to the most recent one.</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_target_audience"></a>1.2. Target Audience</h2></div></div></div><p>The document is intended for system administrators of the United Security
+Providers Secure Entry Server<sup>®</sup>.</p><p></p><p></p></div></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_hsp_4_27"></a>Chapter 2. HSP 4.27</h1></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_summary"></a>2.1. Summary</h2></div></div></div><p>This migration guide provides a set of guidelines to migrate the USP Secure Entry Server®
+Software Suite from prior version 4.26 to the latest version 4.27.</p><p><span class="emphasis"><em>However, if you are updating from a Secure Entry Server<sup>®</sup> Software Suite older than
+version 4.26, please consult the migration guides for all intermediate versions.</em></span></p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="v427-header-entry-deny-change"></a>2.2. Change in Header Entry Blacklist Handling for Value Entries</h2></div></div></div><p>A bug in the header value parser has been fixed to correctly recognize parameters - such as the quality value (q) - attached to individual entries.
+For example, given the following Accept-Encoding header:</p><pre class="screen">Accept-Encoding: br;q=1.0, gzip;q=0.8, identity;q=0.1</pre><p>The parser now correctly tokenizes this into three distinct entries, each preserving its associated parameter:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+br;q=1.0
+</li><li class="listitem">
+gzip;q=0.8,
+</li><li class="listitem">
+identity;q=0.1
+</li></ul></div><p>To maintain compatibility with existing header entry filters - such as the commonly used blacklist for <span class="emphasis"><em>Accept-Encoding</em></span> - the filtering logic has
+been updated to use prefix matching. This means that if a header entry begins with a token listed in the filter, it will be removed.</p><p>Example filter directive:</p><pre class="screen">HGW_LocationRequestHeaderEntryDeny Accept-Encoding aes128gcm br compress deflate exi gzip pack200-gzip peerdist sdch x-compress x-deflate x-gzip zstd</pre><p>Applying this filter to the example above results in the following modified request header:</p><pre class="screen">Accept-Encoding: identity;q=0.1</pre><p>While prefix matching ensures backward compatibility, it introduces a potential risk of over-filtering. A single filter token may match and remove multiple
+header values that share the same prefix. However, this behavior is not expected to affect standard HTTP headers.</p><p>The following directives are impacted by this change:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+RF_ServerRequestHeaderEntryDeny
+</li><li class="listitem">
+RF_ServerResponseHeaderEntryDeny
+</li><li class="listitem">
+RF_LocationRequestHeaderEntryDeny
+</li><li class="listitem">
+RF_LocationResponseHeaderEntryDeny
+</li><li class="listitem">
+HGW_ServerRequestHeaderEntryDeny
+</li><li class="listitem">
+HGW_LocationRequestHeaderEntryDeny
+</li></ul></div><p>Customers who use custom commands with any of the affected directives are advised to review their header filter lists. This is especially important if
+custom header value entries are involved. Adjustments may be necessary to avoid negative side effects and ensure expected behavior.
+
+
+&lt;&lt;&lt;</p></div></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_hsp_4_26"></a>Chapter 3. HSP 4.26</h1></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_summary_2"></a>3.1. Summary</h2></div></div></div><p>This migration guide provides a set of guidelines to migrate the USP Secure Entry Server®
+Software Suite from prior version 4.25 to the latest version 4.26.</p><p><span class="emphasis"><em>If you are updating from a Secure Entry Server® Software Suite older than version 4.25,
+please consult also the migration guides for all intermediate versions.</em></span></p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="v426-SHS-removal"></a>3.2. Removal of Secure Handshake (SHS)</h2></div></div></div><p>The secure handshake module (mod_shs) has been removed from SRM entirely.
+SRM will ignore SHS headers coming from the Login Service.</p><p></p></div></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_hsp_4_25"></a>Chapter 4. HSP 4.25</h1></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_summary_3"></a>4.1. Summary</h2></div></div></div><p>This migration guide provides a set of guidelines to migrate the USP Secure Entry Server®
+Software Suite from prior version 4.24 to the latest version 4.25.</p><p><span class="emphasis"><em>If you are updating from a Secure Entry Server® Software Suite older than version 4.24,
+please consult also the migration guides for all intermediate versions.</em></span></p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="v425-HA-active-passive"></a>4.2. Constraint on updates of HA Active/Passive setups</h2></div></div></div><p>If HSP is used in an HA active/passive setup, it is not possible to transfer active sessions from the active (not yet updated) instance
+to the passive, updated instance. The reason for this is an internal change to the session data structure in the client data store.</p><p>Therefore, when updating from HSP 4.24 (or older) to 4.25, the update MUST be done in a maintenance window, as a restart of
+all HSP instances is necessary.</p><p>The transfer of incompatible session data would cause the SRM component of HSP 4.25 to crash.</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="v425-SE_L1Cds-renamed"></a>4.3. SE_L1Cds directives renamed</h2></div></div></div><p>Some SRM directives starting with <span class="emphasis"><em>SE_L1Cds</em></span> have been renamed (using the new the prefix <span class="emphasis"><em>SE_SessionStore</em></span>)
+as due to the integration of the new <span class="emphasis"><em>mod_geode_session_store</em></span> module they have influence on both - the L1
+CD session store and the Geode session store.</p><p>The following table shows all renamed directives:</p><div class="informaltable"><table class="informaltable" cellpadding="4px" style="border-collapse: collapse;border-top: 3px solid #527bbd; border-bottom: 3px solid #527bbd; border-left: 3px solid #527bbd; border-right: 3px solid #527bbd; "><colgroup><col class="col_1" /><col class="col_2" /></colgroup><thead><tr><th style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>Old name</p></th><th style="border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>New name</p></th></tr></thead><tbody><tr><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>SE_L1Cds_FinalTimeOut</p></td><td style="border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>SE_SessionStore_FinalTimeOut</p></td></tr><tr><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>SE_L1Cds_InactiveTimeOut</p></td><td style="border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>SE_SessionStore_InactiveTimeOut</p></td></tr><tr><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>SE_L1Cds_AnonymousInactiveTimeOut</p></td><td style="border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>SE_SessionStore_AnonymousInactiveTimeOut</p></td></tr><tr><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>SE_L1Cds_TimeOutRequestCounter</p></td><td style="border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>SE_SessionStore_TimeOutRequestCounter</p></td></tr><tr><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>SE_L1Cds_TimeOutRequestCounterTmo</p></td><td style="border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>SE_SessionStore_TimeOutRequestCounterTmo</p></td></tr><tr><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>SE_L1Cds_HostLock</p></td><td style="border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>SE_SessionStore_HostLock</p></td></tr><tr><td style="border-right: 1px solid #527bbd; " align="left" valign="top"><p>SE_L1Cds_CClen</p></td><td style="" align="left" valign="top"><p>SE_SessionStore_CClen</p></td></tr></tbody></table></div><p>Customers are adviced to review SRM configurations and to migrate existing settings.
+However, for backwards compatibility the old names will still work until the
+final removal of the directives is announced.</p><p></p></div></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_hsp_4_24"></a>Chapter 5. HSP 4.24</h1></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_summary_4"></a>5.1. Summary</h2></div></div></div><p>This migration guide provides a set of guidelines to migrate the USP Secure
+Entry Server<sup>®</sup> Software Suite from prior version 4.23 to the latest version 4.24.</p><p><span class="emphasis"><em>If you are updating from a Secure Entry Server<sup>®</sup> Software Suite older than
+version 4.23, please consult also the migration guides for all intermediate
+versions.</em></span></p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="v424-mod_security-version"></a>5.2. Version number of mod_security removed</h2></div></div></div><p>With this release 4.24 the newest engine version 2.9.6 of mod_security is include.
+In the past we delivered also the 2.8.0 version of the engine. However, this version
+is out-dated and no more supported. Thus, version 2.8.0 is no more included in the
+delivery package.</p><p>For sake of simplicity the version number in the filename of the shared object file
+has been removed. As a result, the LoadModule directive need to be adjusted:</p><pre class="screen">LoadModule security2_module libexec/mod_security.so</pre></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="v424-removed-RF_Icap"></a>5.3. RF_Icap* directives removed</h2></div></div></div><p>The directives starting with RF_Icap have been deprecated a long time ago.
+Now these directives have been removed from HSP.
+If you still have RF_Icap directives in your configuration it is necessary to
+replace them with the corresponding ICAP_ alternatives.</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="v424-mod_analyze-shared-object"></a>5.4. mod_analyze as shared module</h2></div></div></div><p>The mod_analyze module is no more statically linked into HSP binaries but provided as shared
+module for both - HTS and SRM.</p><p>If <span class="emphasis"><em>DBG_</em></span> settings are in your configuration, you should remove (or comment out) them, otherwise
+SRM or HTS will no more start. In case a traffic analysis is necessary, the mod_analyze module
+can be loaded via <span class="emphasis"><em>LoadModule</em></span>.</p><p>Please note that mod_analyze should not be used on productive systems for performance
+and stability reasons.
+
+
+&lt;&lt;&lt;</p></div></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_hsp_4_23"></a>Chapter 6. HSP 4.23</h1></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_summary_5"></a>6.1. Summary</h2></div></div></div><p>There are no steps needed to migrate the USP Secure Entry Server<sup>®</sup> Software Suite from
+prior version 4.22 to the latest version 4.23.</p><p><span class="emphasis"><em>However, if you are updating from a Secure Entry Server<sup>®</sup> Software Suite older than
+version 4.22, please consult the migration guides for all intermediate versions.</em></span></p><p></p></div></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_hsp_4_22"></a>Chapter 7. HSP 4.22</h1></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_summary_6"></a>7.1. Summary</h2></div></div></div><p>This migration guide provides a set of guidelines to migrate the USP Secure
+Entry Server<sup>®</sup> Software Suite from prior version 4.21 to the latest version 4.22.</p><p><span class="emphasis"><em>If you are updating from a Secure Entry Server<sup>®</sup> Software Suite older than
+version 4.21, please consult also the migration guides for all intermediate
+versions.</em></span></p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="v422-analyze-dbg-trace-maxsize"></a>7.2. DBG_TraceMaxSize removed</h2></div></div></div><p>The directive <span class="emphasis"><em>DBG_TraceMaxSize</em></span> has been removed.</p><p>We recommend using a log file rotation tool (e.g. rotatelogs) instead which is setup by using a pipe
+output "|" on <span class="emphasis"><em>DBG_TraceLog</em></span> settings. For example,</p><p><span class="strong"><strong>DBG_TraceLog "|rotatelogs /path/to/logfile 86400"</strong></span></p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="v422-RF_SF_WSDLSchemaFile-RF_SF_TrustedNamespace"></a>7.3. RF_SF_WSDLSchemaFile and RF_SF_TrustedNamespace removed</h2></div></div></div><p>Due to clean-up work, the long outdated directives <span class="emphasis"><em>RF_SF_WSDLSchemaFile</em></span> and <span class="emphasis"><em>RF_SF_TrustedNamespace</em></span>
+have been removed.</p><p>If <span class="emphasis"><em>RF_SF_WSDLSchemaFile</em></span> is present in configurations, customers are asked to simply remove
+corresponding settings. No additional migration steps are required.</p><p>If <span class="emphasis"><em>RF_SF_TrustedNamespace</em></span> is present in configurations, customers are asked to use <span class="emphasis"><em>RF_SF_TrustedSchema</em></span>
+instead, whereby it must be noted that the "namespace" parameter can be omitted.</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="v422-SOAP-log-mode"></a>7.4. SOAP filtering "log" mode</h2></div></div></div><p>Due to clean-up work, the long outdated "log" mode of the SOAP validation module has been removed.</p><p>If SOAP validation is enabled, customers are asked to review configurations and to ensure that "log"
+is not used for the directives <span class="emphasis"><em>RF_SF_SoapValidator</em></span> and <span class="emphasis"><em>RF_SF_SoapValidatorResponse</em></span>.</p><p>In case "log" mode is used, it is necessary to switch to one of the alternative modes.</p><p></p></div></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_hsp_4_21"></a>Chapter 8. HSP 4.21</h1></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_summary_7"></a>8.1. Summary</h2></div></div></div><p>This migration guide provides a set of guidelines to migrate the USP Secure
+Entry Server<sup>®</sup> Software Suite from prior version 4.20 to the latest version 4.21.</p><p><span class="emphasis"><em>If you are updating from a Secure Entry Server<sup>®</sup> Software Suite older than
+version 4.20, please consult also the migration guides for all intermediate
+versions.</em></span></p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="v421-tls-1.3"></a>8.2. TLSv1.3 support</h2></div></div></div><p>Starting with version 4.21, HSP supports TLSv1.3 throughout. That is, both incoming
+connections from clients as well as outgoing connections to backend servers can be
+secured using TLSv1.3.</p><p>With TLSv1.3 some fundamental changes have been made in comparison to its predecessor
+TLSv1.2. Some of these changes result in limitations that are rather general, whereas
+other limitations are relevant to the use of TLSv1.3 within HSP only.</p><p>Before going in to detail of these limitations it should be noted that a separate
+document "TLSv1.3 in HSP" is available which provides general information about
+improvements in TSL 1.3 as well as an full overview of necessary changes for its
+use in HSP. Readers are invited to consult this document as a primer into the usage
+of the new TLS protocol in HSP.</p><p>For detailed information on TLS-specific directives the reader is referred
+to the HSP Administration Guide.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_post_handshake_authentication"></a>8.2.1. Post Handshake Authentication</h3></div></div></div><p>TLSv1.3 does no more support renegotiation. In TLSv1.2 (and previous versions), renegotiation
+is often used to enable mutual/client authentication at a "Location based" level.
+TLSv1.3 instead provides the "post handshake authentication" (PHA) extension, which
+allows a server to request a client’s certificate at any time after the handshake. However,
+this extension is optional and not required for the basic functionality of TLSv1.3 to work.
+In fact, most browsers do not yet support this extension (status as of August 2020), not
+least because of some uncertainties in specifications.</p><p>Therefore, it should be noted that the following two functionalities are based on PHA
+and therefore can not be used with TLSv1.3 in conjunction with client software not
+supporting the PHA extension.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+Secure Handshake (SHS)
+</li><li class="listitem">
+Mutual/Client authentication on a location level, it does work however at virtual
+host level (SSLVerifyClient require)
+</li></ul></div><p>Please note that when using SHS with TLSv1.3 at least version 5.12 of SLS must be
+used to ensure the correct interaction with HSP.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_ssl_id_locking"></a>8.2.2. SSL ID locking</h3></div></div></div><p>The documentation of OpenSSL 1.1.1 states the following regarding session tickets and
+session IDs.</p><p>"The TLSv1.3 protocol only supports tickets and does not directly support session ids.
+However, OpenSSL allows two modes of ticket operation in TLSv1.3: stateful and stateless.
+Stateless tickets work the same way as in TLSv1.2 and below. Stateful tickets mimic the
+session ID behavior available in TLSv1.2 and below. The session information is cached on
+the server and the session id is wrapped up in a ticket and sent back to the client.
+When the client wishes to resume, it presents a ticket in the same way as for stateless
+tickets. The server can then extract the session id from the ticket and retrieve the
+session information from its cache."</p><p>In HSP the behavior can be controlled by the <span class="emphasis"><em>SSLSessionTickets</em></span> directive. If set to "off",
+the stateful mode of TLSv1.3 is enabled. For security reasons, OpenSSL 1.1.1 may hand out
+multiple stateful SessionTickets per connection so that clients are motivated to use each
+SessionTicket only once (even though it is not strictly necessary). Research has
+shown that well-known browsers follow this best practice and use SessionTickets only once.</p><p>The consequence is that the TLS session ID changes on each request, which in turn leads to
+"false positives" when using HSP’s Session ID Lock and Advanced Session ID Lock Rules
+features together with TLSv1.3. In other words: When using TLSv1.3 for secure communication,
+HSP version 4.21 does not yet provide the ability to correlate session IDs and thus guarantee
+the functionality of the mentioned features. However, we work on providing a more sophisticated
+solution for this in future versions. In the meantime, customers must adapt Session ID Lock
+Rules accordingly or fall back to the usage of TLSv1.2.</p><p>Please remind that with TLSv1.2, session tickets must be disabled in order to support Session
+ID Lock and Advanced Session ID Lock Rules.</p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="v421-reneg-issue"></a>8.3. Renegotiation issue with TLS 1.1/1.2</h2></div></div></div><p>Tests with plain Apache httpd version 2.4.46 and OpenSSL 1.1.1 have revealed the existence
+of an issue with TLS renegotiation on proxy connections: when backend servers initiate a
+TLS renegotiation, httpd’s TLS proxy engine behaves incorrectly leading to a "handshake failure"
+and finally to the abortion of the connection. As HSP uses httpd’s TLS proxy engine, the issue
+can also affect outgoing connections on SRM to backend servers. At the time of writing it is
+still uncertain whether the behaviour of backend software plays a role in the error. Thus,
+it can not be concluded that the error occurs with any backend software.</p><p>Pleae note that the issue has been reported to Apache httpd’s development community and as soon as a
+solution is found, a new version of HSP will be made available.</p><p>For most customers this issue has no impact as TLS renegotiaion is not used by the majority of
+backend applications due to security reasons. Or as renegotiation is simply not necessary for
+most of applications.</p><p>However, customers that encounter the issue we recommend to try to circumvent it by preventing
+the usage of TLS renegotiation on backend server side. For example, by preventing client authentication
+after the initial handshake, by increasing the TLS session timeout, or by setting suitable cipher
+suites on SRM that are accepted by the backend without any objections.</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="v421-ssl-3"></a>8.4. SSLv3 no more supported</h2></div></div></div><p>Starting with version 4.21 SSLv3 is no more supported in HSP and thus, one of its successors
+(at best TLSv1.3) must be used to secure connections.</p><p>For this reason customers are asked to review settings of following directives and to change
+protocol specifications accordingly in case of obsolete SSLv3 usage.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="emphasis"><em>HGW_SslClientProtocol</em></span>
+</li><li class="listitem">
+<span class="emphasis"><em>HGW_SslClientProtocolDefault</em></span>
+</li><li class="listitem">
+<span class="emphasis"><em>SSLProtocol</em></span>
+</li><li class="listitem">
+<span class="emphasis"><em>SSLProxyProtocol</em></span>
+</li></ul></div><p></p></div></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_hsp_4_20"></a>Chapter 9. HSP 4.20</h1></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_summary_8"></a>9.1. Summary</h2></div></div></div><p>This migration guide provides a set of guidelines to migrate the USP Secure
+Entry Server<sup>®</sup> Software Suite from prior version 4.19 to the latest version 4.20.</p><p><span class="emphasis"><em>If you are updating from a Secure Entry Server<sup>®</sup> Software Suite older than
+version 4.19, please consult also the migration guides for all intermediate
+versions.</em></span></p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="v420-changed-default-flag-for-regex"></a>9.2. New default flag for regular expressions core component of httpd</h2></div></div></div><p><span class="strong"><strong>Please note that this migration step must only be applied when updating to version 4.20.0.1
+or higher.</strong></span></p><p>With the update of httpd to version 2.4.43, a new default flag for PCRE
+(Perl Compatible Regular Expressions) was introduced to mitigate security vulnerability
+CVE-2020-1927. A bug in the core component could lead to unpredictable matches and
+substitutions, which then could be abused to fool the redirect component with
+encoded newline characters.</p><p>To avoid this, the PCRE flag <span class="emphasis"><em>PCRE_DOTALL</em></span> is set by default. The flag causes the <span class="emphasis"><em>.</em></span>
+character in regular expressions to also match the newline <span class="emphasis"><em>\n</em></span> and return <span class="emphasis"><em>\r</em></span> characters.
+Note that this affects all regular expressions and therefore has the possibility to break
+existing configurations.</p><p>Customers have two possiblitiies to migrate the configuration:</p><p><span class="strong"><strong>1. Restore old behavior:</strong></span></p><p>The default PCRE flags can be controlled via the <span class="emphasis"><em>RegexDefaultOptions</em></span> directive. With
+<span class="emphasis"><em>RegexDefaultOptions -DOTALL</em></span> the above change can be reverted. Note that by doing so, the
+vulnerability becomes possible again.</p><p><span class="strong"><strong>2. Check the regular expressions</strong></span></p><p>Regular expressions must be checked for possible logical errors due to the introduced change.
+The tricky thing is, that the configuration will still be valid i.e. all regular expressions
+will still compile. It completely depends on the use case and the matched/validated content,
+whether above described behavior is a problem or not. Nevertheless some rule of thumbs
+can help to ease the work:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+In general, whenever only one line is processed (e.g. a request header or the URL), the
+regular expression can be considered as safe.
+</li><li class="listitem">
+Often <span class="emphasis"><em>(.*)</em></span> is used to "match the rest of the line" this can easily improved by adding
+the beginning of the next line to the expression: <span class="emphasis"><em>(.*)\n&lt;beginning_of_next_line&gt;</em></span>
+</li><li class="listitem">
+Finally <span class="emphasis"><em>(.*)</em></span> will match newlines, but with ? we can make the <span class="emphasis"><em>.</em></span> lazy so that it only
+matches as many characters as needed for the rest of the pattern to succeed. Note that this
+could also have an impact on other whitespace characters. By adding a newline (or whatever
+should be the "end" of the match) this risk can be reduced:
+<span class="emphasis"><em>(.*?)\n</em></span>
+
+
+&lt;&lt;&lt;
+</li></ul></div></div></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_hsp_4_19"></a>Chapter 10. HSP 4.19</h1></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_summary_9"></a>10.1. Summary</h2></div></div></div><p>This migration guide provides a set of guidelines to migrate the USP Secure
+Entry Server<sup>®</sup> Software Suite from prior version 4.18 to the latest version 4.19.</p><p><span class="emphasis"><em>If you are updating from a Secure Entry Server<sup>®</sup> Software Suite older than
+version 4.18, please consult also the migration guides for all intermediate
+versions.</em></span></p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="v419-h2-mod-shared"></a>10.2. Dynamically loading of <span class="emphasis"><em>mod_http2</em></span></h2></div></div></div><p><span class="strong"><strong>Please note that this migration step must only be applied when updating to version 4.19.0.6
+or higher.</strong></span></p><p>In HTS the linking of the HTTP/2 module <span class="emphasis"><em>mod_http2</em></span> has been changed from static to dynamic. That is,
+the module is no more loaded automatically when HTS is started.</p><p>Customers that have HTTP/2 enabled must add following setting to the global section of the configuration
+in order the <span class="emphasis"><em>mod_http2</em></span> module gets loaded on start-up.</p><pre class="screen">LoadModule http2_module /path/to/mod_http2.so</pre><p>The standard path of the shared object file is /opt/usp/hsp/hts/libexec/mod_http2.so.</p><p>The HTTP/2 protocol is enabled by adding "h2" to the <span class="emphasis"><em>Protocols</em></span> directive. If "h2" should
+not be enabled but directives of <span class="emphasis"><em>mod_http2</em></span> be present in the configuration, please
+remove all corresponding H2 settings. Otherwise, a start-up of HTS would fail.</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="v419-changed-default-flag-for-regex"></a>10.3. New default flag for regular expressions core component of httpd</h2></div></div></div><p><span class="strong"><strong>Please note that this migration step must only be applied when updating to version 4.19.0.10
+or higher.</strong></span></p><p>With the update of httpd to version 2.4.43, a new default flag for PCRE
+(Perl Compatible Regular Expressions) was introduced to mitigate security vulnerability
+CVE-2020-1927. A bug in the core component could lead to unpredictable matches and
+substitutions, which then could be abused to fool the redirect component with
+encoded newline characters.</p><p>To avoid this, the PCRE flag <span class="emphasis"><em>PCRE_DOTALL</em></span> is set by default. The flag causes the <span class="emphasis"><em>.</em></span>
+character in regular expressions to also match the newline <span class="emphasis"><em>\n</em></span> and return <span class="emphasis"><em>\r</em></span> characters.
+Note that this affects all regular expressions and therefore has the possibility to break
+existing configurations.</p><p>Customers have two possiblitiies to migrate the configuration:</p><p><span class="strong"><strong>1. Restore old behavior:</strong></span></p><p>The default PCRE flags can be controlled via the <span class="emphasis"><em>RegexDefaultOptions</em></span> directive. With
+<span class="emphasis"><em>RegexDefaultOptions -DOTALL</em></span> the above change can be reverted. Note that by doing so, the
+vulnerability becomes possible again.</p><p><span class="strong"><strong>2. Check the regular expressions</strong></span></p><p>Regular expressions must be checked for possible logical errors due to the introduced change.
+The tricky thing is, that the configuration will still be valid i.e. all regular expressions
+will still compile. It completely depends on the use case and the matched/validated content,
+whether above described behavior is a problem or not. Nevertheless some rule of thumbs
+can help to ease the work:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+In general, whenever only one line is processed (e.g. a request header or the URL), the
+regular expression can be considered as safe.
+</li><li class="listitem">
+Often <span class="emphasis"><em>(.*)</em></span> is used to "match the rest of the line" this can easily improved by adding
+the beginning of the next line to the expression: <span class="emphasis"><em>(.*)\n&lt;beginning_of_next_line&gt;</em></span>
+</li><li class="listitem">
+Finally <span class="emphasis"><em>(.*)</em></span> will match newlines, but with ? we can make the <span class="emphasis"><em>.</em></span> lazy so that it only
+matches as many characters as needed for the rest of the pattern to succeed. Note that this
+could also have an impact on other whitespace characters. By adding a newline (or whatever
+should be the "end" of the match) this risk can be reduced:
+<span class="emphasis"><em>(.*?)\n</em></span>
+
+
+&lt;&lt;&lt;
+</li></ul></div></div></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_hsp_4_18"></a>Chapter 11. HSP 4.18</h1></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_summary_10"></a>11.1. Summary</h2></div></div></div><p>This migration guide provides a set of guidelines to migrate the USP Secure
+Entry Server<sup>®</sup> Software Suite from prior version 4.17 to the latest version 4.18.</p><p><span class="emphasis"><em>If you are updating from a Secure Entry Server<sup>®</sup> Software Suite older than
+version 4.17, please consult also the migration guides for all intermediate
+versions.</em></span></p><p></p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="v418-update-hdr-validator-defs"></a>11.2. Update of header definitions for <span class="emphasis"><em>mod_header_validator</em></span></h2></div></div></div><p>The HTTP header syntax definitions used by <span class="emphasis"><em>mod_header_validator</em></span> have been
+updated according to the RFC 723x series (RFC 7230, RFC 7231, etc.). In addition,
+new definitions and validator rules for following request headers have been added</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+Origin
+</li><li class="listitem">
+Access-Control-Request-Method
+</li><li class="listitem">
+Access-Control-Request-Headers
+</li><li class="listitem">
+HTTP2-Settings
+</li></ul></div><p>Customers that have <span class="emphasis"><em>mod_header_validator</em></span> and the delivered configuration files
+<span class="emphasis"><em>hsp_hv_rfc_compliance.conf</em></span> and <span class="emphasis"><em>hsp_hv_srv_all_headers.conf</em></span> in use are asked to
+test setups before going live in order to ensure that syntax changes may not cause
+the removal of essential request headers (e.g. when non-RFC conform client software is
+in use).</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="v418-changed-default-flag-for-regex"></a>11.3. New default flag for regular expressions core component of httpd</h2></div></div></div><p><span class="strong"><strong>Please note that this migration step must only be applied when updating to version 4.18.0.6
+or higher.</strong></span></p><p>With the update of httpd to version 2.4.43, a new default flag for PCRE
+(Perl Compatible Regular Expressions) was introduced to mitigate security vulnerability
+CVE-2020-1927. A bug in the core component could lead to unpredictable matches and
+substitutions, which then could be abused to fool the redirect component with
+encoded newline characters.</p><p>To avoid this, the PCRE flag <span class="emphasis"><em>PCRE_DOTALL</em></span> is set by default. The flag causes the <span class="emphasis"><em>.</em></span>
+character in regular expressions to also match the newline <span class="emphasis"><em>\n</em></span> and return <span class="emphasis"><em>\r</em></span> characters.
+Note that this affects all regular expressions and therefore has the possibility to break
+existing configurations.</p><p>Customers have two possiblitiies to migrate the configuration:</p><p><span class="strong"><strong>1. Restore old behavior:</strong></span></p><p>The default PCRE flags can be controlled via the <span class="emphasis"><em>RegexDefaultOptions</em></span> directive. With
+<span class="emphasis"><em>RegexDefaultOptions -DOTALL</em></span> the above change can be reverted. Note that by doing so, the
+vulnerability becomes possible again.</p><p><span class="strong"><strong>2. Check the regular expressions</strong></span></p><p>Regular expressions must be checked for possible logical errors due to the introduced change.
+The tricky thing is, that the configuration will still be valid i.e. all regular expressions
+will still compile. It completely depends on the use case and the matched/validated content,
+whether above described behavior is a problem or not. Nevertheless some rule of thumbs
+can help to ease the work:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+In general, whenever only one line is processed (e.g. a request header or the URL), the
+regular expression can be considered as safe.
+</li><li class="listitem">
+Often <span class="emphasis"><em>(.*)</em></span> is used to "match the rest of the line" this can easily improved by adding
+the beginning of the next line to the expression: <span class="emphasis"><em>(.*)\n&lt;beginning_of_next_line&gt;</em></span>
+</li><li class="listitem">
+Finally <span class="emphasis"><em>(.*)</em></span> will match newlines, but with ? we can make the <span class="emphasis"><em>.</em></span> lazy so that it only
+matches as many characters as needed for the rest of the pattern to succeed. Note that this
+could also have an impact on other whitespace characters. By adding a newline (or whatever
+should be the "end" of the match) this risk can be reduced:
+<span class="emphasis"><em>(.*?)\n</em></span>
+</li></ul></div><p></p><p></p></div></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_hsp_4_17"></a>Chapter 12. HSP 4.17</h1></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_summary_11"></a>12.1. Summary</h2></div></div></div><p>This migration guide provides a set of guidelines to migrate the USP Secure
+Entry Server<sup>®</sup> Software Suite from prior version 4.16 to the latest version 4.17.</p><p><span class="emphasis"><em>If you are updating from a Secure Entry Server<sup>®</sup> Software Suite older than
+version 4.16, please consult also the migration guides for all intermediate
+versions.</em></span></p><p></p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="v417-removal-hsp-tcp-script"></a>12.2. Removal of <span class="emphasis"><em>hsp_tcp</em></span> script</h2></div></div></div><p>The outdated script <span class="emphasis"><em>hsp_tcp</em></span>, which was intended to set different TCP kernel
+parameters, has been removed from the delivery package. As a replacement,
+customers are asked to add such parameters to <span class="emphasis"><em>/etc/sysctl.conf</em></span> or any file in
+<span class="emphasis"><em>/etc/sysctl.d/*.conf</em></span> (on most standard Linux systems).</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="v417-port-collision"></a>12.3. Information about port collision on loopback device</h2></div></div></div><p>On heavy-loaded systems sporadic "address already in use" errors during graceful
+restarts have been reported when new virtual hosts have been added to SRM.</p><p>The reason were port collisions of sockets in time-wait state - used
+by HTS to connect to SRM on loopback device - with custom port numbers used for
+new virtual hosts on SRM.</p><p>To avoid such collisions it has to be ensured that the start of the ephemeral port
+range is always higher than the highest custom port number of any virtual host on SRM.</p><p>Customers are asked to review the kernel parameter <span class="emphasis"><em>net.ipv4.ip_local_port_range</em></span> and
+- in case of an overlapping - to adjust the range accordingly in <span class="emphasis"><em>/etc/sysctl.conf</em></span>.</p><p></p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="v417-load-balancing"></a>12.4. New load balancing module</h2></div></div></div><p>The new load balancing module <span class="emphasis"><em>mod_hgw_balancer</em></span> is based on <span class="emphasis"><em>mod_proxy_balancer</em></span>
+and thus provides access to numerous new functions, such as changeable scheduling
+algorithms or configurable health checks.</p><p><span class="emphasis"><em>mod_hgw_balancer</em></span> can not be used together with the outdated module <span class="emphasis"><em>mod_hgw_fo</em></span>,
+so migration is necessary when switching. However, using <span class="emphasis"><em>mod_hgw_balancer and _mod_hgw_fo</em></span>
+on different locations (or even sub-locations) is entirely possible.</p><p>Please refer to the HSP Administration Guide, which provides a separate chapter on
+using <span class="emphasis"><em>mod_hgw_balancer</em></span>.</p><p>For all information about <span class="emphasis"><em>mod_proxy_balanacer</em></span> and its submodules we refer to the
+official websites:</p><p><a class="ulink" href="https://httpd.apache.org/docs/2.4/mod/mod_proxy_balancer.html" target="_top">https://httpd.apache.org/docs/2.4/mod/mod_proxy_balancer.html</a>
+<a class="ulink" href="https://httpd.apache.org/docs/2.4/mod/mod_proxy_hcheck.html" target="_top">https://httpd.apache.org/docs/2.4/mod/mod_proxy_hcheck.html</a></p><p><a class="ulink" href="https://httpd.apache.org/docs/2.4/mod/mod_lbmethod_byrequests.html" target="_top">https://httpd.apache.org/docs/2.4/mod/mod_lbmethod_byrequests.html</a>
+<a class="ulink" href="https://httpd.apache.org/docs/2.4/mod/mod_lbmethod_bytraffic.html" target="_top">https://httpd.apache.org/docs/2.4/mod/mod_lbmethod_bytraffic.html</a>
+<a class="ulink" href="https://httpd.apache.org/docs/2.4/mod/mod_lbmethod_bybusyness.html" target="_top">https://httpd.apache.org/docs/2.4/mod/mod_lbmethod_bybusyness.html</a></p><p></p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="v417-accepted-ciphers"></a>12.5. Removal of <code class="literal">AC_AcceptedCiphers</code></h2></div></div></div><p>The obsolete directive <code class="literal">AC_AcceptedCiphers</code> has been removed from SRM.</p><p>Customers that use this directive are asked to remove it from any location in SRM
+and instead to use <code class="literal">SSLCipherSuite</code> in corresponding locations in HTS.</p><p>All details about <code class="literal">SSLCipherSuite</code> can be found on the official website of <span class="emphasis"><em>mod_ssl</em></span>:
+<a class="ulink" href="https://httpd.apache.org/docs/2.4/mod/mod_ssl.html#sslciphersuite" target="_top">https://httpd.apache.org/docs/2.4/mod/mod_ssl.html#sslciphersuite</a></p><p></p><p></p></div></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_hsp_4_16"></a>Chapter 13. HSP 4.16</h1></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_summary_12"></a>13.1. Summary</h2></div></div></div><p>This migration guide provides a set of guidelines to migrate the USP Secure
+Entry Server<sup>®</sup> Software Suite from prior version 4.15 to the latest version 4.16.</p><p><span class="emphasis"><em>If you are updating from a Secure Entry Server<sup>®</sup> Software Suite older than
+version 4.15, please consult also the migration guides for all intermediate
+versions.</em></span></p><p></p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="v416-binary-compatibility"></a>13.2. HSP binary compatibility / requirement changes</h2></div></div></div><p>From version 4.16 onwards until further notice new software requirements and
+compatibilties are in place. The HSP binary is binary compatible with Red Hat<sup>®</sup>
+Enterprise Linux<sup>®</sup> 6 Update 8 (or newer) and CentOS 6.8 (or newer).</p><p>Although only Red Hat<sup>®</sup> Enterprise Linux<sup>®</sup> 6 Update 8 (or newer) and
+CentOS 6.8 (or newer) will be supported, the HSP package may also install and
+run on platforms that fulfil the following software requirements:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+linux 2.6.32 (or newer)
+</li><li class="listitem">
+glibc 2.12 (or newer)
+</li><li class="listitem">
+libgcc 4.4.7 (or newer)
+</li><li class="listitem">
+libstdc++ 4.4.7 (or newer)
+</li></ul></div><p></p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="v416-internal-cookies"></a>13.3. Processing of internal cookies</h2></div></div></div><p>In version 4.16 some fundamental changes have been made regarding the
+processing of internal cookies.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_domain_matching"></a>13.3.1. Domain Matching</h3></div></div></div><p>Internal cookies are now checked for Domain Matching in accordance with RFC 6265;
+the consequence is that if the hostname of the selected backend does not domain-match
+the value of the domain-attribute, the corresponding cookie is filtered. We call
+this newly default behaviour the "strict" Domain Matching Policy.</p><p>The default behaviour can be changed to "loose" by using following new directive</p><pre class="screen">SE_IntCookie_DomainMatchingPolicy loose</pre><p>"loose" disables any Domain Matching checks so that any cookie of any domain is accepted.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_persistent_cookies_host_only_enforcement"></a>13.3.2. Persistent cookies "host-only" enforcement</h3></div></div></div><p>Persistent cookies now are always enforced to be set to "host-only" on the corresponding
+client by removing the domain-attribute (if it exists). Thus, a client sends cookies
+only to the front-end host on which they have been set - and not to the whole domain, as in
+earlier versions.</p><p>If persistent cookies should be made available to a certain domain namespace, the
+new directive <code class="literal">SE_IntCookie_PersistentCookiesMapping</code> can be used to map cookies
+(by regular expression on cookie name) to a specific domain.</p><pre class="screen">SE_IntCookie_PersistentCookiesMapping &lt;regular-expression&gt; &lt;domain&gt;</pre><p>Please refer to the HSP Administration Guide for any further information about
+the new introduced directives.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_cookies_from_sls"></a>13.3.3. Cookies from SLS</h3></div></div></div><p>The Secure Login Service SLS up to version 5.9.x sends the "Version" attribute in
+the Set-Cookie header if the cookie is defined with "cookie.set" in the
+sls_instance.properties file. Also, some cookies had the "expire" attribute set
+instead of the "max-age" attribute. These attributes were deprecated by RFC 6265 and
+lead to  parsing problems in HSP, or even complete removement of the cookie in
+worst case.</p><div class="note" style="margin-left: 0; margin-right: 10%;"><h3 class="title">Note</h3><p>It is therefore recommended to update SLS to a version 5.10.0.0 or later to
+guarantee compatibility with HSP 4.16.x and later on.</p></div><p>If you can’t update SLS for some reason, you have to set cookies in a different
+way in the sls_instance.properties file. By using "hsp.header" instead of "cookie.set"
+it is possible to prevent the Version attribute in the Set-Cookie header:</p><pre class="literallayout"># Create the Set-Cookie header by hand
+hsp.header.Set-Cookie=my-login-cookie=my-cookie-value; Max-Age=28800; Path=/app
+
+# instead of using cookie.&lt;...&gt;
+#cookie.set.successful.name.1=my-login-cookie
+#cookie.LoginTicket.value=my-cookie-value
+#cookie.LoginTicket.max-age=28800
+#cookie.LoginTicket.path=/app</pre><p></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="v416-hspcredentialdomain"></a>13.4. Removing of AC_HspCredentialDomain</h2></div></div></div><p><code class="literal">AC_HspCredentialDomain</code> has been removed from the set of SRM’s directives. Customers
+that have set this directive are asked to replace settings as following</p><pre class="screen">AC_HspCredentialDomain &lt;domain&gt;</pre><p>by</p><pre class="screen">SE_IntCookie_PersistentCookiesMapping SessionCredential &lt;domain&gt;</pre><p>As a side-effect of the removing, the SessionInfo header sent to Login Services
+during authentication steps has lost the <code class="literal">SrvCookieDomain</code> attribute. Customers
+who depend on this attribute in Login Services are asked to add following
+setting in corresponding login locations</p><pre class="screen">RequestHeader edit SessionInfo (.*) "SrvCookieDomain=&lt;domain&gt;; $1"</pre><p></p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="v416-path-translation"></a>13.5. Changes in translation and substitution functionalities</h2></div></div></div><p>Because of a conflict in response header rewriting following changes have been made
+to path translation and response substitution functionalities.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_path_translation"></a>13.5.1. Path translation</h3></div></div></div><p>Up to version 4.15, when setting <code class="literal">HGW_TranslatePath</code> (or <code class="literal">HGW_TranslatePathMatch</code>),
+this also added an implicit reverse rewriting rule to modify the path attribute of
+Set-Cookie headers in responses. However, it did not create such implicit reverse
+translations for other headers with path related content, like the Location header.</p><p>As of version 4.16, when setting <code class="literal">HGW_TranslatePath</code> (or <code class="literal">HGW_TranslatePathMatch</code>),
+implicit reverse translation rules for path related content of the response headers
+<span class="emphasis"><em>Set-Cookie</em></span> and <span class="emphasis"><em>Location</em></span> are created. During response processing, these headers
+are automaticaly changed to fit the respective request path rewriting.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_response_substitution"></a>13.5.2. Response substitution</h3></div></div></div><p>Up to version 4.15, when setting <code class="literal">HGW_ResFltSubstitute</code> (or <code class="literal">HGW_ResFltSubstituteMatch</code>)
+substitution rules were applied to the Location header of redirection responses
+and to the path attribute of Set-Cookie headers when present.</p><p>As of version 4.16, response substitution rules are only applied to the response
+body and no longer to any header. As a consequence, the directive <code class="literal">HGW_ResFlt_BodyOnly</code>
+became obsolete and thus, has been removed.</p><p>Customers that have <code class="literal">HGW_ResFlt_BodyOnly</code> in use are asked to remove it from
+configurations. If substitutions in Location headers or Set-Cookie headers
+are required, customers are asked to use the directive <code class="literal">Header</code> from the module
+mod_headers.</p><p>For details on <code class="literal">Header</code> the reader is kindly asked to refer to the official documentation
+that can be found at <a class="ulink" href="http://httpd.apache.org/docs/current/mod/mod_headers.html" target="_top">http://httpd.apache.org/docs/current/mod/mod_headers.html</a>.</p><p></p></div></div></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_hsp_4_15"></a>Chapter 14. HSP 4.15</h1></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_summary_13"></a>14.1. Summary</h2></div></div></div><p>This migration guide provides a set of guidelines to migrate the USP Secure
+Entry Server<sup>®</sup> from prior version 4.14 to the latest version 4.15.</p><p><span class="emphasis"><em>If you are updating from a Secure Entry Server<sup>®</sup> Software Suite older than
+version 4.14, please consult also the migration guides for all intermediate
+versions, as this migration guide only outlines the changes between the new
+and the previous USP Secure Entry Server<sup>®</sup> version.</em></span></p><p></p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="v415-updating-ses"></a>14.2. Updating to USP Secure Entry Server 4.15</h2></div></div></div><p>Due to a bug in <code class="literal">AC_StartQueryString</code>, the HSP-specific query string parameters
+<code class="literal">RequestedPage</code>, <code class="literal">HSPClientDataKey</code> and <code class="literal">PostDataStorageInfo</code> were not verified
+against the freely configurable regular expression of this directive.</p><p>The bug has been fixed in version 4.15 so that all three parameters are now
+considered upon verification.</p><p>Since the directive’s default is to not allow any query string parameter
+for login requests, customers that have not set AC_StartQueryString in
+the configuration of the SRM must now add following setting</p><pre class="screen">AC_StartQueryString "^([&amp;]?(RequestedPage=[a-zA-Z0-9_\-\$]+)? \
+                                   (HSPClientDataKey=[a-zA-Z0-9_\$]+)? \
+                                   (PostDataStorageInfo=DataSize=[0-9]+)?)*$"</pre><p>in order to match said HSP-specific parameters.</p><p>Customers that have set <code class="literal">AC_StartQueryString</code> must adjust their setting by
+adding the stated regular expression groups accordingly.</p><p><span class="strong"><strong>Note that, without adjustment, login requests (containing one of the
+parameters) may be blocked erroneously.</strong></span></p><p></p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="v415-hsp-sslallowreneg"></a>14.3. HSP_SSLAllowLegacyRenegotiation</h2></div></div></div><p>The legacy renegotiation support of SSL has been removed so that the directive
+<code class="literal">HSP_SSLAllowLegacyRenegotiation</code> is no more available. However, if legacy SSL
+renegotiation is still needed, mod_ssl’s equivalent directive
+<code class="literal">SSLInsecureRenegotiation</code> should be used.</p><p>A complete documentation of SSLInsecureRenegotiation can be found on the Web
+Page of Apache HTTPD <a class="link" href="#v415-web-link-1">[1]</a></p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_session_id_lock_rule_variable_login_ip"></a>14.3.1. Session ID lock rule variable LOGIN_IP</h3></div></div></div><p>The variable <code class="literal">LOGIN_IP</code> can be used in Session ID lock rules to specify
+conditions based on the client’s login IP address. The default unset value
+of this variable has been changed.</p><p>Before version 4.15, the variable resolved to <code class="literal">"0.0.0.0"</code>, if a client has not
+performed a login so far. Since version 4.15, for unauthenticated sessions,
+the variable resolves to the empty string ("").</p><p>Session ID lock rule directives (<code class="literal">SE_LockRule</code> or <code class="literal">SE_LockDefineEvent</code>) using
+the default unset value of <code class="literal">LOGIN_IP</code> in expressions must be adjusted accordingly.</p><p>For instance, after updating to version 4.15, the following event</p><pre class="screen">SE_LockDefineEvent IPhasChangedAfterLogin : (%{LOGIN_IP} != "0.0.0.0") &amp;&amp; \
+                                                                     (%{LOGIN_IP} != %{CURRENT_IP})</pre><p>must be changed to</p><pre class="screen">SE_LockDefineEvent IPhasChangedAfterLogin : (%{LOGIN_IP} != "") &amp;&amp; \
+                                                          (%{LOGIN_IP} != %{CURRENT_IP})</pre><p>in order to still evaluate to true whenever a client has changed its IP after
+login. In other words: If the client is authenticated (<code class="literal">LOGIN_IP</code> != ""), and
+the client’s current IP address is different to its login IP address,
+increase the value of session ID lock rule event variable
+<code class="literal">IPhasChangedAfterLogin</code> by one.</p><p></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="v415-weblinks"></a>14.4. Web Links</h2></div></div></div><p>More information can be found in the following web resources:</p><p><a id="v415-web-link-1"></a>[1] Documentation of the directive <code class="literal">SSLInsecureRenegotiation</code></p><p><a class="ulink" href="https://httpd.apache.org/docs/current/mod/mod_ssl.html#sslinsecurerenegotiation" target="_top">https://httpd.apache.org/docs/current/mod/mod_ssl.html#sslinsecurerenegotiation</a></p><p></p></div></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_hsp_4_14"></a>Chapter 15. HSP 4.14</h1></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_summary_14"></a>15.1. Summary</h2></div></div></div><p>This migration guide provides a set of guidelines to migrate the USP Secure
+Entry Server<sup>®</sup> from prior version 4.14 to the latest version 4.14.</p><p><span class="emphasis"><em>If you are updating from a Secure Entry Server<sup>®</sup> Software Suite older than
+version 4.12, please consult also the migration guides for all intermediate
+versions, as this migration guide only outlines the changes between the new
+and the previous USP Secure Entry Server<sup>®</sup> version.</em></span></p><p></p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="v414-updating-ses"></a>15.2. Updating to USP Secure Entry Server 4.14</h2></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_hsp_initialrequesttimeout"></a>15.2.1. HSP_InitialRequestTimeout</h3></div></div></div><p>The <code class="literal">HSP_InitialRequestTimeout</code> directive from the <code class="literal">mod_dos</code> module has been
+removed as its functionality is completely covered by <code class="literal">mod_reqtimeout’s</code>
+directive <code class="literal">RequestReadTimeout</code>.</p><p>The server-wide setting of <code class="literal">HSP_InitialRequestTimeout</code> in the HSP Listener
+of following format</p><pre class="screen">    HSP_InitialRequestTimeout &lt;n&gt;</pre><p>should be be replaced by</p><pre class="screen">    RequestReadTimeout header=&lt;n&gt;</pre><p>"Important"</p><p>As the default setting of <code class="literal">HSP_InitialRequestTimeout</code> was 3 seconds (n=3),
+whereas the header timeout of <code class="literal">ReadRequestTimeout</code> is (at the maximum) 40
+seconds, configurations with no customized setting should be completed with</p><pre class="screen">    RequestReadTimeout header=3</pre><p>in order to achieve same header timeout behavior after the update.</p><p><code class="literal">RequestReadTimeout</code> additionally provides the possibility to set a body
+timeout as well as a minimum data rate. A complete documentation of all
+functionalities can be found on the official Web Page of Apache under
+<a class="ulink" href="https://httpd.apache.org/docs/2.4/mod/mod_reqtimeout.html#requestreadtimeout.s" target="_top">https://httpd.apache.org/docs/2.4/mod/mod_reqtimeout.html#requestreadtimeout.s</a></p><p><span class="emphasis"><em>Please note that non-migrated configurations would lead to start-up errors of
+the HSP Listener after updating to newest version 4.14.</em></span></p><p></p></div></div></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_hsp_4_12"></a>Chapter 16. HSP 4.12</h1></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_summary_15"></a>16.1. Summary</h2></div></div></div><p>This migration guide provides a set of guidelines to migrate the
+USP Secure Entry Server<sup>®</sup> Software Suite from prior versions 4.11 to the
+latest version 4.12.</p><p>The latest version of USP Secure Entry Server<sup>®</sup> Software Suite introduces
+Apache Server 2.4 for the Secure Request Manager (SRM). There have been made
+changes in many different modules that <span class="strong"><strong>could require changes</strong></span> to your
+configuration files before using them with the latest version.</p><p>We <span class="strong"><strong>strongly recommend to carefully study these Apache changes</strong></span>. We also
+recommend to have a closer look into the upgrade documentation <a class="link" href="#v412-web-link-1">[1]</a>
+provided by the Apache community which is presented in the Web Links section
+below.</p><p>With the Apache upgrade, the way how <span class="strong"><strong>SSI (Server Side Include) documents</strong></span> are
+parsed has changed. Such documents are mainly used for error pages. If this
+functionality is used, migration is most likely required.</p><p>With this new version, USP Secure Entry Server<sup>®</sup> Software Suite supports
+authentication enforcement on <span class="strong"><strong>web socket connections</strong></span>. This involves a
+configuration migration for web socket setups.</p><p>The <span class="strong"><strong>ModSecurity engine</strong></span> is delivery now in multiple version including the latest
+engine version 2.9.1. The configuration need to be changed to select the
+explicit version.</p><p></p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="v412-updating-ses"></a>16.2. Updating to USP Secure Entry Server 4.12</h2></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_apache_2_4_changes"></a>16.2.1. Apache 2.4 changes</h3></div></div></div><p>The following list of directives have been replaced or removed in Apache 2.4.
+As they are relevant to the latest USP Secure Entry Server<sup>®</sup> Software Suite,
+Linux Version they must be adjusted accordingly for the successful operation.</p><p><span class="strong"><strong>Changed Modules</strong></span></p><div class="table"><a id="id1339"></a><p class="title"><strong>Table 16.1. Changes in directives</strong></p><div class="table-contents"><table class="table" summary="Changes in directives" cellpadding="4px" style="border-collapse: collapse;border-top: 3px solid #527bbd; border-bottom: 3px solid #527bbd; border-left: 3px solid #527bbd; border-right: 3px solid #527bbd; "><colgroup><col class="col_1" /><col class="col_2" /><col class="col_3" /></colgroup><thead><tr><th style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top">Core/Module                    </th><th style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top">Directive                      </th><th style="border-bottom: 1px solid #527bbd; " align="left" valign="top">Description / Action required</th></tr></thead><tbody><tr><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>mod_log_config.c</p></td><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>ErrorLog, TransferLog, CustomLog</p></td><td style="border-bottom: 1px solid #527bbd; " align="left" valign="top"><p><a class="ulink" href="http://httpd.apache.org/docs/2.4/logs.html#piped" target="_top">Piped logging commands</a> were
+invoked using <code class="literal">/bin/sh -c</code> in 2.2 and earlier. In 2.4 and later, piped logging
+commands are executed directly. To restore the old behavior, use <code class="literal">"|$"</code>
+instead of <code class="literal">"|"</code>. This may be required if you use logrotate in combination
+with syslog (<code class="literal">/usr/bin/logger</code>)</p></td></tr><tr><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>various</p></td><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p><code class="literal">Lockfile</code>
+<code class="literal">RewriteLock</code>
+<code class="literal">SSLMutex</code>
+<code class="literal">AcceptMutex</code>
+<code class="literal">SSLStaplingMutex</code>
+<code class="literal">WatchdogMutexPath</code></p></td><td style="border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>Have been replaced with a single <a class="ulink" href="http://httpd.apache.org/docs/2.4/mod/core.html#mutex" target="_top">Mutex</a> directive.
+You will need to evaluate any use of these removed directives in your 2.2
+configuration to determine if they can just be deleted or will need to be replaced
+using <a class="ulink" href="http://httpd.apache.org/docs/2.4/mod/core.html#mutex" target="_top">Mutex</a>.</p>
+<p>Recommended setting: <code class="literal">Mutex sysvsem default</code></p></td></tr><tr><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>mod_include.c</p></td><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"> </td><td style="border-bottom: 1px solid #527bbd; " align="left" valign="top"><p><a class="ulink" href="http://httpd.apache.org/docs/2.4/mod/mod_include.html" target="_top">mod_include</a> has
+switched to the new <a class="ulink" href="http://httpd.apache.org/docs/2.4/expr.html" target="_top"><code class="literal">ap_expr</code></a>
+syntax for conditional expressions in <code class="literal">#if</code> flow control elements used e.g.
+in SSI files.</p>
+<p>Use the directive <code class="literal">SSILegacyExprParser</code> to switch to the <a class="ulink" href="http://httpd.apache.org/docs/2.4/mod/mod_include.html#legacyexpr" target="_top">old syntax</a> which is
+compatible with previous Apache version or migrate corresponding server side
+includes (like error documents) accordingly.</p></td></tr><tr><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>mod_ssl.c</p></td><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>SSLSessionCache</p></td><td style="border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>This setting uses a URL alike syntax to define what shared memory
+implementation to use. If you used a shmht:// setting in here, replace it by
+shmcb://</p></td></tr><tr><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"> </td><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p><code class="literal">SSLRequire</code></p></td><td style="border-bottom: 1px solid #527bbd; " align="left" valign="top"><p><code class="literal">SSLRequire</code> is deprecated and should in general be replaced by
+<a class="ulink" href="https://httpd.apache.org/docs/current/mod/mod_authz_core.html#reqexpr" target="_top">Require expr</a>.
+There are some differences described <a class="ulink" href="https://httpd.apache.org/docs/2.4/mod/mod_ssl.html#sslrequire" target="_top">here</a>.</p></td></tr><tr><td style="border-right: 1px solid #527bbd; " align="left" valign="top"> </td><td style="border-right: 1px solid #527bbd; " align="left" valign="top"><p>*_DN environment variables</p></td><td style="" align="left" valign="top"><p>The format of the *_DN variables has changed following
+<a class="ulink" href="https://www.ietf.org/rfc/rfc2253.txt" target="_top">RFC2253</a> e.g. new
+comma is used as delimiter. If such variables are used, check for conformity.</p></td></tr></tbody></table></div></div><br class="table-break" /><p></p><p><span class="strong"><strong>New directives</strong></span></p><p>Apache Server 2.4 (in comparison to 2.2) introduced new directives which
+may be used in the SRM custom commands or in your configuration files:</p><div class="table"><a id="id1340"></a><p class="title"><strong>Table 16.2. New directives in Apache Server 2.4 and 3rd-party modules</strong></p><div class="table-contents"><table class="table" summary="New directives in Apache Server 2.4 and 3rd-party modules" cellpadding="4px" style="border-collapse: collapse;border-top: 3px solid #527bbd; border-bottom: 3px solid #527bbd; border-left: 3px solid #527bbd; border-right: 3px solid #527bbd; "><colgroup><col class="col_1" /><col class="col_2" /><col class="col_3" /></colgroup><thead><tr><th style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top">Core/Module                    </th><th style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top">Directive                      </th><th style="border-bottom: 1px solid #527bbd; " align="left" valign="top">Remark / Web Resource</th></tr></thead><tbody><tr><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>core.c</p></td><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p><code class="literal">AllowOverrideList</code>
+<code class="literal">UnDefine</code>
+<code class="literal">DefaultRuntimeDir</code>
+<code class="literal">Define</code>
+<code class="literal">Error</code>
+<code class="literal">ErrorLogFormat</code>
+<code class="literal">ExtendedStatus</code>
+<code class="literal">IncludeOptional</code>
+<code class="literal">MaxRangeOverlaps</code>
+<code class="literal">MaxRangeReversals</code>
+<code class="literal">Mutex</code></p></td><td style="border-bottom: 1px solid #527bbd; " align="left" valign="top"> </td></tr><tr><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p><code class="literal">mod_authz_core.c</code></p></td><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p><code class="literal">AuthzSendForbiddenOnFailure</code>
+<code class="literal">AuthMerging</code></p></td><td style="border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>For more information about mod_authz_core, visit <a class="ulink" href="http://httpd.apache.org/docs/2.4/mod/mod_authz_core.html" target="_top">http://httpd.apache.org/docs/2.4/mod/mod_authz_core.html</a></p></td></tr><tr><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p><code class="literal">mod_proxy.c</code></p></td><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p><code class="literal">BalancerGrowth</code>
+<code class="literal">BalancerInherit</code>
+<code class="literal">BalancerPersist</code>
+<code class="literal">ProxyPassInherit</code>
+<code class="literal">ProxySourceAddress</code>
+<code class="literal">ProxyAddHeaders</code></p></td><td style="border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>For more information about mod_proxy, visit <a class="ulink" href="http://httpd.apache.org/docs/2.4/mod/mod_proxy.html" target="_top">http://httpd.apache.org/docs/2.4/mod/mod_proxy.html</a></p></td></tr><tr><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p><code class="literal">mod_include.c</code></p></td><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p><code class="literal">SSILegacyExprParser</code></p></td><td style="border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>For more information about mod_include, visit <a class="ulink" href="http://httpd.apache.org/docs/2.4/mod/mod_include.html" target="_top">http://httpd.apache.org/docs/2.4/mod/mod_include.html</a></p></td></tr><tr><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p><code class="literal">mod_ssl.c</code></p></td><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p><code class="literal">SSLCARevocationCheck</code>
+<code class="literal">SSLOCSPDefaultResponder</code>
+<code class="literal">SSLOCSPEnable</code>
+<code class="literal">SSLOCSPOverrideResponder</code>
+<code class="literal">SSLOCSPResponderTimeout</code>
+<code class="literal">SSLOCSPResponseMaxAge</code>
+<code class="literal">SSLOCSPResponseTimeSkew</code>
+<code class="literal">SSLOCSPUseRequestNonce</code>
+<code class="literal">SSLOpenSSLConfCmd</code>
+<code class="literal">SSLProxyCARevocationCheck</code>
+<code class="literal">SSLProxyCheckPeerName</code>
+<code class="literal">SSLSRPUnknownUserSeed</code>
+<code class="literal">SSLSRPVerifierFile</code>
+<code class="literal">SSLSessionTicketKeyFile</code>
+<code class="literal">SSLStaplingCache</code>
+<code class="literal">SSLStaplingErrorCacheTimeout</code>
+<code class="literal">SSLStaplingFakeTryLater</code>
+<code class="literal">SSLStaplingForceURL</code>
+<code class="literal">SSLStaplingResponderTimeout</code>
+<code class="literal">SSLStaplingResponseMaxAge</code>
+<code class="literal">SSLStaplingResponseTimeSkew</code>
+<code class="literal">SSLStaplingReturnResponderErrors</code>
+<code class="literal">SSLStaplingStandardCacheTimeout</code>
+<code class="literal">SSLUseStapling</code></p></td><td style="border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>For <code class="literal">SSLOpenSSLConfCmd</code>, at least OpenSSL 1.0.2 is required (which is
+available in HSP 4.8.0.0 and later)</p>
+<p>For more information about mod_ssl, visit <a class="ulink" href="http://httpd.apache.org/docs/2.4/mod/mod_ssl.html" target="_top">http://httpd.apache.org/docs/2.4/mod/mod_ssl.html</a></p></td></tr><tr><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p><code class="literal">mod_setenvif.c</code></p></td><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p><code class="literal">SetEnvIfExpr</code></p></td><td style="border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>For more information about mod_setenvif, visit <a class="ulink" href="http://httpd.apache.org/docs/2.4/mod/mod_setenvif.html" target="_top">http://httpd.apache.org/docs/2.4/mod/mod_setenvif.html</a></p></td></tr><tr><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p><code class="literal">mod_qos.c</code></p></td><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p><code class="literal">QS_ClientEventBlockExcludeIP</code>
+<code class="literal">QS_CondClientEventLimitCount</code>
+<code class="literal">QS_RedirectIf</code>
+<code class="literal">QS_SupportIPv6</code></p></td><td style="border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>3rd-party module</p>
+<p>For more information about mod_qos, visit <a class="ulink" href="http://opensource.adnovum.ch/mod_qos/" target="_top">http://opensource.adnovum.ch/mod_qos/</a></p></td></tr><tr><td style="border-right: 1px solid #527bbd; " align="left" valign="top"><p><code class="literal">mod_setenvifplus.c</code></p></td><td style="border-right: 1px solid #527bbd; " align="left" valign="top"><p><code class="literal">AddOutputFilterPlus</code>
+<code class="literal">CookieEncPlus</code>
+<code class="literal">SetStatusPlus</code></p></td><td style="" align="left" valign="top"><p>3rd-party module</p>
+<p>For more information about mod_setenvifplus, visit <a class="ulink" href="http://opensource.adnovum.ch/mod_setenvifplus/" target="_top">http://opensource.adnovum.ch/mod_setenvifplus/</a></p></td></tr></tbody></table></div></div><br class="table-break" /><p></p><p><span class="strong"><strong>New Modules</strong></span></p><p>Below is a list of new modules which have been introduced in the latest
+USP Secure Entry Server<sup>®</sup> Software Suite, Linux Version due to the update to
+Apache 2.4.</p><div class="table"><a id="id1341"></a><p class="title"><strong>Table 16.3. New modules introduced with USP Secure Entry Server<sup>®</sup> Software Suite, Linux Version</strong></p><div class="table-contents"><table class="table" summary="New modules introduced with USP Secure Entry Server® Software Suite, Linux Version" cellpadding="4px" style="border-collapse: collapse;border-top: 3px solid #527bbd; border-bottom: 3px solid #527bbd; border-left: 3px solid #527bbd; border-right: 3px solid #527bbd; "><colgroup><col class="col_1" /><col class="col_2" /><col class="col_3" /></colgroup><thead><tr><th style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top">Module                         </th><th style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top">Description                    </th><th style="border-bottom: 1px solid #527bbd; " align="left" valign="top">Web Resource</th></tr></thead><tbody><tr><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p><code class="literal">mod_proxy_html.c</code></p></td><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>Formerly a third-party module, this supports fixing of HTML links in a
+reverse proxy situation, where the backend generates URLs that are not valid
+for the proxy’s clients.</p></td><td style="border-bottom: 1px solid #527bbd; " align="left" valign="top"><p><a class="ulink" href="http://httpd.apache.org/docs/2.4/mod/mod_proxy_html.html" target="_top">http://httpd.apache.org/docs/2.4/mod/mod_proxy_html.html</a></p></td></tr><tr><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p><code class="literal">mod_proxy_wstunnel.c</code>
+<code class="literal">mod_proxy_balancer.c</code>
+<code class="literal">mod_lbmethod_byrequests.c</code>
+<code class="literal">mod_lbmethod_bytraffic.c</code>
+<code class="literal">mod_lbmethod_bybusyness.c</code></p></td><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>Modules providing support for tunneling web socket connections to a backend
+web socket server and load balancing.</p></td><td style="border-bottom: 1px solid #527bbd; " align="left" valign="top"><p><a class="ulink" href="http://httpd.apache.org/docs/2.4/mod/mod_proxy_wstunnel.html" target="_top">http://httpd.apache.org/docs/2.4/mod/mod_proxy_wstunnel.html</a></p>
+<p><a class="ulink" href="http://httpd.apache.org/docs/2.4/mod/mod_proxy_balancer.html" target="_top">http://httpd.apache.org/docs/2.4/mod/mod_proxy_balancer.html</a></p></td></tr><tr><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p><code class="literal">mod_slotmem_shm.c</code></p></td><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p><code class="literal">mod_slotmem_shm</code> is a memory provider for creation and access to a shared
+memory segment in which the datasets are organized in "slots."</p></td><td style="border-bottom: 1px solid #527bbd; " align="left" valign="top"><p><a class="ulink" href="http://httpd.apache.org/docs/2.4/mod/mod_slotmem_shm.html" target="_top">http://httpd.apache.org/docs/2.4/mod/mod_slotmem_shm.html</a></p></td></tr><tr><td style="border-right: 1px solid #527bbd; " align="left" valign="top"><p><code class="literal">mod_xml2enc.c</code></p></td><td style="border-right: 1px solid #527bbd; " align="left" valign="top"><p>Formerly a third-party module, this supports internationalizations in
+libxml2-based (markup-aware) filter modules.</p></td><td style="" align="left" valign="top"><p><a class="ulink" href="http://httpd.apache.org/docs/2.4/mod/mod_xml2enc.html" target="_top">http://httpd.apache.org/docs/2.4/mod/mod_xml2enc.html</a></p></td></tr></tbody></table></div></div><br class="table-break" /><p></p><p><span class="strong"><strong>Removed directives</strong></span></p><p>Some directives are no longer supported in Apache 2.4 and therefore have been
+removed i.e. are no longer available in USP Secure Entry Server<sup>®</sup> Software Suite,
+Linux Version. These directives require special attention as the HSP processes
+will not start up unless the directives have been manually replaced by their
+equivalents (if any are available) or have been manually removed entirely from
+the configuration.</p><div class="table"><a id="id1342"></a><p class="title"><strong>Table 16.4. Removed directives from USP Secure Entry Server<sup>®</sup> Software Suite, Linux Version</strong></p><div class="table-contents"><table class="table" summary="Removed directives from USP Secure Entry Server® Software Suite, Linux Version" cellpadding="4px" style="border-collapse: collapse;border-top: 3px solid #527bbd; border-bottom: 3px solid #527bbd; border-left: 3px solid #527bbd; border-right: 3px solid #527bbd; "><colgroup><col class="col_1" /><col class="col_2" /><col class="col_3" /></colgroup><thead><tr><th style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top">Module                         </th><th style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top">Directive                      </th><th style="border-bottom: 1px solid #527bbd; " align="left" valign="top">Equivalent or action required</th></tr></thead><tbody><tr><td style="border-right: 1px solid #527bbd; " align="left" valign="top"><p><code class="literal">mod_rewrite.c</code></p></td><td style="border-right: 1px solid #527bbd; " align="left" valign="top"><p><code class="literal">RewriteLog</code>
+<code class="literal">RewriteLogLevel</code></p></td><td style="" align="left" valign="top"><p>This functionality has been completely replaced by the new per-module logging
+configuration using the <code class="literal">LogLevel</code> directive.</p>
+<p>Example: <code class="literal">LogLevel info rewrite:trace3</code></p>
+<p>See also: <a class="link" href="#v412-web-link-3">[3]</a></p></td></tr></tbody></table></div></div><br class="table-break" /><p></p><p>"Server Side Include (SSI) in Error Documents"</p><p>If SSI is used in the SRM Error Documents, usually indicated by the file
+extensions ".shtml", it might require manual changes.</p><p>The syntax for flow control <code class="literal">#if has changed.</code> The condition expression is using now
+<a class="ulink" href="http://httpd.apache.org/docs/current/expr.html" target="_top">ap_expr syntax</a> <a class="link" href="#v412-web-link-4">[4]</a>
+with some differences described below. Old conditions are might evaluated
+differently after the update and can show the wrong content. The Error Log
+will show a corresponding error message, that the expression couldn’t be parsed.</p><p>USP Secure Entry Server<sup>®</sup> Software Suite customer can enable the legacy
+expression syntax by setting the directive <code class="literal">SSILegacyExprParser on</code> in the
+Error Documents locations.</p><p><span class="emphasis"><em>Note: The new condition expression will not work anymore if this directive is set.</em></span></p><p><span class="strong"><strong>Migration of existing SSI documents</strong></span></p><p>When using the ap_expr syntax in SSI documents the variable references is not
+documented correctly. Should a variable be evaluated the syntax is
+<code class="literal">v("&lt;VARIABLE_NAME&gt;")</code> and not as documented <code class="literal">%{&lt;VARIABLE_NAME&gt;}</code>.</p><pre class="screen">&lt;!--#if expr='v("REDIRECT_ERROR_NOTES") =~ /^HSP150.*/'--&gt;</pre><p>Example if clause with variable and regex match with the new syntax.</p><p></p><p><span class="strong"><strong>Web socket tunnels</strong></span></p><p>Since version 4.10.0.0, USP Secure Entry Server<sup>®</sup> supports tunneling of web
+socket connections by use of the service of mod_proxy and its additional
+web socket module mod_proxy_wstunnel. Latter has been introduced in
+Apache 2.4 and thus – in former version of USP Secure Entry Server<sup>®</sup> –
+was only available in HTTP/HTTPS Listener but not in Secure Request Manager.
+For that reason, until the latest version the Secure Gateway module
+(mod_sgw) has been used in order to tunnel web socket connections through SRM.</p><p>Since the update to Apache 2.4, the mod_proxy_wstunnel service can also be used
+in SRM and customers should find in the following the needed configuration
+changes to migrate the web socket support from mod_sgw to mod_proxy.</p><p>In the Secure Request Manager, the migration can be made in two different ways.</p><p>Either the corresponding SGW virtual hosts remain in use by migrating them to
+mod_proxy or these virtual hosts are removed and the configuration is moved to
+another (already existing) virtual host by adding a new location. The latter is
+advised, but note, this also leads to adjustments in the HTTP/HTTPS Listener
+because of changes of port numbers and of end-point URLs.</p><p>Further information to the integration of web socket back-ends including how to
+enable WSS to those, can be found in the HSP Administration guide.</p><p></p><p><span class="strong"><strong>Add web socket location to an existing virtual host</strong></span></p><p>If the tunneling of web socket connections should be moved to an existing virtual host, following steps are necessary:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+The SRM SGW virtual host with the web socket integration should be removed completely.
+</li><li class="listitem">
+Add web socket location with the mod_proxy settings within the scope of an appropriate virtual host.
+</li></ul></div><pre class="screen">&lt;Location ##SRM-LOCATION_NAME##&gt;
+   SetHandler default
+   HGW_Disable
+
+   ProxyPass ws://##NAME-OR-IP-TARGET-WS-SERVER##:##PORT-OF-TARGET-WS-SERVER##/##PATH-TO-SERVICE-TRANSLATED##
+&lt;/Location&gt;</pre><p><span class="emphasis"><em>New Secure Request Manager configuration example of a web socket application in the latest version of USP Secure Entry Server<sup>®</sup></em></span></p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+In the HTTP/HTTPS Listener the port number of the virtual host has to be changed within the ProxyPass directive to the corresponding SRM virtual host port.
+</li><li class="listitem">
+In the HTTP/HTTPS Listener the location path of the SRM must be added.
+</li></ul></div><pre class="screen">&lt;Location ##LOCATION-NAME## &gt;
+   SetHandler default
+   HGW_Disable
+
+   ProxyPass ws://127.0.0.1:##PORT-OF-SRM##/##SRM-LOCATION-NAME##
+&lt;/Location&gt;</pre><p><span class="emphasis"><em>Migrated HTTP/HTTPS Listener configuration example of a web socket application in the latest version of USP Secure Entry Server<sup>®</sup></em></span></p><p><span class="strong"><strong>Migration by keeping existing web socket virtual host</strong></span></p><p>All SGW directives should be removed. All other directives (as for instance
+ErrorLog) can stay in effect. As mod_proxy allows to integrate a web socket
+back-end server at location level, a Location is added. In the new location
+the directive ProxyPass is used to state the IP (or name) and port of the
+web socket target server. In addition, the settings "SetHandler default"
+and HGW_Disable must be set.</p><pre class="screen">Listen 127.0.0.1:##PORT##
+
+&lt;VirtualHost 127.0.0.1:##PORT##&gt;
+  ErrorLog ##params##
+
+  SGW_Host ##NAME-OR-IP-TARGET-WS-SERVER##:##PORT-OF-TARGET-WS-SERVER##
+  SGW_ConnectTimeOut ##param##
+  SGW_FinalTimeOut ##param##
+  SGW_TimeOut ##param##
+&lt;/VirtualHost&gt;</pre><p><span class="emphasis"><em>Obsolete SRM integration example of a web socket applications in prior version of USP Secure Entry Server<sup>®</sup></em></span></p><pre class="screen">Listen 127.0.0.1:##PORT##
+
+&lt;VirtualHost 127.0.0.1:##PORT##&gt;
+   ErrorLog ##params##
+
+   &lt;Location /&gt;
+      SetHandler default
+      HGW_Disable
+      ProxyPass ws://##NAME-OR-IP-TARGET-WS-SERVER##:##PORT-OF-TARGET-WS-SERVER##/
+   &lt;/Location&gt;
+&lt;/VirtualHost&gt;</pre><p><span class="emphasis"><em>Migrated SRM configuration example of a web socket application in the latest version of USP Secure Entry Server<sup>®</sup></em></span></p><p><span class="strong"><strong>Migrating web socket setups with multiple back-ends</strong></span></p><p>Should there be several back-ends be defined in the SGW_Host directive, the configuration must be migrated as such:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+The list of load-balanced backends must be added in virtual host scope
+</li></ul></div><pre class="screen">&lt;Proxy balancer://##BALANCER-REFERENCE##&gt;
+  BalancerMember ws://##TARGET-WS-SERVER-1##:##PORT-OF-TARGET-WS-SERVER-1## loadfactor=1
+  BalancerMember ws://##TARGET-WS-SERVER-2##:##PORT-OF-TARGET-WS-SERVER-2## loadfactor=1
+  ProxySet lbmethod=byrequests
+&lt;/Proxy&gt;</pre><p><span class="emphasis"><em>New load-balanced web socket backend list. For further information about load-balancing method see the documentation.</em></span></p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+Set the reference to the load-balance group in the ProxyPass directive
+</li></ul></div><pre class="screen">&lt;Location ##SRM-LOCATION_NAME##&gt;
+   SetHandler default
+   HGW_Disable
+
+   ProxyPass balancer://##BALANCER-REFERENCE##/##PATH-TO-SERVICE-TRANSLATED##
+&lt;/Location&gt;</pre><p><span class="emphasis"><em>Web socket location using load-balanced backend reference.</em></span></p><p></p><p><span class="strong"><strong>Multiversion ModSecurity engine</strong></span></p><p>ModSecurity is new delivered in multiple version. With this release 4.12
+the newest engine version 2.9.1 and the previous delivered version 2.8.0
+is include. Due this new delivery the configuration needs to be adjusted.</p><p>The modul library name contains new the version number, therefore the
+LoadModule directive need to be adjusted:</p><pre class="screen">LoadModule security2_module libexec/mod_security-2.9.1.so</pre><p></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="v412-weblinks"></a>16.3. Web Links</h2></div></div></div><p>More information about upgrading Apache Server to 2.4 can be found at the following web resources:</p><p><a id="v412-web-link-1"></a>[1] Upgrading to 2.4 from 2.2: <a class="ulink" href="http://httpd.apache.org/docs/2.4/upgrading.html" target="_top">http://httpd.apache.org/docs/2.4/upgrading.html</a>
+<a id="v412-web-link-2"></a>[2] Run-Time Configuration Changes: <a class="ulink" href="http://httpd.apache.org/docs/2.4/upgrading.html#run-time" target="_top">http://httpd.apache.org/docs/2.4/upgrading.html#run-time</a>
+<a id="v412-web-link-3"></a>[3] mod_rewrite: Logging: <a class="ulink" href="http://httpd.apache.org/docs/2.4/mod/mod_rewrite.html#logging" target="_top">http://httpd.apache.org/docs/2.4/mod/mod_rewrite.html#logging</a>
+<a id="v412-web-link-4"></a>[4] SSI: new condition syntax: <a class="ulink" href="http://httpd.apache.org/docs/current/expr.html" target="_top">http://httpd.apache.org/docs/current/expr.html</a></p><p></p></div></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_hsp_4_11"></a>Chapter 17. HSP 4.11</h1></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_summary_16"></a>17.1. Summary</h2></div></div></div><p>This migration guide provides a set of guidelines to migrate the USP Secure
+Entry Server<sup>®</sup> from prior version 4.14 to the latest version 4.11.</p><p>The Web Application Firewall (HSP) removed support for the SSLv2 protocol.
+Additionally the custom command directive <code class="literal">SSLSessionClientTicket</code> was replaced
+by the directive <code class="literal">SSLSessionTickets</code>. Please see <a class="xref" href="#v411-updating-ses" title="17.2. Updating to USP Secure Entry Server 4.11">Section 17.2, “Updating to USP Secure Entry Server 4.11”</a> below for more
+details on how to handle existing configurations.</p><p><span class="emphasis"><em>If you are updating from a Secure Entry Server<sup>®</sup> Software Suite older than
+version 4.10, please consult also the migration guides for all intermediate
+versions, as this migration guide only outlines the changes between the new
+and the previous USP Secure Entry Server<sup>®</sup> version.</em></span></p><p></p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="v411-updating-ses"></a>17.2. Updating to USP Secure Entry Server 4.11</h2></div></div></div><p>The Web Application Firewall (HSP) ceased support for the SSLv2 protocol on
+backend connections. The section 2.1 below contains more details about this
+change. The custom command directive SSLSessionClientTicket was replaced by
+the directive SSLSessionTickets, which is described in more detail in
+<a class="xref" href="#v411-directive-replaced" title="17.2.2. Directive SSLSessionClientTicket replaced by SSLSessionTickets">Section 17.2.2, “Directive <code class="literal">SSLSessionClientTicket</code> replaced by <code class="literal">SSLSessionTickets</code>”</a> below.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_removed_support_for_sslv2_on_backend_connections"></a>17.2.1. Removed support for SSLv2 on Backend Connections</h3></div></div></div><p>As announced in the SES security bulletin SES-2016-0002 released by USP on
+4th of March 2016, the Web Application Firewall (HSP) removed support for
+the SSLv2 protocol on connections to backend servers. This affects the
+directives <code class="literal">HGW_SslClientProtocol</code> and <code class="literal">HGW_SslClientProtocolDefault</code>, which
+don’t accept the parameter SSLv2 anymore.</p><p>Existing configurations that are still explicitly configured to use the
+SSLv2 protocol on backend connections must be updated.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="v411-directive-replaced"></a>17.2.2. Directive <code class="literal">SSLSessionClientTicket</code> replaced by <code class="literal">SSLSessionTickets</code></h3></div></div></div><p>The directive <code class="literal">SSLSessionClientTicket</code> was replaced by the directive
+<code class="literal">SSLSessionTickets</code>. This change only affects the directive name,
+the provided functionality is exactly the same.</p><p>On update, the directive <code class="literal">SSLSessionClientTicket</code> must be replaced by
+<code class="literal">SSLSessionTickets</code> without changing its parameter value.</p></div></div></div></div></body></html>

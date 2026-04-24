@@ -1,0 +1,536 @@
+<h1 id="uspsecureentryserverreg5.11.0.0">USP Secure Entry Server &reg; 5.11.0.0</h1>
+
+<p>SES 5.11.0.0 consists of the following components:</p>
+
+<ul>
+<li>SES Web GUI <strong>5.11.0.3</strong></li>
+<li>HTTP Secure Proxy (HSP) <strong>4.22.0.4</strong></li>
+<li>Secure Login Service (SLS) <strong>5.14.0.1</strong></li>
+<li>Identity Manager (IDM) <strong>2.0.0.1</strong></li>
+<li>Shared Appliance Base (SAB) <strong>1.16.10</strong></li>
+</ul>
+
+<h2 id="platformcompatibility">Platform Compatibility</h2>
+
+<p>This release is compatible with the following hardware platforms:</p>
+
+<ul>
+<li>Dell PowerEdge R640</li>
+<li>Dell PowerEdge R630</li>
+</ul>
+
+<h2 id="seswebgui">SES Web GUI</h2>
+
+<h3 id="features">Features</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#78590</td>
+	<td>Added new Access Mobile ID adapter screen.</td>
+</tr>
+<tr>
+	<td>#76727</td>
+	<td>Added support for encoding of LoginUserData header</td>
+</tr>
+<tr>
+	<td>#53765</td>
+	<td>Added IPv6 support for remote backup targets.</td>
+</tr>
+<tr>
+	<td>#53767</td>
+	<td>IPv6 support for network tools.</td>
+</tr>
+<tr>
+	<td>#53780</td>
+	<td>IPv6 support for Nagios/NSCA server.</td>
+</tr>
+<tr>
+	<td>#53781</td>
+	<td>IPv6 support for SNMP trap sender.</td>
+</tr>
+<tr>
+	<td>#53782</td>
+	<td>IPv6 support for local network interface.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="changes">Changes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#81509</td>
+	<td>Updated sudo to version 1.9.5p2 addressing CVE&#8211;2021&#8211;3156</td>
+</tr>
+<tr>
+	<td>#79072</td>
+	<td>Removed unsupported &#8220;log&#8221; mode from WAF SOAP filter.</td>
+</tr>
+<tr>
+	<td>#79210</td>
+	<td>Changed WAF statistics calculation for better performance.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#78721</td>
+	<td>Fixed a bug in the number of events display of the security dashboard.</td>
+</tr>
+<tr>
+	<td>#75431</td>
+	<td>Fixed secure profile management - auto-learning which did not add an exception for blocked requests due to &#8220;PCRE limits exceeded&#8221;</td>
+</tr>
+<tr>
+	<td>#74461</td>
+	<td>Fixed issue with removal of maintenance pages from maintenance groups.</td>
+</tr>
+<tr>
+	<td>#67829</td>
+	<td>Fixed issue which prevented adding umlauts for parameter name regex exception for dynamic whitelist feature.</td>
+</tr>
+<tr>
+	<td>#44716</td>
+	<td>Extended input validation for hostnames and IP&#8217;s preventing misconfigurations of IP and hostname tuples.</td>
+</tr>
+<tr>
+	<td>#77821</td>
+	<td>Amazon Appliance: fixed internal error when saving network settings</td>
+</tr>
+<tr>
+	<td>#75161</td>
+	<td>Amazon Appliance: fixed instance status check</td>
+</tr>
+<tr>
+	<td>#77820</td>
+	<td>Amazon Appliance: fixed software image update process</td>
+</tr>
+<tr>
+	<td>#77859</td>
+	<td>Amazon Appliance: fixed WAF HA active/active configuration</td>
+</tr>
+<tr>
+	<td>#77896</td>
+	<td>Amazon Appliance: fixed Disk I/O dashboard view</td>
+</tr>
+<tr>
+	<td>#77898</td>
+	<td>Amazon Appliance: fixed configuration for Access standalone setup</td>
+</tr>
+<tr>
+	<td>#78756</td>
+	<td>Amazon Appliance: fixed configuration for Identity setup</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="httpsecureproxyhsp">HTTP Secure Proxy (HSP)</h2>
+
+<h3 id="features">Features</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#80311</td>
+	<td>Enabled JA3 TLS fingerprinting in the HSP Listener.</td>
+</tr>
+<tr>
+	<td>#79925</td>
+	<td>Implemented new timing measurement variables HSP_TimeTCP and HSP_TimeTLS.</td>
+</tr>
+<tr>
+	<td>#76726</td>
+	<td>Added support for encoding of the internal LoginUserData: header.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="changes">Changes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#79966</td>
+	<td>Enabled the timing measurements HSP_TimeLoFi, HSP_TimeFoLo, HSP_TimeFiLi and HSP_TimeLoLi for HSP Listener.</td>
+</tr>
+<tr>
+	<td>#59326</td>
+	<td>The Client Data Store (CDS) recovery mechanism on process crashes has been rewritten to meet changes in newer versions of glibc&#8217;s NTPL implementation.</td>
+</tr>
+<tr>
+	<td>#83974</td>
+	<td>Updated OpenSSL to version 1.1.1k.</td>
+</tr>
+<tr>
+	<td>#65650</td>
+	<td>Removed the obsolete directive DBG_TraceMaxSize.</td>
+</tr>
+<tr>
+	<td>#81083</td>
+	<td>Removed the obsolete directive RF_SF_TrustedNamespace.</td>
+</tr>
+<tr>
+	<td>#79081</td>
+	<td>Removed the outdated &#8220;log&#8221; mode of the SOAP validation module.</td>
+</tr>
+<tr>
+	<td>#44568</td>
+	<td>Removed the deprecated directive RF_SF_WSDLSchemaFile.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#83778</td>
+	<td>Fixed a bug in httpd header filter which removed headers in case of a HTTP response status 304.</td>
+</tr>
+<tr>
+	<td>#81072</td>
+	<td>Fixed a resource deadlock in mod_security.</td>
+</tr>
+<tr>
+	<td>#78652</td>
+	<td>Fixed a bug in the header validator rules regarding the regular expression term definition of &#8220;token&#8221;.</td>
+</tr>
+<tr>
+	<td>#78634</td>
+	<td>Fixed a bug in mod_security that lead to truncate log messages on long request parameter values.</td>
+</tr>
+<tr>
+	<td>#77397</td>
+	<td>Fixed a bug which caused AAI parameters bigger than 8 kB to be cut off.</td>
+</tr>
+<tr>
+	<td>#84521</td>
+	<td>Fixed a memory leak in the session transfer handler.</td>
+</tr>
+<tr>
+	<td>#83799</td>
+	<td>Fixed a memory leak in the internal SSL session store.</td>
+</tr>
+<tr>
+	<td>#85187</td>
+	<td>Disabled maintenance hook function of mod_analyze when tracing is not active.</td>
+</tr>
+<tr>
+	<td>#85496</td>
+	<td>Fixed a memory leak related to URL path translation.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="identitymanageridm">Identity Manager (IDM)</h2>
+
+<h3 id="features">Features</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#52188</td>
+	<td>New USP events USP:aud:idm:002&#8211;005 logging user, group, OU modification actions for auditing purpose.</td>
+</tr>
+<tr>
+	<td>#75593</td>
+	<td>Added support which allows to use a dedicated TLS certificate for IDM API and user management.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="changes">Changes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#53170</td>
+	<td>Update SES Identity base framework Apache Syncope to new minor version 2.1.6 &#8220;Fusion&#8221;</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#81511</td>
+	<td>Fixed bug preventing creating a new user w/o password when using one-time-password in combination with password max length policy.</td>
+</tr>
+<tr>
+	<td>#80046</td>
+	<td>Fixed issue which could lead to a timeout when importing users and groups from Microsoft Active Directory.</td>
+</tr>
+<tr>
+	<td>#74978</td>
+	<td>lastMidifier and lastChangeDate are not updated anymore during login process, improving the auditing track.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="secureloginservicesls">Secure Login Service (SLS)</h2>
+
+<h3 id="tlsv1.3">TLSv1.3</h3>
+
+<ul>
+<li>Basic support for TLSv1.3, requires Java 8u261 or later.</li>
+<li>HTTP Adapter: Experimentally it is necessary to set the system property
+ <code>jdk.tls.client.protocols</code> at startup of the JVM to a string that includes
+ <code>TLSv1.3</code> and as usual to set the SLS config property <code>http.tls.versions</code>
+ to a string that also includes <code>TLSv1.3</code>.
+ Note that SSLv3 (or older) is no longer supported in the HTTP adapter.</li>
+<li>Other callouts from the SLS should in principle automatically use TLSv1.3 when
+ the above system property has been set and the server on the other side agrees.</li>
+<li>SLS front: Requires Tomcat 8.5; no extra settings are necessary, optionally
+ e.g. accepted protocols can be limited in <code>server.xml</code> in the <code>Connector</code> tag
+ in the <code>sslEnabledProtocols</code> attribute.</li>
+</ul>
+
+<h3 id="improvedmobileidsupport">Improved Mobile ID Support</h3>
+
+<ul>
+<li>The SLS delivery now contains full configuration examples for the model,
+ HTTP adapter configuration, request-/response-templates and scripting for
+ implementing a Mobile ID login flow with the Swisscom REST API. See the
+ &#8220;SLS Administration Guide&#8221;, chapter &#8220;Mobile ID&#8221;, for details.</li>
+</ul>
+
+<h3 id="groovyscriptfilesautorecompilation">Groovy Script Files Auto Recompilation</h3>
+
+<ul>
+<li>Before this release, if Groovy script files in one of the configured Groovy
+ script directories changed, the Groovy scripts were recompiled automatically.
+ This behavior has now been turned off by default.</li>
+<li>It can be turned back on by setting <code>groovy.scriptdirs.autorecompile=true</code>,
+ but note that this is not guaranteed to work perfectly in all situations,
+ especially under high load there can be race conditions.</li>
+<li>In productive environments, it is generally recommended to have this feature
+ turned off to prevent accidental changes. However, if scripts are protected
+ from accidental modification, having the feature active could sometimes allow
+ to implement and deploy workarounds without having to restart the SLS.</li>
+<li>The feature is certainly useful for integration/testing, as it allows to make
+ and test almost all changes to Groovy scripts without an SLS restart.</li>
+<li>If activated, now an INFO log entry <code>GROOVY_SCRIPTDIRS_RECOMPILE_SUCCESS</code> is
+ written when auto recompilation was successful, and an ERROR log entry
+ <code>GROOVY_SCRIPTDIRS_RECOMPILE_FAILURE</code> is written if it failed.
+ Note that if recompilation fails, the last good state continues to be used.</li>
+</ul>
+
+<h3 id="openidconnectoauth2.0adapter">OpenID Connect / OAuth 2.0 Adapter</h3>
+
+<ul>
+<li>Fixed a bug in naming: The authorization code was misnamed &#8220;token code&#8221; almost
+ throughout the code and documentation. This has been fixed. As part of that
+ all script functions with prefix <code>oidc_op_tokencode</code> have been deprecated and
+ are now all available with the new prefix <code>oidc_op_authorization_code</code>.
+ Similarly, the SLS config property <code>oidc.op.tokencode.validity.secs</code> has been
+ deprecated; <code>oidc.op.authorization_code.validity.secs</code> should be used instead.</li>
+<li>Better support for handling claims in id_token, refresh_token and userinfo
+ resp. attributes in the authorization code that are not simply strings:
+ The <code>oidc_op_authorization_code</code> methods now allow to set/get any object type
+ as value, no longer restricted to strings; the <code>oidc_op_id_token</code>,
+ <code>oidc_op_refresh_token</code> and <code>oidc_op_userinfo</code> methods were already generic.
+ So, you can, for example, set an array or list of strings and after parsing
+ the authorization code or JWT then get it back as a list of strings.
+ For convenience, methods <code>List&lt;String&gt; getAttributeAsStringList(String name)</code>
+ and <code>List&lt;String&gt; getClaimAsStringList(String name)</code> have been added which
+ automatically convert list items to strings and return an empty list instead
+ of null if there is no claim/attribute.</li>
+</ul>
+
+<h3 id="httpwebserviceadapter">HTTP/Webservice Adapter</h3>
+
+<ul>
+<li>The HTTP Adapter can now automatically process JSON and XML responses via
+ templates: Just define a template named <code>template.file.http-response-&lt;alias&gt;</code>
+ and make sure the file extension of the template is either <code>.xml</code> or <code>.json</code>,
+ then HTTP responses with a <code>content-type</code> header that contains <code>xml</code> or <code>json</code>
+ will be processed automatically and variables generated accordingly.</li>
+<li>The HTTP Adapter now supports automatic execution of actions after a successful
+ callout, similar to the WS Adapter; define actions with configuration properties
+ <code>http.&lt;alias&gt;.action.&lt;no&gt;</code>.</li>
+<li>It is now possible to configure separate timeout values for each custom HTTP / WS
+ call using the property <code>[http|ws].&lt;alias&gt;.connection.timeout</code>, which will
+ override the default timeout setting for the given call.</li>
+</ul>
+
+<h3 id="samlidpandspadapters">SAML IdP and SP Adapters</h3>
+
+<ul>
+<li>Fixed a bug where two trusted SPs resp. trusted IdPs could be configured with
+ metadata that contains the same EntityID. Previously only configuration of one
+ of these two trusted SPs resp. trusted IdPs would have been used for both.</li>
+</ul>
+
+<h3 id="googleauthenticatoradapter">Google Authenticator Adapter</h3>
+
+<ul>
+<li>Non-numeric characters in the verification code are now ignored, since many
+ apps display it with hyphens (999&#8211;999) or spaces (999 999) in between, which
+ users sometimes include in their submission.</li>
+</ul>
+
+<h3 id="slssealdataprotectorreplacement">SLS Seal (DataProtector Replacement)</h3>
+
+<ul>
+<li>Internally a new API is used for DataProtector functionality, but it is still
+ able to use legacy DataProtector keystores.</li>
+<li>It comes with a new command line tool that allows to still encipher and decipher
+ based on legacy DataProtector keystores, but is also able to create a new kind
+ of keystores and keys (e.g. uses AES instead of 3DES).</li>
+</ul>
+
+<h3 id="variousimprovementsandfixes">Various Improvements and Fixes</h3>
+
+<ul>
+<li>Message resource property files are now processed with UTF&#8211;8 encoding (Java
+ by default reads message bundle files as ISO&#8211;8859&#8211;1 encoded). This allows to
+ use UTF&#8211;8 characters directly in the property files, given that they are
+ edited with a UTF&#8211;8 aware editor. This behavior can be disabled with the new
+ configuration property <code>resources.encoding.legacy</code>.</li>
+<li>The new model trigger <code>alwaysIf</code> is similar to the <code>if</code> trigger, but is
+ evaluated on every request, and allows to re-start or switch to a different
+ model even if one is already in the session. This can be useful for things like
+ restarting a SAML login flow on the IDP if the user did not complete a login
+ attempt, but then start another one on a different SP.</li>
+<li>The model state <code>do.recirect</code> now automatically sets a flag in the session
+ which ensures that the next incoming GET request will forward the model to the
+ next state after <code>do.redirect</code>, which is something very likely to happen in
+ certain social-login flows. In previous releases, the SLS would just have
+ repeated the same direct state again. The old behavior can still be triggered
+ using the new model state parameter <code>goto.next.state</code>.</li>
+<li>New script function <code>session.resetLoginSlowdown()</code> to reset a login slowdown.</li>
+<li>The model state <code>do.logout</code> now also properly supports absolute URLs that
+ were configured in <code>redirect.logout</code>. In addition, the model state now allows
+ to specify the redirect URL with the new state parameter <code>url</code>.</li>
+<li>Updated the Apache HttpClient library to 4.5.13.</li>
+<li>When a challenge is created with the <code>create.challenge</code> state, but then the
+ flow is aborted by a reset of the model (i.e. by sending a request with a
+ <code>cmd</code> parameter), the challenge will automatically be removed from the session.
+ This prevents an issue with the <code>do.success</code> state where previously in such
+ situations the login might have failed to to an existing, but not validated
+ challenge.</li>
+<li>New script functions for base64URL en-/decoding, as needed commonly around JWTs
+ and OAuth / OpenID Connect, hex en-/decoding, as well as more script functions
+ for base64 and base32 en-/decoding, all with <code>crypto</code> function prefix.</li>
+<li>New script functions <code>function.bytesToString()</code> and <code>function.stringToBytes()</code>
+ to convert more conveniently between byte arrays and strings, using UTF&#8211;8 or
+ a chosen char to/from bytes encoding (charset).</li>
+<li>Updated Groovy library to 2.4.21.</li>
+</ul>

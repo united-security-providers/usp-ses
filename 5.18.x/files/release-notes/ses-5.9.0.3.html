@@ -1,0 +1,123 @@
+<h1 id="uspsecureentryserverreg5.9.0.3">USP Secure Entry Server &reg; 5.9.0.3</h1>
+
+<p>SES 5.9.0.3 consists of the following components:</p>
+
+<ul>
+<li>SES Web GUI <strong>5.9.0.3</strong></li>
+<li>HTTP Secure Proxy (HSP) <strong>4.20.0.3</strong></li>
+<li>Secure Login Service (SLS) <strong>5.12.0.5</strong></li>
+<li>Identity Manager (IDM) <strong>1.5.0.1</strong></li>
+<li>Shared Appliance Base (SAB) <strong>1.16.5</strong></li>
+</ul>
+
+<h2 id="platformcompatibility">Platform Compatibility</h2>
+
+<p>This release is compatible with the following hardware platforms:</p>
+
+<ul>
+<li>Dell PowerEdge R640</li>
+<li>Dell PowerEdge R630</li>
+</ul>
+
+<h2 id="seswebgui">SES Web GUI</h2>
+
+<h3 id="changes">Changes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#74478</td>
+	<td>User with &#8220;Viewer&#8221; Role only, can&#8217;t download any private keys anymore.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#75160</td>
+	<td>Fixed issue with CA cert upload which lead to mistakenly change keypair aliases referenced for Tomcat/SP/IdP/etc.</td>
+</tr>
+<tr>
+	<td>#74046</td>
+	<td>Fixed browser errors for default ACCESS jsp templates. (Only fixes templates for new installations.)</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="httpsecureproxyhsp">HTTP Secure Proxy (HSP)</h2>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#75216</td>
+	<td>Fixed a race condition and possible crash when health checks with client authentication is in use.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="secureloginservicesls">Secure Login Service (SLS)</h2>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#74961</td>
+	<td>Fixed potential endless failover within one request for the HTTP/WS Adapter.</td>
+</tr>
+</tbody>
+</table>
+

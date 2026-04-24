@@ -1,0 +1,478 @@
+<h1 id="uspsecureentryserverreg5.8.0.0">USP Secure Entry Server &reg; 5.8.0.0</h1>
+
+<p>SES 5.8.0.0 consists of the following components:</p>
+
+<ul>
+<li>SES Web GUI <strong>5.8.0.0</strong></li>
+<li>HTTP Secure Proxy (HSP) <strong>4.18.0.3</strong></li>
+<li>Secure Login Service (SLS) <strong>5.10.0.0</strong></li>
+<li>Identity Manager (IDM) <strong>1.4.0.0</strong></li>
+<li>FUSE ICAP Server <strong>1.3.4</strong></li>
+<li>Shared Appliance Base (SAB) <strong>1.16.2</strong></li>
+</ul>
+
+<h2 id="platformcompatibility">Platform Compatibility</h2>
+
+<p>This release is compatible with the following hardware platforms:</p>
+
+<ul>
+<li>Dell PowerEdge R640</li>
+<li>Dell PowerEdge R630</li>
+</ul>
+
+<h2 id="seswebgui">SES Web GUI</h2>
+
+<h3 id="features">Features</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#49922</td>
+	<td>SES Appliance Front-facing IPv6 support</td>
+</tr>
+<tr>
+	<td>#51344</td>
+	<td>Update ELK Stack to Version 6.X</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#50892</td>
+	<td>SNMP walk does not show vhost statistics</td>
+</tr>
+<tr>
+	<td>#52908</td>
+	<td>Query Filter for SLS Location does not allow password reset token</td>
+</tr>
+<tr>
+	<td>#53359</td>
+	<td>Report generation fails</td>
+</tr>
+<tr>
+	<td>#55123</td>
+	<td>Sync: Remote Backup ssh key</td>
+</tr>
+<tr>
+	<td>#55424</td>
+	<td>SAB Activation Could not set syslog server</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="httpsecureproxyhsp">HTTP Secure Proxy (HSP)</h2>
+
+<h3 id="features">Features</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#47937</td>
+	<td>Added support for Bearer authentication scheme.</td>
+</tr>
+<tr>
+	<td>#51544</td>
+	<td>Added new feature to log SSL information of backend connections using the &#8220;eXtension format function&#8221; of mod_log_config. See &#8220;Logging SSL information of backend connections&#8221; in HSP Administration Guide.</td>
+</tr>
+<tr>
+	<td>#53264</td>
+	<td>mod_remoteip is now available in HTS.</td>
+</tr>
+<tr>
+	<td>#55642</td>
+	<td>Updated httpd to version 2.4.39, see https://httpd.apache.org/security/vulnerabilities_24.html</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#51222</td>
+	<td>Improved error message on CSRF token generation error during session invalidation.</td>
+</tr>
+<tr>
+	<td>#52949</td>
+	<td>mod_qos has been updated to version 11.61.</td>
+</tr>
+<tr>
+	<td>#54638</td>
+	<td>Patched bug in mod_security. See https://github.com/SpiderLabs/ModSecurity/pull/2046.</td>
+</tr>
+<tr>
+	<td>#55643</td>
+	<td>A bug has been fixed which allowed JavaScript generated request to bypass CSRF protection by sending a request with payload but without a Content-Type header.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="identitymanageridm">Identity Manager (IDM)</h2>
+
+<h3 id="features">Features</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#53192</td>
+	<td>Update to Syncope 2.0.12</td>
+</tr>
+<tr>
+	<td>#52195</td>
+	<td>&#8220;Must Change Password&#8221; flag</td>
+</tr>
+<tr>
+	<td>#52218</td>
+	<td>Password Policy configuration</td>
+</tr>
+<tr>
+	<td>#52219</td>
+	<td>Custom Password Rule in Syncope</td>
+</tr>
+<tr>
+	<td>#52220</td>
+	<td>Password Expiry Scheduled Task</td>
+</tr>
+<tr>
+	<td>#52858</td>
+	<td>Password never expires</td>
+</tr>
+<tr>
+	<td>#52883</td>
+	<td>AD Import/Export must change password and never expires</td>
+</tr>
+<tr>
+	<td>#52214</td>
+	<td>Password Policy Manager</td>
+</tr>
+<tr>
+	<td>#58657</td>
+	<td>Allow email address as username (full RFC compliance)</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#50769</td>
+	<td>Disable DEBUG logging for existing installations</td>
+</tr>
+<tr>
+	<td>#50993</td>
+	<td>Date field provisioning to AD</td>
+</tr>
+<tr>
+	<td>#51596</td>
+	<td>authUser does not work for CSV import if user is in different OU which he is not admin of</td>
+</tr>
+<tr>
+	<td>#51657</td>
+	<td>NullPointerException when uploading UTF&#8211;8 BOM encoded csv file</td>
+</tr>
+<tr>
+	<td>#52114</td>
+	<td>Incorrect info in results popup after importing users/groups from AD</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="sharedappliancebasesab">Shared Appliance Base (SAB)</h2>
+
+<h3 id="changes">Changes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#50591</td>
+	<td>Adapt console menu for initial network configuration with Puppet</td>
+</tr>
+<tr>
+	<td>#52928</td>
+	<td>Networking settings were broken after the migration of various features from SAB to Puppet</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="secureloginservicesls">Secure Login Service (SLS)</h2>
+
+<h3 id="dynamicwaftimeouts">Dynamic WAF timeouts</h3>
+
+<ul>
+<li>The HSP (WAF) and SLS now support dynamically setting / overriding the HSP
+ session timeout values with the SLS. So a virtual host could have a certain
+ default for the final timeout, like 1 hour, and the SLS could change it to
+ 2 hours for certain users (strong authentication, certain authorization etc.).
+ Please note that the HSP will still restrict the values set by the SLS to the
+ limits defined in the HSP configuration (see &#8220;HTTP Secure Proxy Administration
+ Guide&#8221; for details). In the SLS, there are two ways to do this: Either through
+ the existing static configuration properties for SES Session Attributes (see
+ chapter &#8220;SES Session Attributes&#8221; in &#8220;SLS Administration Guide&#8221;), or through
+ new JEXL function <code>response.setWafSessionTimeout()</code> (2 variants available;
+ see &#8220;SLS JEXL Guide&#8221; for details).</li>
+</ul>
+
+<h3 id="httpwsadapterimprovements">HTTP / WS Adapter Improvements</h3>
+
+<ul>
+<li>The HTTP and WS adapters have a new optional configuration property,
+ (<code>http.&lt;alias&gt;.key.alias</code> / <code>ws.&lt;alias&gt;.key.alias</code>) which allows to
+ specify the alias of the entry in the SLS keystore of the key that
+ should be used in an SSL connection with mutual authentication. Please
+ see the &#8220;SLS Administration Guide&#8221;, chapter &#8220;HTTP Adapter&#8221; / &#8220;HTTPS / SSL/TLS&#8221;
+ for details.</li>
+<li>The WS adapter now has two new optional configuration properties which allow to
+ enable logging of the entire request and response body in case a technical SOAP error
+ was detected in the response (the response body is logged on level ERROR).
+ The property which enabled this logging is <code>ws.soap.fault.log</code> and must be set
+ to <code>true</code>, while the other new property <code>ws.soap.fault.log.filter</code> allows to
+ define a comma-separated list of values that should be filtered out (hidden)
+ from the log (please see &#8220;SLS Administration Guide&#8221;, &#8220;Fault Response Logging&#8221;
+ for details.</li>
+<li>When using the HTTP adapter with the <code>&quot;do.auth&quot;</code> model state, and an alias
+ property that refers to a set of custom HTTP properties, these custom
+ properties MUST contain a property with the list of the required credentials,
+ because the state <code>&quot;do.auth&quot;</code> needs to be able to mark these credentials as
+ verified after the HTTP call. But in the previous release, this property was
+ not mandatory, and if it was missing, the credentials would simply not be
+ marked as verified, which would then lead to an error in the <code>&quot;do.success&quot;</code>
+ state. This has now been fixed, and the SLS will immediately fail the
+ authentication with a corresponding error.</li>
+<li>Fixed a bug in the processing of proxy configuration properties for the HTTP and
+ Webservice adapter. Due to the bug, a proxy setting was not properly processed
+ if the grouping alias in the property name contained a dot (&#8220;.&#8221;). This made
+ use of proxies for SOAP adapter calls on the SES appliance impossible due to
+ the aliases generated by the GUI.</li>
+</ul>
+
+<h3 id="oauth2.0oidcsupport">OAuth 2.0 / OIDC Support</h3>
+
+<ul>
+<li>The OpenID Connect OpenId Provider (OIDC OP) adapter now also provides some
+ generic OAuth 2.0 support, for the same flows as supported by the OIDC OP,
+ i.e. for the Authorization Code Flow, as well as for Refresh requests.
+ (UserInfo requests are not part of OAuth 2.0.) See the corresponding chapter
+ in the &#8220;SLS Administration Guide&#8221; for more details.</li>
+<li>The <code>do.oidc.op.handlemsg</code> action in the case of OAuth when validating a
+ received access_token in an <code>Authorization Bearer</code> header now automatically
+ sets the HSP credential final timeout header for the corresponding access
+ area level (&#8220;member&#8221;/&#8220;customer&#8221;) after successful access_token validation.</li>
+<li>Signatures of the refresh_token in Refresh Requests to the OIDC OP were not
+ correctly validated, so that a refresh_token signed with a wrong RSA private
+ key could be accepted and yield correctly signed id_token, access_token and
+ (depending on configuration) an updated refresh_token. A similar bug affected
+ also the two <code>jwt.validateSignatureNotExpired()</code> JEXL/Groovy script functions.</li>
+</ul>
+
+<h3 id="challengeresponseimprovements">Challenge / Response Improvements</h3>
+
+<ul>
+<li>The challenge generator in the SLS (used in the model state <code>create.challenge</code>)
+ has been revamped to always use the full range of values for each digit in
+ numeric challenges (previously, it never generated challenges that would
+ start with &#8220;0&#8221;, thus limiting the range of possible values).</li>
+<li>Two new optional configuration properties, <code>challenge.length</code> and
+ <code>challenge.characters</code> allow to further tailor the challenges that are created.
+ Please see &#8220;SLS Administration Guide&#8221;, chapter &#8220;Challenge / Response&#8221; for details.</li>
+<li>New Security Check for Challenge/Response:
+ If a challenge/response had been started with the <code>create.challenge</code> action,
+ but at <code>do.success</code> no verified challenge credential is present now login
+ fails by default, for security reason.
+ The correct way of handling this situation in the login model would be to
+ discard a cancelled challenge/response using the new JEXL/Groovy script
+ function <code>session.cancelChallengeResponse()</code>.
+ For migration it is recommended to first set the SLS configuration property
+ <code>sls.challenge.verification.mandatory</code> to <code>false</code>,
+ then to observe the system for WARN log entries of this kind:
+ <code>[SYSTEM] [SLS_WARNING] Reason: 'Challenge/Response initiated, but no verified CHALLENGE credential.'</code>.
+ Whenever such warnings occur, adapt the login model such that they no longer
+ appear and once all such warnings are gone, remove the property again.</li>
+</ul>
+
+<h3 id="jexlgroovyimprovements">JEXL/Groovy Improvements</h3>
+
+<ul>
+<li>New IDP functions <code>idp.createAssertion()</code> and <code>idp.sealAssertion()</code> allow to
+ create SAML assertions also in non-SAML related flows, without using any
+ IDP-related model states. See &#8220;SLS Administration Guide&#8221;, chapter &#8220;SAML IdP Adapter&#8221;,
+ section &#8220;Assertion creation by state or scripted&#8221; for details.</li>
+<li>New function <code>function.updateVarsFromXml()</code> allows to dynamically create
+ and update variables based on XML data, such as an XML response body
+ from an HTTP adapter call. It requires to define a regular SLS text template
+ which contains the XML structure of the expected response, and definitions for
+ the variables to create (type and name), placed within the corresponding
+ XML nodes. This simplifies processing XML responses and eliminates the need
+ for manual XPath processing of an XML response body in many cases. Please see
+ &#8220;SLS Administration Guide&#8221;, chapter &#8220;Updating variables from XML data with templates&#8221;.</li>
+<li>New function <code>function.updateVarsFromJson()</code> allows to dynamically create
+ and update variables based on JSON data, such as a JSON response body
+ from an HTTP adapter call. It requires to define a regular SLS text template
+ which contains the JSON structure of the expected response, and definitions for
+ the variables to create (type and name), placed within the corresponding
+ JSON nodes. This simplifies processing JSON responses and eliminates the need
+ for manual JsonPath processing of a JSON response body in many cases. Please see
+ &#8220;SLS Administration Guide&#8221;, chapter &#8220;Updating variables from JSON data with templates&#8221;.</li>
+<li>New variables that facilitate access to properties of the incoming HTTP request,
+ like <code>request.uri</code> and <code>request.method</code>. Please see &#8220;SLS Administration Guide&#8221;,
+ chapter &#8220;JEXL Expressions&#8221;, section &#8220;Request Variables&#8221; for a detailed
+ description of all the new request-related variables.</li>
+<li>The set of script functions <code>function.failWithAuthenticationError()</code> now also
+ has a variant with zero message arguments, for messages without any arguments.
+ Also, providing more message arguments than allowed, no longer results in an
+ <code>ArrayIndexOutOfBoundsException</code> (but still results in an error).</li>
+<li>Fixed an internal misconfiguration for the JEXL/Groovy function prefix <code>jwt</code>
+ that could under some circumstances result in failure to use <code>jwt</code> functions.</li>
+<li>Fixed a potential concurrency issue in the <code>jwt.validateSignatureNotExpired()</code>
+ JEXL/Groovy function that affects only the variant with keystore parameters.</li>
+</ul>
+
+<h3 id="variousimprovementsandfixes">Various Improvements and Fixes</h3>
+
+<ul>
+<li>The &#8220;SLS Administration Guide&#8221; now documents the criteria for when a backend
+ is considered available for failover and load balancing. See the chapters
+ about the respective adapters (HTTP, WS, LDAP, RADIUS, NTLM) or search for
+ the text &#8220;criterion for backend availability&#8221;.</li>
+<li>The trace log now logs response status and headers (if the <code>ContainerSessionFilter</code>
+ is activated, which it usually is, including currently on the SES Appliance).
+ This comes close to sniffing HTTP output of the SLS and works independently of
+ whether the SLS is accessed with TLS/SSL or not.</li>
+<li>The new optional configuration property <code>&quot;xpath.ignore.empty.nodes&quot;</code> allows
+ to make the WS (Webservice) adapter ignore XML response nodes with empty
+ values when creating JEXL / Groovy variables, so that a SOAP response with
+ a certain node will not override an already existing variable with an empty
+ value (by default, if the node exists, the value will be updated with its
+ value, even if the node is empty).</li>
+<li>Fixed a bug in the evaluation of JEXL/Groovy script model triggers: If the
+ script expression threw an exception, its cause was not logged and further
+ script model triggers were not evaluated at all. (Note that the order in
+ which script triggers are processed is not defined, their conditions must be
+ mutually exclusive). In the now fixed code, whenever a script model throws
+ an exception, the exception is logged and the result of script evaluation is
+ considered <code>false</code>, so that further script model triggers are still processed
+ afterwards, and generally request processing in the SLS proceeds. In addition,
+ the SLS now logs a warning if more than one script trigger evaluated to true,
+ as behavior is undefined in that case (no natural order of login models).</li>
+<li>Fixed a bug that when values were stored using <code>session.setUserInfoValue()</code>
+ in the User-Info cookie, the key for the value was treated case-insensitive,
+ so that keys that only differ by case were only stored once (which one was
+ undefined). This also applied to the &#8220;USERNAME&#8221; item that is automatically
+ stored with the value of the USERNAME credential if e.g. explicitly setting
+ in addition a value with key &#8220;username&#8221;.</li>
+<li>Fixed a bug in the SLS language cookie creation which caused the SLS language
+ cookie to have an invalid max-age attribute, and as a result be stored on the
+ client side as a session-bound cookie. This bug had been introduced recently
+ in SLS 5.8.0.0 when support for version 0 cookies was removed.</li>
+<li>Fixed two bugs in the password policy.
+ The first bug was that the setting <code>checkCount</code> only behaved as expected if
+ set to 2 or higher. If set to 1, it behaved as if not set or set to 0, i.e.
+ all checks had to pass. The second bug was that a regex defined with
+ <code>regularExpression</code> was not checked if <code>checkCount</code> was considered (i.e. set
+ to 2 or higher, due to the first bug) and <code>checkInclusionPattern</code> was set to
+ true, even though the regex has precedence in this case. Documentation of
+ password policy settings and procedure has been extended in the
+ &#8220;SLS Administration Guide&#8221;.</li>
+<li>The new configuration property <code>sls.response.buffer.size</code> allows to set the
+ size of the response buffer of the HTTP response. Increasing the buffer size
+ from the container default can help in cases a response from the SLS is incomplete
+ (i.e. some response headers are missing) because the buffer is too small. This
+ can be an issue with certain Tomcat 8 versions where the size of this buffer
+ is not configurable. Also, adjusting the buffer size allows to adjust memory
+ usage in such situation.</li>
+<li>With Tomcat 8.5 and newer, the content type of CSS files included in the SLS
+ response was accidentally changed to &#8220;text/html&#8221;, due to a bug in the SLS
+ container session filter. This led some browsers to not interpret the contents
+ as CSS anymore. This has been fixed so that the SLS works correctly with
+ Tomcat 8.5 and newer as well.</li>
+</ul>

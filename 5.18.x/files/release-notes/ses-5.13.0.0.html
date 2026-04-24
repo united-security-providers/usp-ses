@@ -1,0 +1,519 @@
+<h1 id="uspsecureentryserverreg5.13.0.0">USP Secure Entry Server &reg; 5.13.0.0</h1>
+
+<p>SES 5.13.0.0 consists of the following components:</p>
+
+<ul>
+<li>SES Web GUI <strong>5.13.0.0</strong></li>
+<li>HTTP Secure Proxy (HSP) <strong>4.23.0.4</strong></li>
+<li>Secure Login Service (SLS) <strong>5.16.0</strong></li>
+<li>Identity Manager (IDM) <strong>2.2.0.0</strong></li>
+<li>Shared Appliance Base (SAB) <strong>1.17.0</strong></li>
+</ul>
+
+<h2 id="platformcompatibility">Platform Compatibility</h2>
+
+<p>This release is compatible with the following hardware platforms:</p>
+
+<ul>
+<li>Dell PowerEdge R640</li>
+<li>Dell PowerEdge R630</li>
+</ul>
+
+<h2 id="seswebgui">SES Web GUI</h2>
+
+<h3 id="features">Features</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#90315</td>
+	<td>IDM Reporting and Dashboard</td>
+</tr>
+<tr>
+	<td>#90171</td>
+	<td>ECS Events</td>
+</tr>
+<tr>
+	<td>#90944</td>
+	<td>SES ECS Security Dashboard</td>
+</tr>
+<tr>
+	<td>#90942</td>
+	<td>SES ECS Event Viewer</td>
+</tr>
+<tr>
+	<td>#90469</td>
+	<td>Learn from Log ECS</td>
+</tr>
+<tr>
+	<td>#93030</td>
+	<td>Syslog ECS UI extension</td>
+</tr>
+<tr>
+	<td>#95022</td>
+	<td>FIDO2 IDM Credential Storage Configuration Support</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="changes">Changes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#110329</td>
+	<td>Replace 01 legacy-field-mapping.yaml with actual version</td>
+</tr>
+<tr>
+	<td>#108373</td>
+	<td>Cleanup curator&#8217;s aliases task</td>
+</tr>
+<tr>
+	<td>#107893</td>
+	<td>Mini-Remove SAML SAP + SuisseID from SES Appliance + GUI</td>
+</tr>
+<tr>
+	<td>#106435</td>
+	<td>Store CDS metrics into Elasticsearch instead of Graphite</td>
+</tr>
+<tr>
+	<td>#106669</td>
+	<td>Migrate SES Events to ECS Events</td>
+</tr>
+<tr>
+	<td>#106646</td>
+	<td>Cleanup Graphite handling leftovers in Logstash pipelines</td>
+</tr>
+<tr>
+	<td>#106625</td>
+	<td>Remove all JMS and JDBC classes from Log4j jar used by legacy GUI</td>
+</tr>
+<tr>
+	<td>#106522</td>
+	<td>Migration system metrics</td>
+</tr>
+<tr>
+	<td>#105514</td>
+	<td>add logstash filter to create &#8220;USP:mod:waf:004&#8221; event from mod_md log</td>
+</tr>
+<tr>
+	<td>#105493</td>
+	<td>define new USP event &#8220;USP:mod:waf:004&#8221; for OCSP renewal messages</td>
+</tr>
+<tr>
+	<td>#105488</td>
+	<td>let mod_md script log OCSP renewals and errors</td>
+</tr>
+<tr>
+	<td>#91249</td>
+	<td>Remove webservice pipeline logstash</td>
+</tr>
+<tr>
+	<td>#91262</td>
+	<td>Switch WAF widgets to ES datasource</td>
+</tr>
+<tr>
+	<td>#91263</td>
+	<td>Switch Overview tab WAF widgets to ES datasource</td>
+</tr>
+<tr>
+	<td>#91264</td>
+	<td>Switch Traffic tab WAF widgets to ES datasource</td>
+</tr>
+<tr>
+	<td>#91265</td>
+	<td>Switch Session Management tab WAF widgets to ES datasource</td>
+</tr>
+<tr>
+	<td>#91373</td>
+	<td>Move Graphite Logstash Pipeline Events</td>
+</tr>
+<tr>
+	<td>#91592</td>
+	<td>Update USP Event API library and adjust field usage</td>
+</tr>
+<tr>
+	<td>#91865</td>
+	<td>Switch VHost/Location selection component to ES datasource</td>
+</tr>
+<tr>
+	<td>#92124</td>
+	<td>Store hspbeat metrics into Elasticsearch instead of Graphite</td>
+</tr>
+<tr>
+	<td>#92219</td>
+	<td>Embed timeseries migration script in update procedure</td>
+</tr>
+<tr>
+	<td>#92456</td>
+	<td>logstash filter-create_usp_event 2.0</td>
+</tr>
+<tr>
+	<td>#92756</td>
+	<td>ECS Anonymization Service for AnonymizationWidget</td>
+</tr>
+<tr>
+	<td>#93026</td>
+	<td>create usp event: default event.kind event</td>
+</tr>
+<tr>
+	<td>#93027</td>
+	<td>remove field type elasticsearch</td>
+</tr>
+<tr>
+	<td>#93237</td>
+	<td>Remove usage of &#8220;type&#8221; field from UI apps</td>
+</tr>
+<tr>
+	<td>#94136</td>
+	<td>Remove usage of non-ECS fields from IDM logstash filter</td>
+</tr>
+<tr>
+	<td>#94599</td>
+	<td>ACME Logstash ECS</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#107845</td>
+	<td>Incorrect conversion of wildcarded sumSeries</td>
+</tr>
+<tr>
+	<td>#90476</td>
+	<td>Logstash jsonparsefailure.log not rotated</td>
+</tr>
+<tr>
+	<td>#92651</td>
+	<td>Issues with USP:mod:waf events</td>
+</tr>
+<tr>
+	<td>#99066</td>
+	<td>Dashboard - Traffic - Appliaction Resource Codes 4xx missing</td>
+</tr>
+<tr>
+	<td>#90013</td>
+	<td>Some log viewer filters don&#8217;t work</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="httpsecureproxyhsp">HTTP Secure Proxy (HSP)</h2>
+
+<h3 id="features">Features</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#100778</td>
+	<td>Improved error message when the limit configured with SE_LockBidCheckMaxRedirects is reached.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="changes">Changes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#100782</td>
+	<td>Updated mod_unblufilter to version 5.0.13.</td>
+</tr>
+<tr>
+	<td>#112441</td>
+	<td>Updated httpd to version 2.4.53.</td>
+</tr>
+<tr>
+	<td>#112544</td>
+	<td>Updated OpenSSL to version 1.1.1n</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#100781</td>
+	<td>Fixed memory allocation error on small POST requests (payload below 4kB) when ICAP and CSRF both was enabled.</td>
+</tr>
+<tr>
+	<td>#109128</td>
+	<td>Fixed issue that lead to incomplete statsite metrics on occurence of multiple events.</td>
+</tr>
+<tr>
+	<td>#111046</td>
+	<td>Fixed wrong parsing of the SameSite cookie-attribute. &#8220;None&#8221; is now an accepted value.</td>
+</tr>
+<tr>
+	<td>#113542</td>
+	<td>Fixed a bug that caused the ProxyWebsocketIdleTimeout to be ignored.</td>
+</tr>
+<tr>
+	<td>#100780</td>
+	<td>Fixed setting of CN= parameter for direcvtive ICAP_EnableSSLServerCert.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="identitymanageridm">Identity Manager (IDM)</h2>
+
+<h3 id="features">Features</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#88002</td>
+	<td>IDM Webauthn Support Phase 1</td>
+</tr>
+<tr>
+	<td>#88003</td>
+	<td>Extend IDM Database for Webauthn</td>
+</tr>
+<tr>
+	<td>#88004</td>
+	<td>Add Webauthn REST API to IDM API (Syncope)</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="changes">Changes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#87538</td>
+	<td>Idm Event Fields =&gt; ECS</td>
+</tr>
+<tr>
+	<td>#94136</td>
+	<td>Remove usage of non-ECS fields from IDM logstash filter</td>
+</tr>
+<tr>
+	<td>#96457</td>
+	<td>Idm filter cleanup</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#110236</td>
+	<td>Regression IDM with Active Directory</td>
+</tr>
+<tr>
+	<td>#115223</td>
+	<td>IDM standalone-&#8220;WAF service process not found&#8221;</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="secureloginservicesls">Secure Login Service (SLS)</h2>
+
+<h3 id="newidmsesidentityauthenticationadapter">New IDM (SES Identity) Authentication Adapter</h3>
+
+<ul>
+<li>A new &#8220;IDM&#8221; adapter now allows to authenticate a user against a SES Identity
+ backend, using basic authentication to verify the user&#8217;s username and password
+ credentials. See SLS Administration Guide, chapter &#8220;IDM Adapter&#8221; for details.</li>
+</ul>
+
+<h3 id="webauthnadapteridmsesidentitystorage">Webauthn Adapter IDM (SES Identity) Storage</h3>
+
+<ul>
+<li>The Webauthn adapter now allows to use the storage option <code>idm</code> to store the
+ registered Webauthn credentials in a SES Identity database, using the new IDM
+ adapter. See SLS Administration Guide, chapter &#8220;Webauthn Adapter&#8221;, for details.</li>
+</ul>
+
+<h3 id="newopenidconnectrelyingpartyoidcrpadapter">New OpenID Connect Relying Party (OIDC RP) Adapter</h3>
+
+<ul>
+<li>Supports the OpenID Connect Authorization Code Flow; see the corresponding chapter
+ in the SLS Administration Guide for supported features and configuration/usage,
+ as well as the JEXL Guide for documentation of the related new script functions.</li>
+</ul>
+
+<h3 id="spnegoadapterkerberos">SPNEGO Adapter (Kerberos)</h3>
+
+<ul>
+<li>Determining whether MS Kerberos login was with password or certificate (&#8220;Smartcard&#8221;)
+ has been refactored away from Sun/Oracle proprietary internal functionality.
+ As a consequence the following ETypes are now supported for decrypting tickets
+ in order to extract the above login information: Aes128CtsHmacSha1(17),
+ Aes256CtsHmacSha1EType(18) and ArcFourHmac(23). No longer supported for that
+ use case (but still for SPNEGO login itself) are the ETypes DesCbcCrc(1),
+ DesCbcMd5(3) and Des3CbcHmacSha1Kd(16).
+ As long as the JDK still allows access to the internas, it is still possible
+ to use them as before with <code>spnego.mslogin.ticket.decipher.useJdkInternalsIfAccessible=true</code>,
+ but please report back to USP if you needed to do that so that support for the
+ needed ETypes could be considered for adding to future SLS versions.
+ Note, however, that all three additional ETypes are officially deprecated for security
+ reasons, as is <code>ArcFourHmac(23)</code>, see RFC 6649 (2012) and RFC 8429 (2018).</li>
+<li>Improved extraction of MS PAC data if several keytabs are configured;
+ now all keys are tried, no longer just the first one of matching type.</li>
+<li>Added two new script functions that can in some cases help analyze issues where
+ SPNEGO Token verification with the JDK fails: <code>spnego.traceSubject()</code> and
+ <code>spnego.traceIncomingSpnegoToken()</code>. See script guide for details.</li>
+</ul>
+
+<h3 id="openidconnectopadapter">OpenID Connect OP Adapter</h3>
+
+<ul>
+<li>Fixed a bug that basic auth passwords for client_secret in Token and Refresh
+ requests which contained &#8220;:&#8221; were cut off there.</li>
+<li>Fixed a bug that could lead to the SLS storing information about an authorization
+ (role) multiple times in the login session.</li>
+<li>Added new script functions for <code>oidc_op.getOidcRequestWrapper()</code>.
+ The methods <code>getBasicAuthUsername()</code> and <code>getBasicAuthPassword()</code>
+ get username/password from a basic auth header, if present.
+ The method <code>getRequestHeader(String name)</code> gets the value of the indicated
+ HTTP request header.</li>
+<li>New script functions <code>List&lt;IRpInfo&gt; oidc_op.getRpInfos()</code> and
+ <code>IRpInfo oidc_op.getRpInfo(String clientId)</code> that return objects for
+ RPs with methods <code>String getClientId()</code>, <code>String getClientSecret()</code>,
+ <code>List&lt;String&gt; getRedirectUriList()</code>and <code>int getIndex()</code>, also
+ for access to configuration properties for the respective RP via index.</li>
+<li>Removed the <code>oidc_op</code> credential provider, which no longer had any effect
+ for four years (since SLS 5.5.0.0); credentials are since then created
+ on-the-fly whenever needed for handling OIDC/OAuth messages.</li>
+</ul>
+
+<h3 id="ldapadapter">LDAP Adapter</h3>
+
+<ul>
+<li>The new configuration property &#8216;ldap.referral&#8217; allows to enable support for referrals in search results. Also, if
+ referral support is not enabled (default) but a search result contains referrals, a warning will be logged, but no
+ exception will be thrown, as was the case before. See &#8220;SLS Administration Guide&#8221;, chapter &#8220;LDAP Adapter&#8221;, for details.</li>
+</ul>
+
+<h3 id="httpandwsadapters">HTTP and WS Adapters</h3>
+
+<ul>
+<li>Introduced a new config property <code>http.tls.ciphers</code> for defining TLS ciphers
+ that are allowed to be used, similarly to the existing property <code>http.tls.versions</code>
+ for allowed SSL/TLS protocols.</li>
+</ul>
+
+<h3 id="removedobsoleteadaptersfeatures">Removed Obsolete Adapters/Features</h3>
+
+<ul>
+<li>Removed the long obsolete SAML &#8220;SAP&#8221; 1.1 IdP and Responder Servlet.</li>
+<li>Removed the SuisseID Adapter (last certificates issued by SuisseID expired in Dec 2021).</li>
+</ul>

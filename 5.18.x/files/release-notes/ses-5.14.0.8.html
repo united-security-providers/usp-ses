@@ -1,0 +1,99 @@
+<h1 id="uspsecureentryserverreg5.14.0.8">USP Secure Entry Server &reg; 5.14.0.8</h1>
+
+<p>SES 5.14.0.8 consists of the following components:</p>
+
+<ul>
+<li>SES Web GUI <strong>5.14.0.5</strong></li>
+<li>HTTP Secure Proxy (HSP) <strong>4.24.0.8</strong></li>
+<li>Secure Login Service (SLS) <strong>5.17.0.1</strong></li>
+<li>Identity Manager (IDM) <strong>2.3.0.0</strong></li>
+<li>Shared Appliance Base (SAB) <strong>1.17.0</strong></li>
+</ul>
+
+<h2 id="platformcompatibility">Platform Compatibility</h2>
+
+<p>This release is compatible with the following hardware platforms:</p>
+
+<ul>
+<li>Dell PowerEdge R650</li>
+<li>Dell PowerEdge R640</li>
+<li>Dell PowerEdge R630</li>
+</ul>
+
+<h2 id="seswebgui">SES Web GUI</h2>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#221402</td>
+	<td>elastalert index migration always runs</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="httpsecureproxyhsp">HTTP Secure Proxy (HSP)</h2>
+
+<h3 id="changes">Changes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#225832</td>
+	<td>Updated openssl to version 1.1.1v.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#216285</td>
+	<td>Fixed several issues related to mod_analyze being loaded as shared object.</td>
+</tr>
+<tr>
+	<td>#225806</td>
+	<td>Fixed an issue that could lead to abort of TLS client-authentication in case multiple acceptable CA names are sent by backend servers.</td>
+</tr>
+</tbody>
+</table>
+

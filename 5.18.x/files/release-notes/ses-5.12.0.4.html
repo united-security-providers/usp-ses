@@ -1,0 +1,39 @@
+<h1 id="uspsecureentryserverreg5.12.0.4">USP Secure Entry Server &reg; 5.12.0.4</h1>
+
+<p>SES 5.12.0.4 consists of the following components:</p>
+
+<ul>
+<li>SES Web GUI <strong>5.12.0.3</strong></li>
+<li>HTTP Secure Proxy (HSP) <strong>4.23.0.0</strong></li>
+<li>Secure Login Service (SLS) <strong>5.15.0.8</strong></li>
+<li>Identity Manager (IDM) <strong>2.1.0.3</strong></li>
+<li>Shared Appliance Base (SAB) <strong>1.16.12</strong></li>
+</ul>
+
+<h2 id="platformcompatibility">Platform Compatibility</h2>
+
+<p>This release is compatible with the following hardware platforms:</p>
+
+<ul>
+<li>Dell PowerEdge R640</li>
+<li>Dell PowerEdge R630</li>
+</ul>
+
+<h2 id="secureloginservicesls">Secure Login Service (SLS)</h2>
+
+<h3 id="bugfixes">Bug Fixes</h3>
+
+<ul>
+<li>Fixed a bug in the PKI adapter where extraction of CRL URIs from certificates
+ as used for CRL checks using the <code>CachedURICRL</code> CRL plugin would fail for all
+ certificates, i.e. CRLs checks were not possible (bug since SLS 5.15.0.0).</li>
+<li>Fixed a bug in the simple failover mechanism which would result in the
+ failover working only once, e.g. switching to the second backend when the
+ first one went offline, but then not switching back when the first one
+ came back online, and the second one went offline.</li>
+<li>Fixed a bug in the adapter initialization which was introduced with the new
+ Webauthn adapter. It could, under certain circumstances, lead to errors when
+ a JSP was invoked which required certain functionality from a specific adapter
+ before any actions using that adapter had been invoked before (e.g. the SP or IdP
+ selection page in an SP or IdP).</li>
+</ul>

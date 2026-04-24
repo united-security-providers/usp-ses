@@ -1,0 +1,147 @@
+<h1 id="uspsecureentryserverreg5.18.0.0">USP Secure Entry Server &reg; 5.18.0.0</h1>
+
+<p>SES 5.18.0.0 consists of the following components:</p>
+
+<ul>
+<li>SES Web GUI <strong>5.18.0.0</strong></li>
+<li>HTTP Secure Proxy (HSP) <strong>4.27.0.4</strong></li>
+<li>Secure Login Service (SLS) <strong>5.20.0.5</strong></li>
+<li>Identity Manager (IDM) <strong>2.3.0.1</strong></li>
+<li>Shared Appliance Base (SAB) <strong>1.17.6</strong></li>
+</ul>
+
+<h2 id="platformcompatibility">Platform Compatibility</h2>
+
+<p>This release is compatible with the following hardware platforms:</p>
+
+<ul>
+<li>Dell PowerEdge R660</li>
+<li>Dell PowerEdge R650</li>
+<li>Dell PowerEdge R640</li>
+</ul>
+
+<h2 id="appliancebase">Appliance Base</h2>
+
+<h3 id="features">Features</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#291620</td>
+	<td>Added support for integrating monitoring with CheckMK agent.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="seswebgui">SES Web GUI</h2>
+
+<h3 id="features">Features</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#291886</td>
+	<td>The CheckMK agent SSH public key can now be configured in the monitoring section.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="changes">Changes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#291877</td>
+	<td>Support for OWASP CRS 3.3.8 has been added.</td>
+</tr>
+<tr>
+	<td>#291815</td>
+	<td>The GUI now performs some basic validation of the SLS content security policy.</td>
+</tr>
+<tr>
+	<td>#291510</td>
+	<td>The drop-down list of private keys in the ACME screen is now sorted alphabetically.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="httpsecureproxyhsp">HTTP Secure Proxy (HSP)</h2>
+
+<h3 id="changes">Changes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#291824</td>
+	<td>Updated httpd to v2.4.66</td>
+</tr>
+<tr>
+	<td>#292042</td>
+	<td>Updated openssl to v3.0.19</td>
+</tr>
+<tr>
+	<td>#292043</td>
+	<td>Updated 3rd party libraries</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="secureloginservicesls">Secure Login Service (SLS)</h2>
+
+<h3 id="variousimprovementsandfixes">Various Improvements and Fixes</h3>
+
+<ul>
+<li>A build issue with the SLS scripting guide documentation has been fixed which resulted in some scripting
+ prefixes like &#8220;oidc_rp&#8221; not having been included previously.</li>
+<li>Fixed minor issue with exception being logged during session clean-up under certain circumstances involving the hard
+ final timeout and concurrent request processing.</li>
+<li>Fixed issue with Google Authenticator QR code not being rendered due to default Content Security Policy.</li>
+</ul>

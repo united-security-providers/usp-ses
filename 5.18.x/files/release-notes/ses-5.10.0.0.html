@@ -1,0 +1,397 @@
+<h1 id="uspsecureentryserverreg5.10.0.0">USP Secure Entry Server &reg; 5.10.0.0</h1>
+
+<p>SES 5.10.0.0 consists of the following components:</p>
+
+<ul>
+<li>SES Web GUI <strong>5.10.0.0</strong></li>
+<li>HTTP Secure Proxy (HSP) <strong>4.21.0.1</strong></li>
+<li>Secure Login Service (SLS) <strong>5.13.0.1</strong></li>
+<li>Identity Manager (IDM) <strong>1.6.0.2</strong></li>
+<li>Shared Appliance Base (SAB) <strong>1.16.8</strong></li>
+</ul>
+
+<h2 id="platformcompatibility">Platform Compatibility</h2>
+
+<p>This release is compatible with the following hardware platforms:</p>
+
+<ul>
+<li>Dell PowerEdge R640</li>
+<li>Dell PowerEdge R630</li>
+</ul>
+
+<h2 id="seswebgui">SES Web GUI</h2>
+
+<h3 id="features">Features</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#64751</td>
+	<td>TLS 1.3 GUI Support</td>
+</tr>
+<tr>
+	<td>#66085</td>
+	<td>Redesigned, improved SSL configuration screens</td>
+</tr>
+<tr>
+	<td>#75068</td>
+	<td>Certificate expiration checks in SES GUI and monitoring integration</td>
+</tr>
+<tr>
+	<td>#53777</td>
+	<td>IPv6 support for SNMP service</td>
+</tr>
+<tr>
+	<td>#53761</td>
+	<td>IPv6 support for Network services</td>
+</tr>
+<tr>
+	<td>#68505</td>
+	<td>SES GUI SAML SP: New GUI Settings per trusted IdPs</td>
+</tr>
+<tr>
+	<td>#75782</td>
+	<td>Adjusted Timeperiod selection for Security Dashboard</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="changes">Changes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#75506</td>
+	<td>Improved UI behavior when encountering open changes during HA sync</td>
+</tr>
+<tr>
+	<td>#76561</td>
+	<td>Update Appliance Kernel to 4.14.195</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#70831</td>
+	<td>Enforced read user download restrictions for private keys</td>
+</tr>
+<tr>
+	<td>#72298</td>
+	<td>Fixed IPv6 HA: WAF HA active/passive HA status</td>
+</tr>
+<tr>
+	<td>#74084</td>
+	<td>Remote backup could be initialized with wrong config after a GUI restart, plus misleading log message</td>
+</tr>
+<tr>
+	<td>#74238</td>
+	<td>During HA configuration sync, temporary archives were not deleted on the receiving node</td>
+</tr>
+<tr>
+	<td>#74963</td>
+	<td>Fixed issue when backend IP change was not recognised by WAF</td>
+</tr>
+<tr>
+	<td>#75427</td>
+	<td>Fixed missing location assignment for maintenance pages during vhost import</td>
+</tr>
+<tr>
+	<td>#75488</td>
+	<td>Fixed IDM configuration view for view-only user</td>
+</tr>
+<tr>
+	<td>#75606</td>
+	<td>Host header overwrite not respected for WebSocket with SSL server auth</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="httpsecureproxyhsp">HTTP Secure Proxy (HSP)</h2>
+
+<h3 id="changes">Changes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#47169</td>
+	<td>Added support for TLSv1.3 protocol</td>
+</tr>
+<tr>
+	<td>#76380</td>
+	<td>Update httpd to version 2.4.46</td>
+</tr>
+<tr>
+	<td>#72628</td>
+	<td>Update OpenSSL to 1.1.1g</td>
+</tr>
+<tr>
+	<td>#54846</td>
+	<td>Added new Feature that allows better control on how the Set-Cookie parser handles deprecated attributes</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#74526</td>
+	<td>Fixed a bug that led to a segmentation fault when HGW_ClientCert was configured with only one parameter.</td>
+</tr>
+<tr>
+	<td>#75153</td>
+	<td>Fixed logged event actions for mod_qos rules working in &#8220;log&#8221;.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="identitymanageridm">Identity Manager (IDM)</h2>
+
+<h3 id="features">Features</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#60806</td>
+	<td>IDM Monitoring for Security Operations</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="changes">Changes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#73119</td>
+	<td>Upgrade to Syncope 2.0.15</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#65940</td>
+	<td>OU Admin in parent OU deprovisions AD users when editing</td>
+</tr>
+<tr>
+	<td>#66048</td>
+	<td>Create user with existing name from upper OU by OU Admin fails without useful message</td>
+</tr>
+<tr>
+	<td>#68066</td>
+	<td>Uploaded CSV File are not deleted after import</td>
+</tr>
+<tr>
+	<td>#71289</td>
+	<td>Remove group owner from group does not provision the change into Active Directory</td>
+</tr>
+<tr>
+	<td>#71339</td>
+	<td>OU resource is not updated after changes in AD Connector Configuration</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="secureloginservicesls">Secure Login Service (SLS)</h2>
+
+<h3 id="openidconnectadaptersecurityfix">OpenID Connect Adapter Security Fix</h3>
+
+<ul>
+<li>When the <code>redirect_uri</code> parameter in an OIDC AuthnRequest was invalid, the SLS
+ still responded with a 302 back to that URI, which (in case of someone tampering
+ with that parameter) creates a security risk (&#8220;open redirect&#8221;). This has been
+ fixed so that the SLS will now respond with a 400 Bad Request HTTP status code
+ and a JSON error response containing the proprietary error code
+ &#8220;redirect_uri_mismatch&#8221; that e.g. Google uses, plus more detailed description.</li>
+</ul>
+
+<h3 id="samlsecurityenhancements">SAML Security Enhancements</h3>
+
+<ul>
+<li>Migration SP Adapter: Note that the new configuration properties
+ <code>sp.idp.&lt;no&gt;.sso.idpinit.allow</code> and <code>sp.idp.&lt;no&gt;.sso.idpinit.inresponseto.allow</code>
+ which have both default values false (i.e. stricter behavior than previously)
+ may have to be set to true in some cases, the former setting if IdP-initiated
+ login is needed, and both most prominently if logins at the IdP regularly take
+ so long that the login session at the SP is already expired when the response
+ arrives. More details below and also in the &#8220;SLS Administration Guide&#8221; in the
+ chapter &#8220;SP Adapter&#8221; in a new section &#8220;Security Concerns, esp. IdP-Initiated Login&#8221;.</li>
+<li>SP Adapter: A new setting <code>sp.idp.&lt;no&gt;.sso.idpinit.allow</code> that allows to prohibit
+ IdP-initiated logins, as they are intrinsically harder to be secured, as the
+ SP did not ask for login and there is thus no &#8220;challenge&#8221; to correlate with.
+ The default is <code>false</code>.</li>
+<li>SP Adapter: By default now rejects Responses during IdP-initiated login where
+ either the Response contains an <code>InResponseTo</code> XML attribute or its assertion
+ contains an <code>InResponseTo</code> in the <code>SubjectConfirmation</code> of the Assertion.
+ This check can be deactivated by setting <code>sp.idp.&lt;no&gt;.sso.idpinit.inresponseto.allow</code>
+ to true. Use case for allowing is SP-initiated logins at the IdP that take so
+ long that the login session at the SP expires and thus the response from the
+ IdP arrives as a new login session. However, it is generally recommended to
+ instead increase the lifetime of the login session in these cases.</li>
+<li>SP Adapter: If the Assertion contains an <code>InResponseTo</code> in the <code>SubjectConfirmation</code>
+ and there was an AuthnRequest (i.e. SP-initiated login), the comparison with
+ the ID XML attribute of the AuthnRequest is always done; login fails if they
+ do not match.</li>
+<li>SP Adapter: Now remembers previously successfully presented Assertions during
+ their lifetime and blocks all attempts to reuse the same Assertion. This is
+ important especially for IdP-initiated logins, where the SP cannot compare
+ e.g. the <code>InResponseTo</code> in the Assertion to the <code>ID</code> in its original
+ AuthnRequest, since there has been no AuthnRequest.
+ (Note that this mechanism only provides partial protection in cases where
+ there are several SP instances behind a load balancer.)</li>
+<li>SP and IdP Adapters: Mandate that SAML requests and responses contain all
+ mandatory XML attributes. Requests and responses must contain <code>ID</code>, <code>Version</code>
+ and <code>IssueDate</code>. In addition responses to a request that contain an
+ <code>InResponseTo</code> attribute must match the <code>ID</code> of the request.</li>
+</ul>
+
+<h3 id="generalsamlimprovementsandfixes">General SAML Improvements and Fixes</h3>
+
+<ul>
+<li>In the SAML IdP Adapter setting parameters for a custom SAML Response (e.g.
+ <code>mainStatusCode</code>)only had the desired effect if done for <code>do.saml.idp.sendemsg</code>
+ but not if done for <code>do.saml.idp.createmsg</code>.</li>
+</ul>
+
+<h3 id="variousimprovementsandfixes">Various Improvements and Fixes</h3>
+
+<ul>
+<li>The SLS now logs a new warning <code>SLS_LDAPS_REQUIRED</code>when trying to connect to
+ an LDAP server that mandates LDAPS (TLS/SSL) but plain LDAP is configured.</li>
+<li>Fixed wrong netmask calculation in script functions <code>function.isIpInNetwork()</code>,
+ <code>function.isIpInAnyNetwork()</code> and <code>function.isClientIpTrusted</code>;
+ e.g. <code>1.2.3.4/24</code> was interpreted as the much larger network <code>1.2.3.4/8</code>.</li>
+<li>The IP-related script functions <code>function.isIpInNetwork()</code>,
+ <code>function.isIpInAnyNetwork()</code> and <code>function.isClientIpTrusted</code> now transparently
+ support IPv6 and IPv4 addresses. Also supported are IPv4 IPs wrapped into IPv6
+ (in &#8220;compat&#8221;, &#8220;6to4&#8221; and &#8220;terero&#8221; formats). See the JEXL Functions Guide for
+ the respective functions for more details.</li>
+<li>No longer evaluating other model triggers if the model is triggered with
+ <code>cmd</code> parameter. Previously this could lead to exceptions in the exception
+ log because script model triggers were evaluated before e.g. script
+ variables for headers were set.</li>
+<li>Two new script functions <code>function.urlEncode(String input, String charset)</code>
+ and <code>function.urlDecode(String input, String charset)</code> that allow to explicitly
+ specify the charset to use, instead of implicitly UTF&#8211;8 in the already existing
+ functions with just one parameter.</li>
+<li>Propagation of headers to applications via HSP and generally of session
+ attributes to the HSP now provides more control over encoding. In essence
+ the value can be provided in already encoded form via a script expression like
+ <code>${function.urlEncode(session.getCred('username'), 'ISO-8859-1')}</code> and in
+ addition by indicating that the provided value is already encoded so that the
+ SLS does not attempt to encode it itself.
+ New properties are <code>app.header.&lt;name&gt;.isValueEncoded=&lt;boolean&gt;</code>,
+ <code>app.header.&lt;name&gt;.encoding=&lt;encoding&gt;</code> and
+ <code>session-attribute.valueProvidedEncoded.&lt;no&gt;=&lt;boolean&gt;</code>;
+ new script functions are
+ <code>response.propagateHeaderToApp(String name, String value, boolean valueAlreadyEncoded, String encoding)</code>
+ and
+ <code>response.propagateHeaderToApp(String name, String value, String path, boolean valueAlreadyEncoded, String encoding)</code>.
+ For more information see the respective sections in the SLS Admininstration
+ Guide for the new properties and the JEXL Functions Guide for the new functions.</li>
+</ul>

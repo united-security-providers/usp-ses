@@ -1,0 +1,521 @@
+<h1 id="uspsecureentryserverreg5.6.0.0">USP Secure Entry Server &reg; 5.6.0.0</h1>
+
+<p>SES 5.6.0.0 consists of the following components:</p>
+
+<ul>
+<li>SES Web GUI <strong>5.6.0.0</strong></li>
+<li>HTTP Secure Proxy (HSP) <strong>4.17.0.3</strong></li>
+<li>Secure Login Service (SLS) <strong>5.8.0.0</strong></li>
+<li>Identity Manager (IDM) <strong>1.1.0.0</strong></li>
+<li>FUSE ICAP Server <strong>1.3.4</strong></li>
+<li>Shared Appliance Base (SAB) <strong>1.15.5</strong></li>
+</ul>
+
+<h2 id="seswebgui">SES Web GUI</h2>
+
+<h3 id="features">Features</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#36639</td>
+	<td>Improved seperation of duties for configurator role and deployer role</td>
+</tr>
+<tr>
+	<td>#46539</td>
+	<td>Standardized naming of SES legacy GUI modules</td>
+</tr>
+<tr>
+	<td>#47037</td>
+	<td>Implemented HSP LB: Generate new Config</td>
+</tr>
+<tr>
+	<td>#47147</td>
+	<td>Implemented HSP LB: Backend Config Screens/Generation</td>
+</tr>
+<tr>
+	<td>#47246</td>
+	<td>Removed SES 5.0 migration support</td>
+</tr>
+<tr>
+	<td>#47312</td>
+	<td>Implemented ACL Client service</td>
+</tr>
+<tr>
+	<td>#47597</td>
+	<td>Removed user ID parameter from ACL API methods</td>
+</tr>
+<tr>
+	<td>#47601</td>
+	<td>Store ACL repository in standardized location on the appliance</td>
+</tr>
+<tr>
+	<td>#47650</td>
+	<td>Split &amp; migration of entities (fine-granular entities)</td>
+</tr>
+<tr>
+	<td>#47849</td>
+	<td>Implemented HSP LB: Generate HGW_BalancerErrorRedirect off</td>
+</tr>
+<tr>
+	<td>#47851</td>
+	<td>Extended and validated ACL Permissions</td>
+</tr>
+<tr>
+	<td>#48403</td>
+	<td>Implemented HSP LB: Force Hosts on Balancer Health Checks</td>
+</tr>
+<tr>
+	<td>#48473</td>
+	<td>Implemented configuration in-memory caching</td>
+</tr>
+<tr>
+	<td>#48475</td>
+	<td>Implemented delayed save for config changes</td>
+</tr>
+<tr>
+	<td>#48507</td>
+	<td>Improved Diff Viewer in ACL Client</td>
+</tr>
+<tr>
+	<td>#48846</td>
+	<td>Implemented HSP LB: Generate new LB config for remote SLS + public web files</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#47024</td>
+	<td>Improved support for DataProtector with new JDK</td>
+</tr>
+<tr>
+	<td>#47476</td>
+	<td>Fixed Dataprotector decryption failure</td>
+</tr>
+<tr>
+	<td>#47802</td>
+	<td>Improved deleting of certificates behaviour</td>
+</tr>
+<tr>
+	<td>#48521</td>
+	<td>RSA Node Secret Upgrade not possible</td>
+</tr>
+<tr>
+	<td>#49661</td>
+	<td>Improved ModSec Audit Log generation</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="httpsecureproxyhsp">HTTP Secure Proxy (HSP)</h2>
+
+<h3 id="features">Features</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#5716</td>
+	<td>A new directive, HGW_ViaHeader, was introduced, which allows to enable and disable sending the HTTP-Via header to the backend application server.</td>
+</tr>
+<tr>
+	<td>#45105</td>
+	<td>Added support for SameSite attribute of Set-Cookie headers.</td>
+</tr>
+<tr>
+	<td>#45248</td>
+	<td>Introduced new module mod_hgw_balancer which adds a lot of new load balancing features. Please see the Administration Guide for all details.</td>
+</tr>
+<tr>
+	<td>#47182</td>
+	<td>Added support for Subject Alternative Name (SAN) extension to name checking of HGW_EnableSSLServerCert.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#42203</td>
+	<td>Fixed an error that caused secure cookies to be sent to backends over non-SSL connections.</td>
+</tr>
+<tr>
+	<td>#45229</td>
+	<td>Fixed an error that was caused by a HTTP 204 response when automatic host rewrite was activated.</td>
+</tr>
+<tr>
+	<td>#45473</td>
+	<td>Fixed an issue which caused not closing the connection to a forward proxy upon error.</td>
+</tr>
+<tr>
+	<td>#46660</td>
+	<td>A bug was fixed which caused an error when receiving invalid HTTP 204 response (with transfer-encoding header) from an application server.</td>
+</tr>
+<tr>
+	<td>#47899</td>
+	<td>Fixed an issue in domain-matching mechanism (in conjuntion with SE_IntCookie_DomainMatchingPolicy) when the hostname of the backend consists of a single label only (thus not being a FQDN).</td>
+</tr>
+<tr>
+	<td>#48381</td>
+	<td>Fixed invalid memory access if no HGW_Host is set and if per-request DNS resolution is used for a location.</td>
+</tr>
+<tr>
+	<td>#48593</td>
+	<td>Fixed an issue that could have lead to errors in the cookie handling, when the value of the Domain attribute contains upper-case letters. Domain attribute values are now always transformed to lower-case letters.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="secureloginservicesls">Secure Login Service (SLS)</h2>
+
+<h3 id="servletapi">Servlet API</h3>
+
+<ul>
+<li>Upgraded the SLS servlet API dependency to 3.0.1. As a consequence, a servlet
+ container with support for this version of the API is mandatory; in case of
+ Apache Tomcat, this means that Tomcat 7 is the oldest supported version.
+ Furthermore, thanks to this update, all cookies created by the SLS now set
+ the optional flag &#8220;HttpOnly&#8221;.</li>
+</ul>
+
+<h3 id="httpadapter">HTTP Adapter</h3>
+
+<ul>
+<li>The HTTP adapter has been improved in that the internal functionality executed
+ during a <code>&quot;do.auth&quot;</code> model state is the same as during a <code>&quot;do.http&quot;</code> state,
+ just with a different alias, and some minor differences in terms of defaults.
+ As a consequence, an actual authentication step can now just as well be
+ performed with a <code>&quot;do.http&quot;</code> state. All that is needed is to set the property
+ &#8220;<code>.credentials</code>&#8221; for the custom HTTP call; while this was possible already in
+ the old releases, it only checked if the listed credentials existed, but did
+ not mark them as verified after a successful call. Now it does, just as it
+ always did during <code>&quot;do.auth&quot;</code>. There were also other small inconsistencies
+ between <code>&quot;do.auth*&quot;</code> and <code>&quot;do.http&quot;</code> in terms of configuration handling (e.g.
+ it was not possible to freely define a POST body in a <code>&quot;do.auth&quot;</code> call).
+ With this update, the handling of all request-, backend- and proxy settings
+ behave exactly the same in all cases.</li>
+<li>Request timeout settings were not correctly processed at startup, which caused
+ the HTTP (and Webservice) adapters to always use the default timeout of 60 seconds.</li>
+</ul>
+
+<h3 id="saml">SAML</h3>
+
+<ul>
+<li>Removed the long obsolete OIOSAML SAML 2.0 SP (superseded by the SLS SP Adapter).
+ Note that the SLS may now log a warning if the related `samlsp&#8217; credential provider
+ is still configured in SLS properties or the OIOSAML SP servlet in the SLS web.xml;
+ all OIOSAML SP related settings can be safely removed from configuration.</li>
+</ul>
+
+<h3 id="performancelog">Performance Log</h3>
+
+<ul>
+<li>The performance log now logs minimal information about incoming HTTP requests
+ and outgoing HTTP responses, which can be very helpful during integration and
+ and may be vitally useful for analysis of incidents in production.
+ For requests, HTTP method and URL without query string plus parameter names
+ (but not values) are logged very early in request processing.
+ For responses, HTTP status code plus, if present, <code>Location</code>, <code>SLSStatus</code> and
+ <code>AccessArea</code> headers are logged very late in request processing. For the
+ <code>Location</code> header only the URL without query string plus query parameter
+ names (but not values) are logged.
+ The format of the request information in the new log entries is JSON (max.
+ compressed); thus it might be extended with additional fields in the future
+ (possibly configurable at runtime), which could allow to &#8220;zoom in&#8221; into
+ specific areas of the operating SLS. NOTE: The existing log records have not
+ been changed at this time, so the file as a whole is not all JSON formatted.</li>
+</ul>
+
+<h3 id="variousimprovementsandfixes">Various Improvements and Fixes</h3>
+
+<ul>
+<li><p>The SLS will not create any cookies with the &#8220;version&#8221; attribute anymore. In
+ other words, version 1 cookies are not supported anymore. The configuration
+ property for setting the version for custom success cookies is not used anymore.
+ Besides being a very obsolete cookie attribute, it is now also not supported
+ by the most current HSP releases anymore, so cookies with the version attribute
+ might not even work anymore (but experience shows that they are barely used
+ by anyone today).</p></li>
+<li><p>The model state <code>&quot;do.success&quot;</code> now allows to specify the list of credential
+ types required for a successful login as a state parameter (or property).
+ If this is set, it overrides the static model property <code>&quot;.credentials&quot;</code>.
+ This allows, for instance, to have a static default in the global model
+ property and a dynamic override right at the final model state.
+ Also, the global model property <code>&quot;.credentials&quot;</code> supports dynamic expressions
+ now, e.g. <code>model.login.credentials=#{Util.getRequiredCredentials()}</code>.</p></li>
+<li><p>Setting script variables to null using <code>function.setVariable()</code> or the Groovy
+ shortcut <code>setVar()</code> did so far not allow to set variables to null.
+ As a workaround, it was possible to set variables with simple names directly
+ with <code>var myvar = null</code> (JEXL) or <code>myvar = null</code> (Groovy).
+ It is now allowed to set variables to null with the usual functions.
+ Accordingly, the semantics of <code>function.hasNonEmptyVariable()</code> and
+ <code>hasNonEmptyVar()</code> have been extended to cover also the case where a variable
+ exists and is null. In this case these functions now return false.
+ (In the past they returned true in this case, but this could only happen if
+ a variable had been set to null directly using one of the workarounds.)</p></li>
+<li><p>The error message displayed when a password policy check failed due to the
+ new password being too short or too long was invalid and confusing, potentially
+ also mixing up english text parts with another language. </p></li>
+<li><p>Under some circumstances, the script function <code>googleauth.createQRcode()</code>
+ would not render a QR code, but either trigger an exception, or just result
+ in an empty string (depending on the JEXL configuration settings). This was
+ fixed so that the function now works correctly in that situation.</p></li>
+<li><p>Passwort Policy no longer required: The behavior of the model state
+ <code>&quot;do.changepassword&quot;</code> has been adapted so that it will no longer trigger
+ an error if there was no local password policy loaded at a previous point
+ in the model. In such a case, it will only perform basic checks like comparing
+ the two new passwords given. This change eliminates the need for having the
+ state <code>&quot;get.passwordpolicy&quot;</code> in the model whenever a password change operation
+ should be done with the LDAP adapter.</p></li>
+<li><p>An issue was fixed with the multi-tenancy feature, where a tenant that had
+ been deliberately selected in a request through the URL parameter was then
+ overwritten in a subsequent request, due to the request URI path.
+ Now, the tenant will not be resolved anymore if there is one in the session
+ already, except if explicitely set with either the URL parameter, or by
+ scripting function.</p></li>
+<li><p>The self-redirect after a POST request didn&#8217;t work as expected if the POST
+ request forwarded the model to a <code>&quot;show.jsp&quot;</code> state (only if the target
+ state was a state like <code>&quot;get.cred&quot;</code>). This has been fixed, so that the
+ self-redirect now also works correctly with <code>&quot;show.jsp&quot;</code>.</p></li>
+<li><p>Fixed NullPointerExeception when trying to set a script variable to null if
+ trace log is activated.</p></li>
+</ul>
+
+<h2 id="identitymanager">Identity Manager</h2>
+
+<h3 id="features">Features</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#42877</td>
+	<td>Add sub OUs, delete OU</td>
+</tr>
+<tr>
+	<td>#45233</td>
+	<td>Add &#8220;OU Admin&#8221; role</td>
+</tr>
+<tr>
+	<td>#46571</td>
+	<td>OU navigation</td>
+</tr>
+<tr>
+	<td>#46633</td>
+	<td>Manage Connectors (&#8220;Assigned Resources&#8221;) in OU</td>
+</tr>
+<tr>
+	<td>#46780</td>
+	<td>Allow to suspend and activate single users</td>
+</tr>
+<tr>
+	<td>#46781</td>
+	<td>User bulk suspend, active, delete</td>
+</tr>
+<tr>
+	<td>#46782</td>
+	<td>Group bulk delete</td>
+</tr>
+<tr>
+	<td>#46784</td>
+	<td>Filter users and groups</td>
+</tr>
+<tr>
+	<td>#46785</td>
+	<td>User bulk password reset, group membership</td>
+</tr>
+<tr>
+	<td>#46786</td>
+	<td>User Edit group membership - available groups should be searchable</td>
+</tr>
+<tr>
+	<td>#47019</td>
+	<td>Users/Groups: change OU bulk operation</td>
+</tr>
+<tr>
+	<td>#47474</td>
+	<td>Export Org Unit to Active Directory</td>
+</tr>
+<tr>
+	<td>#47489</td>
+	<td>Additional Filter types for Users and Groups</td>
+</tr>
+<tr>
+	<td>#47553</td>
+	<td>Show assigned connectors and allow import/export actions</td>
+</tr>
+<tr>
+	<td>#47705</td>
+	<td>CSV connector settings</td>
+</tr>
+<tr>
+	<td>#47710</td>
+	<td>CSV connector mapping</td>
+</tr>
+<tr>
+	<td>#48551</td>
+	<td>Connectors Relationship for Root OU</td>
+</tr>
+<tr>
+	<td>#46176</td>
+	<td>Allow to configure SMTP settings</td>
+</tr>
+<tr>
+	<td>#46180</td>
+	<td>Password reset mail template</td>
+</tr>
+<tr>
+	<td>#46181</td>
+	<td>Add &#8220;Reset Password&#8221; action to user management UI</td>
+</tr>
+<tr>
+	<td>#46653</td>
+	<td>Enforce placeholders for all user attributes</td>
+</tr>
+<tr>
+	<td>#46656</td>
+	<td>Add help page content for Reset Password Functionality</td>
+</tr>
+<tr>
+	<td>#46673</td>
+	<td>Add com.sun.mail dependency into syncope core module</td>
+</tr>
+<tr>
+	<td>#46763</td>
+	<td>Vulnerability with SMTP custom properties</td>
+</tr>
+<tr>
+	<td>#47347</td>
+	<td>Add Username and Group name validation</td>
+</tr>
+<tr>
+	<td>#47434</td>
+	<td>Pagination and sorting behaviour while editing user and groups</td>
+</tr>
+<tr>
+	<td>#47512</td>
+	<td>Adopt &#8220;OU Admin&#8221; privileges in idm-admin</td>
+</tr>
+<tr>
+	<td>#47572</td>
+	<td>Apply group filter to bulk membership popups</td>
+</tr>
+<tr>
+	<td>#47628</td>
+	<td>New OU Navigation</td>
+</tr>
+<tr>
+	<td>#47810</td>
+	<td>Provisioning Status for users and groups can be invalid in case of multiple assigned connectors</td>
+</tr>
+<tr>
+	<td>#47969</td>
+	<td>Add “_Connector Viewer” role</td>
+</tr>
+<tr>
+	<td>#48003</td>
+	<td>Migrating existing customers: apply &#8220;Conversion pattern&#8221; for date attributes</td>
+</tr>
+<tr>
+	<td>#48740</td>
+	<td>Ensure update of roles for existing installations</td>
+</tr>
+<tr>
+	<td>#49627</td>
+	<td>Improve validation performance: additional custom endpoint</td>
+</tr>
+<tr>
+	<td>#45297</td>
+	<td>User Password Reset</td>
+</tr>
+<tr>
+	<td>#46553</td>
+	<td>Syncope: pull and push OUs (realms) to AD</td>
+</tr>
+<tr>
+	<td>#46631</td>
+	<td>Users/Groups: pull and push for hierarchical OUs structure</td>
+</tr>
+<tr>
+	<td>#47788</td>
+	<td>Overwrite Create/Delete Realms endpoints in syncope-core</td>
+</tr>
+<tr>
+	<td>#48405</td>
+	<td>Import Org Units: migrating existing customers</td>
+</tr>
+<tr>
+	<td>#49079</td>
+	<td>Migration to add connector viewer role and update tenant admin entitlements for release 5.6.0.0</td>
+</tr>
+<tr>
+	<td>#49081</td>
+	<td>Migration for new Date conversion pattern for release 5.6.0.0</td>
+</tr>
+</tbody>
+</table>
+

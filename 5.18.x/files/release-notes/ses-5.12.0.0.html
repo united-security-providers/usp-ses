@@ -1,0 +1,412 @@
+<h1 id="uspsecureentryserverreg5.12.0.0">USP Secure Entry Server &reg; 5.12.0.0</h1>
+
+<p>SES 5.12.0.0 consists of the following components:</p>
+
+<ul>
+<li>SES Web GUI <strong>5.12.0.0_p1</strong></li>
+<li>HTTP Secure Proxy (HSP) <strong>4.23.0.0</strong></li>
+<li>Secure Login Service (SLS) <strong>5.15.0.5</strong></li>
+<li>Identity Manager (IDM) <strong>2.1.0.1</strong></li>
+<li>Shared Appliance Base (SAB) <strong>1.16.12</strong></li>
+</ul>
+
+<h2 id="platformcompatibility">Platform Compatibility</h2>
+
+<p>This release is compatible with the following hardware platforms:</p>
+
+<ul>
+<li>Dell PowerEdge R640</li>
+<li>Dell PowerEdge R630</li>
+</ul>
+
+<h2 id="seswebgui">SES Web GUI</h2>
+
+<h3 id="features">Features</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#77740</td>
+	<td>Allow to specify custom HTTP response status code for maintenance page</td>
+</tr>
+<tr>
+	<td>#36462</td>
+	<td>Add SLS password policy check tool</td>
+</tr>
+<tr>
+	<td>#53760</td>
+	<td>SES Appliance IDM GUI IPv6 Support</td>
+</tr>
+<tr>
+	<td>#53763</td>
+	<td>SES Appliance remote syslog IPv6 support</td>
+</tr>
+<tr>
+	<td>#76246</td>
+	<td>MaintenancePage Self Service: Maintenance Page and Style sheets css</td>
+</tr>
+<tr>
+	<td>#86414</td>
+	<td>SLS WebAuthn/FIDO: SES GUI Integration</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="changes">Changes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#73075</td>
+	<td>Add &#8220;session_state&#8221; parameter to default SES query filter</td>
+</tr>
+<tr>
+	<td>#81540</td>
+	<td>Remove obsolete mail server settings from network configuration screen</td>
+</tr>
+<tr>
+	<td>#83803</td>
+	<td>Migrate timezone configuration from SAB to Puppet</td>
+</tr>
+<tr>
+	<td>#31905</td>
+	<td>Improved SLS challenge-/response config - &#8220;re-send challenge&#8221; button&quot;</td>
+</tr>
+<tr>
+	<td>#91727</td>
+	<td>Update kernel to 4.14.246</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#88680</td>
+	<td>Admin GUI Sync: out of heapsize - added new opton to overwrite settings in hiera config file</td>
+</tr>
+<tr>
+	<td>#86351</td>
+	<td>IDM API Access.log not available despite file exists</td>
+</tr>
+<tr>
+	<td>#85488</td>
+	<td>Maintenance Page&#8217;s customMessage may be lost during upgrade</td>
+</tr>
+<tr>
+	<td>#85484</td>
+	<td>remove obsolete second statsite-wrapper (/usr/sbin/statsite-stdin) from gentoo overlay</td>
+</tr>
+<tr>
+	<td>#85182</td>
+	<td>Unit tests not executed within maven build</td>
+</tr>
+<tr>
+	<td>#82857</td>
+	<td>ElastAlert Rules are not running properly - No Security Events Lvl 5</td>
+</tr>
+<tr>
+	<td>#53061</td>
+	<td>SLS init script contains invalid library path</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="httpsecureproxyhsp">HTTP Secure Proxy (HSP)</h2>
+
+<h3 id="features">Features</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#90397</td>
+	<td>Enabled mod_md in HTS for ACME support.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="changes">Changes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#92168</td>
+	<td>Updated openssl to version 1.1.1l.</td>
+</tr>
+<tr>
+	<td>#94013</td>
+	<td>Updated httpd to version 2.4.51.</td>
+</tr>
+<tr>
+	<td>#91275</td>
+	<td>Integrated PKCS#11 engine statically into openssl.</td>
+</tr>
+<tr>
+	<td>#88127</td>
+	<td>Updated mod_security to version 2.9.4.</td>
+</tr>
+<tr>
+	<td>#78954</td>
+	<td>Updated OWASP mod_security core rule set to v.3.3.2.</td>
+</tr>
+<tr>
+	<td>#94145</td>
+	<td>Reintegrated OpenSSL Chil Engine</td>
+</tr>
+<tr>
+	<td>#94648</td>
+	<td>Update mod_unblufilter to version 5.0.11</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#95114</td>
+	<td>Fixed a bug that caused RF_UE_LockSessionIdQuery to incorrectly block requests if RF_UE_EncodeQuery was set to &#8216;$&#8217;.</td>
+</tr>
+<tr>
+	<td>#96252</td>
+	<td>Fixed a possible segfault in the listener in JA3 hash computation.</td>
+</tr>
+<tr>
+	<td>#95836</td>
+	<td>Fixed a segfault in the listener on plain websocket connections.</td>
+</tr>
+<tr>
+	<td>#90953</td>
+	<td>Fixed incorrect counting of WAF.traffic.anomaly.* metrics on error redirects.</td>
+</tr>
+<tr>
+	<td>#93380</td>
+	<td>RF(102):policy is always added on every ModSecurity match even though no policy violation reported</td>
+</tr>
+<tr>
+	<td>#90130</td>
+	<td>Fixed header validation rule for &#8216;Content-MD5&#8217; header</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="identitymanageridm">Identity Manager (IDM)</h2>
+
+<h3 id="features">Features</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#68235</td>
+	<td>New option to configure anonymous key in UI</td>
+</tr>
+<tr>
+	<td>#66350</td>
+	<td>Columns and filters are persistend in the user management view during one session now.</td>
+</tr>
+<tr>
+	<td>#85223</td>
+	<td>Extended HA Status Dashboard Widget for SES Identity</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="changes">Changes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#88082</td>
+	<td>Increase number of DB connections for SES Identity on Appliance to handle more concurrent request</td>
+</tr>
+<tr>
+	<td>#85319</td>
+	<td>Update Syncope to 2.1.9</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#85710</td>
+	<td>Fixed an issue which did not provision the updated data to the Active Directory</td>
+</tr>
+<tr>
+	<td>#87462</td>
+	<td>Added missing IDM HTTP endpoint is unavailable event API</td>
+</tr>
+<tr>
+	<td>#85268</td>
+	<td>Fixed NPE when remove OU attribute that doesn&#8217;t have default value</td>
+</tr>
+<tr>
+	<td>#81533</td>
+	<td>Preventing activation failure when deleting a user attribute with a high number of users</td>
+</tr>
+<tr>
+	<td>#92982</td>
+	<td>Fixed issue which did not move a user to the new OU in Active Directory</td>
+</tr>
+<tr>
+	<td>#92980</td>
+	<td>Fixed notifcation which did not show the correct number of updated users after bulk action</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="secureloginservicesls">Secure Login Service (SLS)</h2>
+
+<h3 id="newwebauthnfido2adapter">New WebAuthn / FIDO2 Adapter</h3>
+
+<ul>
+<li>The new WebAuthn Adapter supports using FIDO2 compliant tokens such as USB
+ tokens or built-in fingerprint readers for stronger authentication, or
+ password-less login. The new adapter allows persisting registered credentials
+ in LDAP or (for testing purposes) in memory. See the chapter &#8220;WebAuthn Adapter&#8221;
+ in the &#8220;SLS Administration Guide&#8221; for more information.</li>
+</ul>
+
+<h3 id="dynamicactivationofdebugtracelogging">Dynamic activation of DEBUG / TRACE logging</h3>
+
+<ul>
+<li>Two new script functions <code>session.activateDebugLog(boolean activate)</code> and
+ <code>session.activateTraceLog(boolean activate)</code> that allow to activate or
+ deactivate DEBUG resp. TRACE logging for the current login session.
+ This can be very helpful for analysis of issues in production where generally
+ activating DEBUG resp. TRACE logging is often not possible without risks.</li>
+</ul>
+
+<h3 id="httpwebserviceadapters">HTTP / Webservice Adapters</h3>
+
+<ul>
+<li>Reduced the number of requests sent to backends by the backend monitor, based
+ on the target URL. If multiple backends have the same URL, or the same
+ monitoring check URL, only one actual request will be sent to that URL during
+ a monitoring run. So, if there are 10 HTTP backends with different URLs, but
+ all use the same <code>.connectionCheckUrl</code> value, only 1 instead of 10 requests
+ will be sent to the backend by the monitor.</li>
+</ul>
+
+<h3 id="variousimprovementsandfixes">Various Improvements and Fixes</h3>
+
+<ul>
+<li>Added filtering of the password credential value from all log levels,
+ including debug and trace. Requires the new configuration property
+ <code>log.filter.creds.secrets</code> to be set to <code>true</code>.</li>
+<li>More specific error messages if creating or sending a mail message failed,
+ with full stacktrace in exception log; plus more detailed trace/debug logs.</li>
+</ul>

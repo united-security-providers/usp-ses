@@ -1,0 +1,56 @@
+<h1 id="uspsecureentryserverreg5.13.0.1">USP Secure Entry Server &reg; 5.13.0.1</h1>
+
+<p>SES 5.13.0.1 consists of the following components:</p>
+
+<ul>
+<li>SES Web GUI <strong>5.13.0.1</strong></li>
+<li>HTTP Secure Proxy (HSP) <strong>4.23.0.4</strong></li>
+<li>Secure Login Service (SLS) <strong>5.16.0.2</strong></li>
+<li>Identity Manager (IDM) <strong>2.2.0.0</strong></li>
+<li>Shared Appliance Base (SAB) <strong>1.17.0</strong></li>
+</ul>
+
+<h2 id="platformcompatibility">Platform Compatibility</h2>
+
+<p>This release is compatible with the following hardware platforms:</p>
+
+<ul>
+<li>Dell PowerEdge R640</li>
+<li>Dell PowerEdge R630</li>
+</ul>
+
+<h2 id="applianceplatform">Appliance Platform</h2>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#117289</td>
+	<td>Requests per Day =&gt; 3 days only</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="secureloginservicesls">Secure Login Service (SLS)</h2>
+
+<h3 id="variousimprovementsandfixes">Various Improvements and Fixes</h3>
+
+<ul>
+<li>Added missing OIDC related URI mappings to the &#8220;struts-config.xml&#8221; configuration file,
+ as they are required when updating to the new SES 5.13 appliance release.</li>
+<li>Re-added accidentally removed URI mappings for reset password model states and
+ text resources for reset password JSPs.</li>
+</ul>

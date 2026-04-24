@@ -1,0 +1,409 @@
+<h1 id="uspsecureentryserverreg5.15.0.0">USP Secure Entry Server &reg; 5.15.0.0</h1>
+
+<p>SES 5.15.0.0 consists of the following components:</p>
+
+<ul>
+<li>SES Web GUI <strong>5.15.0.0</strong></li>
+<li>HTTP Secure Proxy (HSP) <strong>4.25.0.1</strong></li>
+<li>Secure Login Service (SLS) <strong>5.18.0.0</strong></li>
+<li>Identity Manager (IDM) <strong>2.3.0.0</strong></li>
+<li>Shared Appliance Base (SAB) <strong>1.17.0</strong></li>
+</ul>
+
+<h2 id="platformcompatibility">Platform Compatibility</h2>
+
+<p>This release is compatible with the following hardware platforms:</p>
+
+<ul>
+<li>Dell PowerEdge R650</li>
+<li>Dell PowerEdge R640</li>
+<li>Dell PowerEdge R630</li>
+</ul>
+
+<h2 id="seswebgui">SES Web GUI</h2>
+
+<h3 id="features">Features</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#170818</td>
+	<td>The GUI now supports configuring JSON responses for HSP error codes.</td>
+</tr>
+<tr>
+	<td>#172414</td>
+	<td>It is now possible to create &#8220;mixed&#8221; locations which process both normal HTTP and Websocket traffic.</td>
+</tr>
+<tr>
+	<td>#192200</td>
+	<td>Clicking on a target cogwheel in a location config screen now jumps directly to that target.</td>
+</tr>
+<tr>
+	<td>#214522</td>
+	<td>SES ACME Challenge http&#8211;01 Support.</td>
+</tr>
+<tr>
+	<td>#208096</td>
+	<td>SCSI Support for KVM</td>
+</tr>
+<tr>
+	<td>#199537</td>
+	<td>ACME/md &#8220;Reset ACME&#8221; Button</td>
+</tr>
+<tr>
+	<td>#93779</td>
+	<td>Show ACME Certificate overview</td>
+</tr>
+<tr>
+	<td>#170639</td>
+	<td>Include ACME certificates in GUI certificate check</td>
+</tr>
+<tr>
+	<td>#164905</td>
+	<td>Support for ACME &#8220;External Account Binding&#8221; (EAB)</td>
+</tr>
+<tr>
+	<td>#190454</td>
+	<td>Highlight SES Env and Name in Admin GUI</td>
+</tr>
+<tr>
+	<td>#170629</td>
+	<td>GUI allows to set client cert chain for HSP backend connections</td>
+</tr>
+<tr>
+	<td>#133239</td>
+	<td>SES Appliance: LDAP User Multi Group Import</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="changes">Changes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#85642</td>
+	<td>The &#8220;commit&#8221; button in the lower left corner is now disabled while the commit screen is shown.</td>
+</tr>
+<tr>
+	<td>#177526</td>
+	<td>Updated &#8220;OpenSSH&#8221; client to 8.9_p1-r2.</td>
+</tr>
+<tr>
+	<td>#207495</td>
+	<td>Load mod_analyze only when the traffic analyzer is enabled</td>
+</tr>
+<tr>
+	<td>#116869</td>
+	<td>Add SES release version to exported config / backup name</td>
+</tr>
+<tr>
+	<td>#190460</td>
+	<td>Include Revision Id, Commit message in Sync process</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#90475</td>
+	<td>Various issues with the &#8220;Learn from log&#8221; feature in the ModSecurity part were resolved.</td>
+</tr>
+<tr>
+	<td>#97092</td>
+	<td>Some text in the online help contained characters with an invalid encoding.</td>
+</tr>
+<tr>
+	<td>#147955</td>
+	<td>Importing a location created an unwanted / invalid target group as well.</td>
+</tr>
+<tr>
+	<td>#150498</td>
+	<td>In a few rare cases, some Java-based components would hang during startup after update.</td>
+</tr>
+<tr>
+	<td>#157497</td>
+	<td>In the syslog settings, it was not possible to deactivate &#8220;Trust valid certificates only&#8221;.</td>
+</tr>
+<tr>
+	<td>#173227</td>
+	<td>When updating from 5.12 or 5.13, some SLS backends were lost (WebAuthn LDAP, OIDC RP, IDM)</td>
+</tr>
+<tr>
+	<td>#197516</td>
+	<td>A bug in the restart logic lead to HSP startup failures in some situations when HTTP/2 was disabled.</td>
+</tr>
+<tr>
+	<td>#201286</td>
+	<td>Inheritance of HGW_RequestHeader to sublocations did not work.</td>
+</tr>
+<tr>
+	<td>#202229</td>
+	<td>Let&#8217;s Encrypt Failure with specific SSL/HTTP settings.</td>
+</tr>
+<tr>
+	<td>#216266</td>
+	<td>The &#8220;delete&#8221; button in the HSP file resource screen were sometimes missing.</td>
+</tr>
+<tr>
+	<td>#207493</td>
+	<td>Remove deprecated directive H2SerializeHeaders</td>
+</tr>
+<tr>
+	<td>#199040</td>
+	<td>custom commands for Authentication in wrong order</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="httpsecureproxyhsp">HTTP Secure Proxy (HSP)</h2>
+
+<h3 id="features">Features</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#94985</td>
+	<td>Added new session store based on Apache Geode.</td>
+</tr>
+<tr>
+	<td>#45106</td>
+	<td>Added possibility to set SameSite attribute for the SCDID cookie.</td>
+</tr>
+<tr>
+	<td>#172122</td>
+	<td>Improved location-specific inactivity timeout handling.</td>
+</tr>
+<tr>
+	<td>#200429</td>
+	<td>Added Access Control status handler to allow query session timeouts.</td>
+</tr>
+<tr>
+	<td>#172224</td>
+	<td>Added possibility to response with a JSON document on session timeout.</td>
+</tr>
+<tr>
+	<td>#172122</td>
+	<td>Added possibility to define a specific re-authentication page to be used on session timeout.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="changes">Changes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#204886</td>
+	<td>Updated httpd to version 2.4.57.</td>
+</tr>
+<tr>
+	<td>#200935</td>
+	<td>Updated openssl to version 1.1.1u.</td>
+</tr>
+<tr>
+	<td>#117538</td>
+	<td>Updated krb5 to 1.19.4.</td>
+</tr>
+<tr>
+	<td>#161881</td>
+	<td>Updated mod_security to 2.9.7.</td>
+</tr>
+<tr>
+	<td>#164416</td>
+	<td>Updated nghttp2 to 1.51.0.</td>
+</tr>
+<tr>
+	<td>#164432</td>
+	<td>Updated libp11 to 0.4.12.</td>
+</tr>
+<tr>
+	<td>#167233</td>
+	<td>Updated curl to 8.0.1.</td>
+</tr>
+<tr>
+	<td>#199419</td>
+	<td>Updated mod_qos to 11.73.</td>
+</tr>
+<tr>
+	<td>#204890</td>
+	<td>Updated zlib to 1.2.13.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#213911</td>
+	<td>Fixed an issue that lead to a wrong 503 response when http&#8211;01 challenge type of mod_md was selected and fallback certificates were in use.</td>
+</tr>
+<tr>
+	<td>#214613</td>
+	<td>Fixed libcurl compiling option that prevented mod_md to use a HTTP proxy.</td>
+</tr>
+<tr>
+	<td>#111601</td>
+	<td>Fixed a wrong behavior of RC_MaxPostSize in conjunction with chunked transfer encoding.</td>
+</tr>
+<tr>
+	<td>#216285</td>
+	<td>Fixed several issues related to mod_analyze being loaded as shared object.</td>
+</tr>
+<tr>
+	<td>#206030</td>
+	<td>Fixed an issue that caused query parameters in AAI&#8217;s FOLLOW_REDIRECT URL to be ignored.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="secureloginservicesls">Secure Login Service (SLS)</h2>
+
+<h3 id="geodedistributedstoragesupport">Geode distributed storage support</h3>
+
+<ul>
+<li>Support has been added to allow the SLS to read and store data to and from an Apache Geode store.
+ As of now, the scripting functions with the new prefix <code>geode.</code> have to be used to perform the
+ write and read operations. The connection to the Geode server is configured with a few new
+ configuration properties. See &#8220;SLS Administration Guide&#8221;, chapter &#8220;Geode&#8221;, and
+ &#8220;SLS Scripting Guide&#8221;, prefix &#8220;geode&#8221;, for details.</li>
+</ul>
+
+<h3 id="groovy4">Groovy 4</h3>
+
+<ul>
+<li>Newer Groovy 4, replacing Groovy 2.4.x. All in all, Groovy 4 is backwards compatible, so normally this should
+ not affect existing scripts, experimentally not even complex constructs of rather a kind that only programmers use.</li>
+<li>There is no longer a groovy-all JAR, instead a selection of useful Groovy JARs is included with the SLS:
+
+<ul>
+<li><code>groovy</code> (core Groovy functionality)</li>
+<li><code>groovy-datetime</code></li>
+<li><code>groovy-jmx</code></li>
+<li><code>groovy-json</code></li>
+<li><code>groovy-jsr223</code></li>
+<li><code>groovy-macro</code></li>
+<li><code>groovy-nio</code></li>
+<li><code>groovy-sql</code></li>
+<li><code>groovy-templates</code></li>
+<li><code>groovy-xml</code></li>
+<li><code>groovy-yaml</code></li>
+</ul></li>
+</ul>
+
+<h3 id="samlidpandspadapters">SAML IdP and SP adapters</h3>
+
+<ul>
+<li>Using the &#8220;future&#8221; key feature in the SP failed if encryption was used for assertions.
+ The SP adapter now properly attempts decryption with both private keys.</li>
+</ul>
+
+<h3 id="variousimprovementsandfixes">Various Improvements and Fixes</h3>
+
+<ul>
+<li>The compression of OIDC authorization code strings has been slightly reduced to address
+ an issue with the compression algorithm which caused problems if attributes contained
+ certain special characters.</li>
+<li>Custom scopes configured in the OIDC RP were not picked up, and not set in the
+ redirect authentication request.</li>
+<li>The new model state <code>show.json</code> allows to directly send a JSON response to the client,
+ instead of having to use a JSP with JSON content. See &#8220;SLS Administration Guide&#8221; for
+ details about the new state.</li>
+<li>Introduced new hard final timeout for SLS sessions. This timeout will be enforced
+ regardless of the state of a session, even if it&#8217;s currently being processed in a
+ request. It can be configured with the new configuration property <code>session.final.timeout.minutes</code>
+ (see &#8220;SLS Administration Guide&#8221; for details). If it is not configured at all, it will
+ be enabled with a value of 60 minutes by default.</li>
+<li>New script functions to simplify handling of incoming basic auth headers:
+ <code>function.getBasicAuthUsername()</code>, <code>function.getBasicAuthPassword()</code> and
+ <code>session.setCredentialsFromBasicAuth(boolean failOnMissingCredentials)</code>,
+ see &#8220;JEXL Guide&#8221; for more details.</li>
+<li>Added a missing BouncyCastle depencency for the sls-shs-cli-client fat JAR
+ (the tool is mostly used internally for testing interaction with HSP).</li>
+</ul>
+
+<h3 id="removalofobsoletecomponents">Removal of obsolete components</h3>
+
+<ul>
+<li>The ISAPI filter has officially been discontinued and will no longer be included in the SLS delivery.</li>
+<li>Several obsolete ond/or outdated dependencies were removed.</li>
+<li>The &#8220;codemirror&#8221; include which was only used by the scripting testing JSP (&#8220;JexlTest.jsp&#8221;) but not by the
+ actual SLS itself has been removed as well.</li>
+</ul>

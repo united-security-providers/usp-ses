@@ -1,0 +1,143 @@
+<h1 id="uspsecureentryserverreg5.13.0.2">USP Secure Entry Server &reg; 5.13.0.2</h1>
+
+<p>SES 5.13.0.2 consists of the following components:</p>
+
+<ul>
+<li>SES Web GUI <strong>5.13.0.2</strong></li>
+<li>HTTP Secure Proxy (HSP) <strong>4.23.0.5</strong></li>
+<li>Secure Login Service (SLS) <strong>5.16.0.3</strong></li>
+<li>Identity Manager (IDM) <strong>2.2.0.1</strong></li>
+<li>Shared Appliance Base (SAB) <strong>1.17.0</strong></li>
+</ul>
+
+<h2 id="platformcompatibility">Platform Compatibility</h2>
+
+<p>This release is compatible with the following hardware platforms:</p>
+
+<ul>
+<li>Dell PowerEdge R640</li>
+<li>Dell PowerEdge R630</li>
+</ul>
+
+<h2 id="seswebgui">SES Web GUI</h2>
+
+<h3 id="features">Features</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#121762</td>
+	<td>Provide possibility to download/upload ZIP-Files for Groovy &amp; JEXL Scripts/Templates + Models</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="applianceplatform">Appliance Platform</h2>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#122087</td>
+	<td>puppet fails when 2 syslog servers are configured</td>
+</tr>
+<tr>
+	<td>#120335</td>
+	<td>Fixed an issue with long activation times when there were no changes in IDM.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="httpsecureproxyhsp">HTTP Secure Proxy (HSP)</h2>
+
+<h3 id="changes">Changes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#122352</td>
+	<td>Updated openssl to version 1.1.1p.</td>
+</tr>
+<tr>
+	<td>#119952</td>
+	<td>Updated httpd to version 2.4.54.</td>
+</tr>
+<tr>
+	<td>#119233</td>
+	<td>Moved mod_unblufilter from HTS to SRM.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#117841</td>
+	<td>Fixed a bug that caused URI fragments to be lost when query encryption was enabled.</td>
+</tr>
+<tr>
+	<td>#123126</td>
+	<td>Fixed a bug related to URL encryption of base tags and href URLs ending with a trailing slash.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="secureloginservicesls">Secure Login Service (SLS)</h2>
+
+<h3 id="sesidentityidmadapter">SES Identity (IDM) Adapter</h3>
+
+<ul>
+<li>Fixed a bug in 2 Syncope REST API calls that would fail when used in a password-less (sfa)
+ login flow, due to the missing user credentials.</li>
+</ul>

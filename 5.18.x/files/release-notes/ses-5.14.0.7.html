@@ -1,0 +1,117 @@
+<h1 id="uspsecureentryserverreg5.14.0.7">USP Secure Entry Server &reg; 5.14.0.7</h1>
+
+<p>SES 5.14.0.7 consists of the following components:</p>
+
+<ul>
+<li>SES Web GUI <strong>5.14.0.5</strong></li>
+<li>HTTP Secure Proxy (HSP) <strong>4.24.0.7</strong></li>
+<li>Secure Login Service (SLS) <strong>5.17.0.1</strong></li>
+<li>Identity Manager (IDM) <strong>2.3.0.0</strong></li>
+<li>Shared Appliance Base (SAB) <strong>1.17.0</strong></li>
+</ul>
+
+<h2 id="platformcompatibility">Platform Compatibility</h2>
+
+<p>This release is compatible with the following hardware platforms:</p>
+
+<ul>
+<li>Dell PowerEdge R650</li>
+<li>Dell PowerEdge R640</li>
+<li>Dell PowerEdge R630</li>
+</ul>
+
+<h2 id="httpsecureproxyhsp">HTTP Secure Proxy (HSP)</h2>
+
+<h3 id="features">Features</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#194276</td>
+	<td>New directive HGW_ClientCertChain allows to specify an intermediate CA chain for client authentication to backend servers.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="changes">Changes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#200936</td>
+	<td>Updated openssl to version 1.1.1u.</td>
+</tr>
+<tr>
+	<td>#200920</td>
+	<td>Updated libunblufilter to version 1.7.7.</td>
+</tr>
+<tr>
+	<td>#199341</td>
+	<td>Updated curl to version 8.0.1.</td>
+</tr>
+<tr>
+	<td>#199340</td>
+	<td>Updated httpd to version 2.4.56.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#205993</td>
+	<td>Fixed issue related to CSRF and multipart/form-data in case the payload being higher then the read buffer (default 8kb).</td>
+</tr>
+<tr>
+	<td>#214614</td>
+	<td>Fixed libcurl compiling option that prevented mod_md to use a HTTP proxy.</td>
+</tr>
+<tr>
+	<td>#206102</td>
+	<td>Fixed issue that led to loss of query parameters in the FOLLOW_REDIRECT URL of AAI.</td>
+</tr>
+<tr>
+	<td>#194935</td>
+	<td>Fixed a problem related to HGW_Aai_ReplayOnLogin that caused the LoginUserData header from Login Service to not be propagated.</td>
+</tr>
+</tbody>
+</table>
+

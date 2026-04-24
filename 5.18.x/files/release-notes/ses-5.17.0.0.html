@@ -1,0 +1,230 @@
+<h1 id="uspsecureentryserverreg5.17.0.0">USP Secure Entry Server &reg; 5.17.0.0</h1>
+
+<p>SES 5.17.0.0 consists of the following components:</p>
+
+<ul>
+<li>SES Web GUI <strong>5.17.0.0</strong></li>
+<li>HTTP Secure Proxy (HSP) <strong>4.27.0.0</strong></li>
+<li>Secure Login Service (SLS) <strong>5.20.0.0</strong></li>
+<li>Identity Manager (IDM) <strong>2.3.0.1</strong></li>
+<li>Shared Appliance Base (SAB) <strong>1.17.5</strong></li>
+</ul>
+
+<h2 id="platformcompatibility">Platform Compatibility</h2>
+
+<p>This release is compatible with the following hardware platforms:</p>
+
+<ul>
+<li>Dell PowerEdge R660</li>
+<li>Dell PowerEdge R650</li>
+<li>Dell PowerEdge R640</li>
+<li>Dell PowerEdge R630</li>
+</ul>
+
+<h2 id="appliancebase">Appliance Base</h2>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#290409</td>
+	<td>Fixed Logstash parser issue with HSP130 message caused by new session store naming.</td>
+</tr>
+<tr>
+	<td>#290476</td>
+	<td>Fixed missing syslog logging of certain USP events caused by change in ssh program name.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="seswebgui">SES Web GUI</h2>
+
+<h3 id="features">Features</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#290536</td>
+	<td>Certificates with keys based on elliptic curves are now supported as well.</td>
+</tr>
+<tr>
+	<td>#290539</td>
+	<td>RSA key sizes for ACME are now configurable.</td>
+</tr>
+<tr>
+	<td>#289465</td>
+	<td>The &#8220;maxBackupIndex&#8221; for the SLS audit and debug log are now configurable.</td>
+</tr>
+<tr>
+	<td>#289283</td>
+	<td>The Heartbeat deadtime has been slightly increased to better support certain H/A scenarios.</td>
+</tr>
+<tr>
+	<td>#289851</td>
+	<td>Several configuration defaults have been changed to simplify new installations.</td>
+</tr>
+<tr>
+	<td>#290023</td>
+	<td>It is now possible to configure support for bearer tokens or cookies on a vhost in the GUI.</td>
+</tr>
+<tr>
+	<td>#290293</td>
+	<td>The Logstash syslog output queue size is now configurable.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="bugfixes">Bugfixes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#290276</td>
+	<td>HSP CSP response headers are excluded on the login location to avoid clashes with the new SLS CSP support.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="httpsecureproxyhsp">HTTP Secure Proxy (HSP)</h2>
+
+<h3 id="features">Features</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#289933</td>
+	<td>Enabled SSLKEYLOGFILE on SRM.</td>
+</tr>
+<tr>
+	<td>#290097</td>
+	<td>Added new setting &#8220;recent&#8221; for directive HGW_SslClientProtocolDefault.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="changes">Changes</h3>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>#290571</td>
+	<td>Updated httpd to v 2.4.63</td>
+</tr>
+<tr>
+	<td>#289820</td>
+	<td>Updated libraries curl, nghttp2, zlib, xerces-c, wrap-resolv, wrap-nss, expat, c-ares, apr, libxslt, krb5, libconfig, libidn</td>
+</tr>
+<tr>
+	<td>#289837</td>
+	<td>Updated openssl to version 3.0.15</td>
+</tr>
+<tr>
+	<td>#290098</td>
+	<td>Updated modsecurity to version 2.9.8</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="secureloginservicesls">Secure Login Service (SLS)</h2>
+
+<h3 id="contentsecuritypolicycspsupport">Content Security Policy (CSP) Support</h3>
+
+<ul>
+<li>Support for setting a &#8220;Content Security Policy&#8221; has been added. NOTE: If a CSP is configured, existing JSP files might
+ not properly work anymore if they contain embedded scripts, event handlers or styles. Please consult
+ the new chapter in the SLS Administration Guide for details about configuration and how to migrate existing
+ JSPs.</li>
+</ul>
+
+<h3 id="improvedsupportforsignedjsonwebtokensjwts">Improved support for signed JSON Web Tokens (JWTs)</h3>
+
+<ul>
+<li>It is now possible to create signed JSON Web Tokens (JWTs), signed either with
+ an HMAC (HS256, HS384 and HS512) or with RSA (RS256, RS384 and RS512).
+ JWT signatures can now be verified in additional ways, including verification
+ via the same properties as used to create and sign,
+ or via a JWKS (JSON Web Key Set) as often published by the JWT issuer.
+ See the chapter &#8220;JSON Web Tokens&#8221; in the SLS Administation Guide and
+ the <code>jwt.*</code> scripting functions in the SLS Scripting Guide for more details.</li>
+</ul>
+
+<h3 id="tomcat10support">Tomcat 10 Support</h3>
+
+<ul>
+<li>A new webapp has been added, &#8220;sls-webapp-complete-jakarta&#8221;, which is ready
+ to be deployed in a Tomcat 10 servlet container.</li>
+</ul>
+
+<h3 id="variousimprovementsandfixes">Various Improvements and Fixes</h3>
+
+<ul>
+<li>Added new script function <code>function.getActualFile()</code> which returns a file object pointing to a file specified with
+ a path which is either relative to the SLS web application directory, or absolute.</li>
+<li>The OIDC OP no longer redirects to the <code>redirect_uri</code> in case of an unknown
+ or missing <code>client_id</code> in the authentication request, in order to prevent
+ attacks that would redirect via the trusted OP domain to an &#8220;evil&#8221; domain.</li>
+<li>Added support for using servlet container sessions when used without an HSP.</li>
+<li>Fixed language selection not working when the browser blacklist feature was
+ used, i.e. no language selection possible for the &#8220;UserAgent.jsp&#8221;.</li>
+</ul>

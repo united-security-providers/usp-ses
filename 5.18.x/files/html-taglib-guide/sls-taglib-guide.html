@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Secure Login Service</title><link rel="stylesheet" type="text/css" href="docbook-xsl.css" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /></head><body><div xml:lang="en" class="book" lang="en"><div class="titlepage"><div><div><h1 class="title"><a id="idm1"></a>Secure Login Service</h1></div><div><h2 class="subtitle">JSP Taglib Guide</h2></div><div><p class="copyright">Copyright © 2026 United Security Providers AG</p></div><div><div class="legalnotice"><a id="idm9"></a><p>
+    This document is protected by copyright under the applicable laws and
+    international treaties. No part of this document may be reproduced in any
+    form and distributed to third parties by any means without prior written
+    authorization of United Security Providers AG.
+  </p><p>
+    DOCUMENTATION IS PROVIDED "AS IS" AND ALL EXPRESSED OR
+    IMPLIED REPRESENTATIONS AND WARRANTIES, INCLUDING BUT
+    NOT LIMITED TO ANY IMPLIED WARRANTY OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT,
+    ARE DISCLAIMED TO THE EXTENT PERMISSIBLE UNDER THE
+    APPLICABLE LAWS.
+  </p></div></div></div><hr /></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="chapter"><a href="#_jsp_tag_library">1. JSP Tag Library</a></span></dt><dd><dl><dt><span class="section"><a href="#_all_tags">1.1. All tags</a></span></dt><dt><span class="section"><a href="#_lt_sls_button_gt">1.2. &lt;sls:button&gt;</a></span></dt><dt><span class="section"><a href="#_lt_sls_dojexl_gt">1.3. &lt;sls:doJexl&gt;</a></span></dt><dt><span class="section"><a href="#_lt_sls_doscript_gt">1.4. &lt;sls:doScript&gt;</a></span></dt><dt><span class="section"><a href="#_lt_sls_form_gt">1.5. &lt;sls:form&gt;</a></span></dt><dt><span class="section"><a href="#_lt_sls_getcred_gt">1.6. &lt;sls:getCred&gt;</a></span></dt><dt><span class="section"><a href="#_lt_sls_getjexl_gt">1.7. &lt;sls:getJexl&gt;</a></span></dt><dt><span class="section"><a href="#_lt_sls_getscript_gt">1.8. &lt;sls:getScript&gt;</a></span></dt><dt><span class="section"><a href="#_lt_sls_ifdebug_gt">1.9. &lt;sls:ifDebug&gt;</a></span></dt><dt><span class="section"><a href="#_lt_sls_ifhasglobalerror_gt">1.10. &lt;sls:ifHasGlobalError&gt;</a></span></dt><dt><span class="section"><a href="#_lt_sls_ifjexl_gt">1.11. &lt;sls:ifJexl&gt;</a></span></dt><dt><span class="section"><a href="#_lt_sls_ifmodel_gt">1.12. &lt;sls:ifModel&gt;</a></span></dt><dt><span class="section"><a href="#_lt_sls_ifnotsescredential_gt">1.13. &lt;sls:ifNotSesCredential&gt;</a></span></dt><dt><span class="section"><a href="#_lt_sls_ifscript_gt">1.14. &lt;sls:ifScript&gt;</a></span></dt><dt><span class="section"><a href="#_lt_sls_ifsescredential_gt">1.15. &lt;sls:ifSesCredential&gt;</a></span></dt><dt><span class="section"><a href="#_lt_sls_inputfield_gt">1.16. &lt;sls:inputField&gt;</a></span></dt><dt><span class="section"><a href="#_lt_sls_javascript_gt">1.17. &lt;sls:javascript&gt;</a></span></dt><dt><span class="section"><a href="#_lt_sls_logouthsp_gt">1.18. &lt;sls:logoutHsp&gt;</a></span></dt><dt><span class="section"><a href="#_lt_sls_mandatoryfooter_gt">1.19. &lt;sls:mandatoryFooter&gt;</a></span></dt><dt><span class="section"><a href="#_lt_sls_mandatoryhead_gt">1.20. &lt;sls:mandatoryHead&gt;</a></span></dt><dt><span class="section"><a href="#_lt_sls_message_gt">1.21. &lt;sls:message&gt;</a></span></dt><dt><span class="section"><a href="#_lt_sls_metarefresh_gt">1.22. &lt;sls:metaRefresh&gt;</a></span></dt><dt><span class="section"><a href="#_lt_sls_pwdrules_gt">1.23. &lt;sls:pwdRules&gt;</a></span></dt><dt><span class="section"><a href="#_lt_sls_reqinfomsg_gt">1.24. &lt;sls:reqInfoMsg&gt;</a></span></dt><dt><span class="section"><a href="#_lt_sls_selection_gt">1.25. &lt;sls:selection&gt;</a></span></dt><dt><span class="section"><a href="#_lt_sls_style_gt">1.26. &lt;sls:style&gt;</a></span></dt><dt><span class="section"><a href="#_lt_sls_whilejexl_gt">1.27. &lt;sls:whileJexl&gt;</a></span></dt><dt><span class="section"><a href="#_lt_sls_whilescript_gt">1.28. &lt;sls:whileScript&gt;</a></span></dt></dl></dd></dl></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_jsp_tag_library"></a>Chapter 1. JSP Tag Library</h1></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_all_tags"></a>1.1. All tags</h2></div></div></div><p>The attributes listed here are available in most tags of this
+tag library (there may be some exceptions). In order to avoid documenting
+them for every tag again, they are documented once here.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: id
+</li></ul></div><p>The id of this HTML element in the page.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: styleClass
+</li></ul></div><p>The CSS style class for the button (or link).</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: style
+</li></ul></div><p>The style of a surrounding HTML span tag.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: title
+</li></ul></div><p>The title of a surrounding HTML span tag. A span
+title can be used to trigger hover-pop-ups.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: surroundingTag
+</li></ul></div><p>The name (e.g. "span" or "div") of a conditional
+surrounding tag. With this attribute,
+the resulting string can be forced to be a HTML tag like <span class="emphasis"><em>span</em></span>,
+containing the output of the given SLS JSP tag as its content.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: eventhandlers
+</li></ul></div><p>Set event type and java script function in same
+attribute, split by minus "-" character. For example,
+eventhandler="onclick-myClickFunkction()".</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: additional
+</li></ul></div><p>This optional attribute can be used to set any
+additional attribute for the rendered result tag.
+Quoting of the value of the result attribute
+must be done by hand, even no value is possible.
+Some &lt;code&gt;example&lt;/code&gt; special stuff here.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>since</strong></span>: SLS 4.0.0
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_lt_sls_button_gt"></a>1.2. &lt;sls:button&gt;</h2></div></div></div><p>Creates HTML buttons or HREF links for submitting forms,
+loading a URL, logging out etc.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: name
+</li></ul></div><p>Adds a "name" attribute to the button tag.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: backFunction
+</li></ul></div><p>If the "slsFunction" has been set to "back", this
+optional attribute can specify a JavaScript function
+that should be invoked instead of the pre-defined
+"back"-behaviour of the button tag.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: formName If
+</li></ul></div><p>this button tag is used outside of an SLS form
+(aka a form generated with the "sls:form"-tag), this
+attribute must be set with the name of the surrounding
+form, or the button tag will display an error. The reason
+is that the tag will generate an invocation of a
+JavaScript function for submitting the form, and that
+JavaScript function requires the name of the form.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: redirectUrl
+</li></ul></div><p>The url where the tag redirects to, if function="REDIRECT".</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: value
+</li></ul></div><p>The value attribute (for input tags). If it does not
+start with a backslash "\" , it is interpreted as a
+key in the language resource files. So, to display a
+localized text label on a button, define a message
+with that label in the message resource file
+(sls-resources_*.properties), and set the key of that
+message as the "value" attribute of this tag.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: buttonType
+</li></ul></div><p>The type of the resulting HTML tag: "button"|"link"|"input"</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: function
+</li></ul></div><p>Defines the functionality of the button (or link).
+Note that some functions are only available for
+either a button or a link; if the tag is configured
+in an invalid way, it will either use the appropriate
+button type automatically, or display an error message.
+&lt;p&gt;
+The following values can be used for this attribute:
+&lt;ul&gt;
+&lt;li&gt;back - Either executes a custom JavaScript function,
+or invokes the <span class="emphasis"><em>backtoapp</em></span>-model of the SLS
+(JavaScript must be enabled).&lt;/li&gt;
+&lt;li&gt;redirect - Redirects to the given URL (must be specified
+with the attribute <span class="emphasis"><em>redirectUrl</em></span>. It basically just creates
+a link to that URL.&lt;/li&gt;
+&lt;li&gt;submit - Submits the current HTML form.&lt;/li&gt;
+&lt;li&gt;reset - Resets the current HTML form.&lt;/li&gt;
+&lt;li&gt;logout - Performs a logout by invalidating the user’s HSP
+session (sets a response header "InvalidateAll"). NOTE: This will NOT
+terminate the application session, so it is recommended to perform
+the logout over the application if possible. Otherwise, lingering
+open sessions could consume a lot of resources on the application
+server.&lt;/li&gt;
+&lt;li&gt;slsfunction - Allows to trigger the start of SLS functions
+such as login, logout, password change etc. Specify the
+desired function with the attribute <span class="emphasis"><em>command</em></span>.&lt;/li&gt;
+&lt;/ul&gt;</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: command
+</li></ul></div><p>Defines the SLS command to be performed, if the attribute
+function' was set to <span class="emphasis"><em>slsFunction</em></span>. There must be a proper
+model configured in the <span class="emphasis"><em>sls.properties</em></span> file for the
+command configured here. In other words, the value defined
+in this attribute corresponds to the URI of a model (without
+the preceeding slash). So, if a model is configured to be
+mapped to the URI <span class="emphasis"><em>/doit</em></span>, the value set in this attribute
+must be <span class="emphasis"><em>doit</em></span>.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>since</strong></span>: SLS 4.0.0
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_lt_sls_dojexl_gt"></a>1.3. &lt;sls:doJexl&gt;</h2></div></div></div><p>DEPRECATED: Use "doScript" instead.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: expression
+</li></ul></div><p>The JEXL/Groovy expression.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>since</strong></span>: SLS 4.0.0
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_lt_sls_doscript_gt"></a>1.4. &lt;sls:doScript&gt;</h2></div></div></div><p>Tag which evaluates a JEXL/Groovy expression and returns nothing (no output).
+This tag is useful for executing JEXL functions without having any
+impact on the page, like setting custom response headers etc.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: expression
+</li></ul></div><p>The JEXL/Groovy expression.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>since</strong></span>: SLS 4.0.0
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_lt_sls_form_gt"></a>1.5. &lt;sls:form&gt;</h2></div></div></div><p>Tag which creates a HTML form. This tag creates a
+HTML form which includes some hidden fields required
+by the SLS in most cases. Also, it defines a form
+name that is in turn required by some of the tags
+included in the form.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: name
+</li></ul></div><p>The name of the form. Any SLS tag included in
+this form will automatically know the name of
+this form, which eliminates the need to define
+the form name in all those tags separately.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: action
+</li></ul></div><p>The name of the corresponding form action. If this attribute
+is not set, the URI by which the current model was triggered
+will be used automatically. Also, if the URI which triggered
+the current model is different than the value entered in this
+attribute, the model URI will be used. This allows to use the
+same JSP in different models that are triggered by different URIs.
+Otherwise, if the value was fixed, POSTing a request from the
+form would trigger the model defined by that URI, potentially
+falling from one model into another one. NOTE: The configuration
+property "form.use.dynamic.actions" must be set to "true" to
+enable this dynamic URI generation.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: forceAction
+</li></ul></div><p>If this attribute is set instead of the regular action attribute,
+the action of the form will get this value, no matter what URI the
+model in the current session was triggered with. The regular "action"
+attribute, on the other hand, will be influenced by the current model.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>since</strong></span>: SLS 4.0.0
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_lt_sls_getcred_gt"></a>1.6. &lt;sls:getCred&gt;</h2></div></div></div><p>Tag which returns the String value of a valid credential,
+or the empty String. (if there was no valid credential of the given type)</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: credentialType
+</li></ul></div><p>The semantic type of the credential.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>since</strong></span>: SLS 4.0.0
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_lt_sls_getjexl_gt"></a>1.7. &lt;sls:getJexl&gt;</h2></div></div></div><p>DEPRECATED: Use "getScript" instead.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: expression
+</li></ul></div><p>The JEXL/Groovy expression.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>since</strong></span>: SLS 4.0.0
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_lt_sls_getscript_gt"></a>1.8. &lt;sls:getScript&gt;</h2></div></div></div><p>Tag which evaluates a JEXL/Groovy expression and returns a result string.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: expression
+</li></ul></div><p>The JEXL/Groovy expression.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>since</strong></span>: SLS 5.3.0.0
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_lt_sls_ifdebug_gt"></a>1.9. &lt;sls:ifDebug&gt;</h2></div></div></div><p>Tag which evaluates the body only if the configuration
+property "debug.info" is enabled.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>since</strong></span>: SLS 4.0.0
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_lt_sls_ifhasglobalerror_gt"></a>1.10. &lt;sls:ifHasGlobalError&gt;</h2></div></div></div><p>Show nested content only if there is a global error message to display.
+This allows to wrap the global error message into some elaborate HTML
+code which will not show up as long as there is no error message at all.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: invert
+</li></ul></div><p>This inverts the result. Set <span class="emphasis"><em>invert=true</em></span> to display
+the tag body only when there is no global error (in
+other words, this works like the "else" case).</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: skipIfEmpty
+</li></ul></div><p>If the message key of the global error message is not
+mapped to a message or mapped to an empty message, this
+tag normally evaluates the body. Set skipIfEmpty=true to
+skip the body in this case. Usage of this attribute is not
+recommended. Better use error mapping to the special key
+"do.not.display" .</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>since</strong></span>: SLS 4.0.0
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_lt_sls_ifjexl_gt"></a>1.11. &lt;sls:ifJexl&gt;</h2></div></div></div><p>DEPRECATED: Use "ifScript" instead.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: condition
+</li></ul></div><p>The JEXL/Groovy expression, e.g. ${…} or #{…}.
+Automatically wrapped in ${…} if contains neither JEXL
+nor Groovy expressions.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>since</strong></span>: SLS 4.0.0
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_lt_sls_ifmodel_gt"></a>1.12. &lt;sls:ifModel&gt;</h2></div></div></div><p>The body of the tag is evaluated only if the current state of
+the SLS login model accords to all specified attributes.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: state
+</li></ul></div><p>The name of the current model state.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: stateNumber
+</li></ul></div><p>The numeric value of the current model state.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: property
+</li></ul></div><p>The value of the current model state property.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: modelname
+</li></ul></div><p>The name of the current model.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>since</strong></span>: SLS 4.0.0
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_lt_sls_ifnotsescredential_gt"></a>1.13. &lt;sls:ifNotSesCredential&gt;</h2></div></div></div><p>The "SES session" refers to the session of the HSP reverse proxy
+(and, by that, to the actual connection between the browser client
+and the HSP). That session always has a certain state, like "valid"
+after a successful authentication. This tag allows to display HTML
+content in a page depending on the "SES session"
+NOT being in a certain state.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: state
+</li></ul></div><p>Defines the value that the SES session state must NOT be in,
+in order to display the tag contents. Example: "valid"</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>since</strong></span>: SLS 4.0.0
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_lt_sls_ifscript_gt"></a>1.14. &lt;sls:ifScript&gt;</h2></div></div></div><p>Evaluate the tag body depending on a JEXL/Groovy expression result.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: condition
+</li></ul></div><p>The JEXL/Groovy expression, e.g. ${…} or #{…}.
+Automatically wrapped in ${…} if contains neither JEXL
+nor Groovy expressions.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>since</strong></span>: SLS 4.0.0
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_lt_sls_ifsescredential_gt"></a>1.15. &lt;sls:ifSesCredential&gt;</h2></div></div></div><p>The "SES session" refers to the session of the HSP reverse proxy
+(and, by that, to the actual connection between the browser client
+and the HSP). That session always has a certain state, like "valid"
+after a successful authentication. This tag allows to display
+HTML content in a page depending on the "SES session" being in a certain state.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: state
+</li></ul></div><p>Defines the value that the SES session state must be in,
+in order to display the tag contents. Example: "valid"</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>since</strong></span>: SLS 4.0.0
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_lt_sls_inputfield_gt"></a>1.16. &lt;sls:inputField&gt;</h2></div></div></div><p>This tag displays the input field for a credential. It enables special
+behaviour when the credential already exists, or when the user did
+not fill in the field last time.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: placeholder
+</li></ul></div><p>The optional <span class="emphasis"><em>placeholder</em></span> input-field attribute (HTML 5).</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: credentialType
+</li></ul></div><p>The semantic type of the credential, like <span class="emphasis"><em>username</em></span>,
+<span class="emphasis"><em>password</em></span> or <span class="emphasis"><em>secret</em></span>.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: displayError
+</li></ul></div><p>Defines if an error message is displayed next to the input
+field, when user enters an invalid value. Must evaluate to
+either <span class="emphasis"><em>true</em></span> or <span class="emphasis"><em>false</em></span>. Defaults to <span class="emphasis"><em>true</em></span>.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: size
+</li></ul></div><p>The size of the input field. Must evaluate to a number.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: maxLength
+</li></ul></div><p>The maximum length for input entered in the field.
+Must evaluate to a number.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: hideTyping
+</li></ul></div><p>If set to <span class="emphasis"><em>true</em></span>, the input is not shown to user when
+typing, but only stars <span class="emphasis"><em>*</em></span>. (HTML input type <span class="emphasis"><em>password</em></span>). If set
+to <span class="emphasis"><em>false</em></span>, the input is shown to the user when typing. Default,
+if not set: the input is only hidden for <span class="emphasis"><em>credentialType=password</em></span>.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: errorStyle
+</li></ul></div><p>The style-class of the error message. (Shown if the
+field was not filled correct.)</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: presetStyle
+</li></ul></div><p>The CSS style-class if the credential was preset and
+its value is written.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: hideIfPreset
+</li></ul></div><p>If set to <span class="emphasis"><em>true</em></span>, and the credential is still set,
+the field is totally skiped. We return an empty String in this case.
+Default: <span class="emphasis"><em>false</em></span> -→ We show the credential’s string value.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: overwriteIfPreset
+</li></ul></div><p>If set to <span class="emphasis"><em>true</em></span>, an already existing credential
+of the same type is removed from the SLS session when this tag is
+rendered, even if it was already verified. This feature
+cannot be used together with <span class="emphasis"><em>hideIfPreset</em></span>.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: ifModelState
+</li></ul></div><p>If set, the tag only returns a result if the current
+model state equals the one defined in this attribute. The check
+for this string value is not case-sensitive, so
+<span class="emphasis"><em>get.cred</em></span> equals <span class="emphasis"><em>Get.Cred</em></span>.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: ifModelProperty
+</li></ul></div><p>If set, the tag only returns a result if the
+current model state has a property whose value is equal to the given string.
+e.g. In model state 4 <span class="emphasis"><em>get.cred.token</em></span> you may define the property
+"doit". You can map the state to the <span class="emphasis"><em>Login.jsp</em></span> and configure the
+third input field with ifModelProperty="doit". This field is then
+only shown in the 3rd model state, but not in the first <span class="emphasis"><em>get.cred</em></span>
+step, which uses the same jsp. The check for this string value is
+not case-sensitive, so <span class="emphasis"><em>doit</em></span> equals <span class="emphasis"><em>DOit</em></span>.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: parameterName
+</li></ul></div><p>The name of the post parameter. If set, this value
+overwrites the default from CredentialSemanticType.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: tabindex
+</li></ul></div><p>The html option tab index of the created field. Must
+evaluate to a number. Not set by default.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>since</strong></span>: SLS 4.0.0
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_lt_sls_javascript_gt"></a>1.17. &lt;sls:javascript&gt;</h2></div></div></div><p>Generates a "script" tag with nonce, if CSP is active. Replace regular HTML "style" tags with this one if
+you enable a Content Security Police (CSP). The JavaScript code is usually cotained within this tags body,
+or referenced from a file using the "localFile" parameter.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: localFile
+</li></ul></div><p>Optional / references a local JavaScript file. Path must be relative to
+the SLS "WEB-INF" directory.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>since</strong></span>: SLS 5.20.0.0
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_lt_sls_logouthsp_gt"></a>1.18. &lt;sls:logoutHsp&gt;</h2></div></div></div><p>Logs out a user from the current or all sessions by invalidating
+the HSP session.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: scope
+</li></ul></div><p>If the scope attribute is set to "all", the user will be
+logged out of all active sessions, else only of the current
+session (in an SSO environment).</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>since</strong></span>: SLS 4.0.0
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_lt_sls_mandatoryfooter_gt"></a>1.19. &lt;sls:mandatoryFooter&gt;</h2></div></div></div><p>Inserts table(s) with either debug information about the last processed
+request, some SLS internal state information etc., if "error.details" is
+set to "false". If it is set to "true", the tag instead checks if there
+are production-critical configuration settings and displays a table with
+appropriate warnings if necessary. Furthermore, the tag also inserts any
+SLS custom JavaScript funtions etc. that may be needed at the bottom of
+the page. For this reason, this tag must ALWAYS be present in all the JSPs.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: formName
+</li></ul></div><p>The name of the form in the page (defaults to "LoginForm").
+If BID check functionality is used (configuration property
+"bid.check.enable" is true in "sls.properties"), this name of the
+form in the JavaScript code rendered by this tag must be equal to
+the actual name of the form in the current JSP. If that is not
+"LoginForm", set the name with this attribute.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>since</strong></span>: SLS 4.0.0
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_lt_sls_mandatoryhead_gt"></a>1.20. &lt;sls:mandatoryHead&gt;</h2></div></div></div><p>This tag generates various header elements in the page required by the
+SLS for some features to work correctly (like BID-check functionality).
+It does not, however, generate any actual HTML in the page, so it is
+recommended to always include this tag in the "HEAD"-section of all SLS
+pages (except for the "SystemError.jsp").</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: noScriptUrl
+</li></ul></div><p>Allows to define a URL that should automatically be
+loaded through a META REFRESH tag if the current browser client does
+not support JavaScript. That URL should point to a HTML page
+explaining to the user that JavaScript is required to access the application.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: bidJsPath
+</li></ul></div><p>If BID check is enabled, this attribute allows to define
+the URI path of the JavaScript file containing the BID-related
+functions. Defaults to "/sil-bid-check/ses.js".</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>since</strong></span>: SLS 4.0.0
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_lt_sls_message_gt"></a>1.21. &lt;sls:message&gt;</h2></div></div></div><p>Displays a localized message, based on the SLS resource files and the
+current session locale. There are also special keys, however (see "key"
+attribute for details).</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: key
+</li></ul></div><p>Usually the key of the resource property with the message to
+display. There are two special key values, however:
+"browser.blacklist.msg" to display the browser-blacklist description
+text, and "global.error.msg" to display the global error (the one
+to be displayed below the form input fields).</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: innerReplacement
+</li></ul></div><p>The message stored under "key" can have inner
+Multiple values can be provided by separating them with a pipe character ("|").
+Automatically wrapped in ${…} if contains neither JEXL nor Groovy expressions.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>since</strong></span>: SLS 4.0.0
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_lt_sls_metarefresh_gt"></a>1.22. &lt;sls:metaRefresh&gt;</h2></div></div></div><p>Creates a META refresh tag in the HEAD section, either in a general
+fashion with configurable reload URL, or specifically for the slowdown
+JSP.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: path
+</li></ul></div><p>Defines the reload path. May be either a relative path or a
+fully qualified URL. Either this attribute or <span class="emphasis"><em>slsPath</em></span> must be set.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: slsPath
+</li></ul></div><p>Defines the SLS action to load, such as <span class="emphasis"><em>/auth</em></span>. Either
+this attribute or <span class="emphasis"><em>path</em></span> must be set.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: time
+</li></ul></div><p>Defines the time to wait before the reload of the page is
+performed. Usually this should be a numeric value, defining the
+number of seconds for the timeout. NOTE: For the Slowdown.jsp, this
+value must be set to <span class="emphasis"><em>slowdown</em></span>. This is the only non-numerical
+value allowed for this attribute.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>since</strong></span>: SLS 4.0.0
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_lt_sls_pwdrules_gt"></a>1.23. &lt;sls:pwdRules&gt;</h2></div></div></div><p>Tag for rendering the password policy requirements.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>since</strong></span>: SLS 4.0.0
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_lt_sls_reqinfomsg_gt"></a>1.24. &lt;sls:reqInfoMsg&gt;</h2></div></div></div><p>Tag for rendering the optional "infomsg" field content from the "req"
+parameter, as sent during processes like transaction verification etc.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>since</strong></span>: SLS 4.0.0
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_lt_sls_selection_gt"></a>1.25. &lt;sls:selection&gt;</h2></div></div></div><p>This tag generates a selection for the available tokens. In the body can
+be button tags, that are inserted at the end.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: name
+</li></ul></div><p>The name of the input selection.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: listKey
+</li></ul></div><p>The key with them the list is stored in the SLS session.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: type
+</li></ul></div><p>Valid types: radio, list, links. "radio": a list of radio
+buttons (submit button needed), "list":  a standard selection list
+(submit button needed), "links": a list of links (no submit
+button needed)</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: innerStyleClass
+</li></ul></div><p>The CSS style class of a selectable item.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: innerStyle
+</li></ul></div><p>The CSS style of a selectable item.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: innerEventHandlers
+</li></ul></div><p>Eventhandlers of a selectable item.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>since</strong></span>: SLS 4.0.0
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_lt_sls_style_gt"></a>1.26. &lt;sls:style&gt;</h2></div></div></div><p>Generates a "style" tag with nonce, if CSP is active. Replace regular HTML "style" tags with this one if
+you enable a Content Security Police (CSP). The style definitions are contained in the body of this tag.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>since</strong></span>: SLS 5.20.0.0
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_lt_sls_whilejexl_gt"></a>1.27. &lt;sls:whileJexl&gt;</h2></div></div></div><p>DEPRECATED: Use "whileScript" instead.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: condition
+</li></ul></div><p>The JEXL/Groovy expression, e.g. ${…} or #{…}.
+Automatically wrapped in ${…} if contains neither JEXL
+nor Groovy expressions.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>since</strong></span>: SLS 4.0.0
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_lt_sls_whilescript_gt"></a>1.28. &lt;sls:whileScript&gt;</h2></div></div></div><p>The body of the tag is evaluated as long as the JEXL/Groovy expression
+evaluates to <span class="emphasis"><em>true</em></span>.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>parameter</strong></span>: condition
+</li></ul></div><p>The JEXL/Groovy expression, e.g. ${…} or #{…}.
+Automatically wrapped in ${…} if contains neither JEXL
+nor Groovy expressions.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>since</strong></span>: SLS 4.0.0
+</li></ul></div></div></div></div></body></html>
